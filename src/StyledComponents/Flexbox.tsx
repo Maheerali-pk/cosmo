@@ -26,16 +26,28 @@ export default styled.div<FlexboxProps>`
 export const flexbox = (p: FlexboxProps) => css`
    display: flex;
    flex-direction: ${p.column ? "column" : "row"};
-   align-items: ${flexPosObject[p.align || "center"]};
-   justify-content: ${flexPosObject[p.justify || "center"]};
+   align-items: ${flexPosObject[p.align || (p.column ? "start" : "center")]};
+   justify-content: ${flexPosObject[p.justify || "start"]};
 
    ${p.gap &&
    css`
       & > * {
-         margin-right: ${typeof p.gap === "number" ? toRem(p.gap) : p.gap};
+         ${p.column
+            ? css`
+                 margin-bottom: ${typeof p.gap === "number" ? toRem(p.gap) : p.gap};
+              `
+            : css`
+                 margin-right: ${typeof p.gap === "number" ? toRem(p.gap) : p.gap};
+              `}
       }
       & > *:last-child {
-         margin-right: 0;
+         ${p.column
+            ? css`
+                 margin-bottom: 0;
+              `
+            : css`
+                 margin-right: 0;
+              `}
       }
    `}
    ${p.fullWidth && `width: 100%`};

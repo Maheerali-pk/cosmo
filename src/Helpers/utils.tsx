@@ -14,6 +14,9 @@ export const colors = {
    skyBlueLines: "#EDF2F9",
    headingBackground: "#FCFCFC",
    indigoLogo: "#A81FA8",
+   sidebarBackground: "#EAEAEA",
+   sidebarLogoPurple: "#0701B5",
+   white: "white",
 };
 
 export const fonts = {};

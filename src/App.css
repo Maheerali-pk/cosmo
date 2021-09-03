@@ -4,3 +4,9 @@
    margin: 0;
    font-family: "Segoe UI";
 }
+body,
+html,
+#root {
+   height: 100%;
+   width: 100%;
+}
