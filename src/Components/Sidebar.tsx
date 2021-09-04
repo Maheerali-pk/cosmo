@@ -3,6 +3,8 @@ import { useGlobalContext } from "../Contexts/GlobalContext/GlobalContext";
 import { colors, toRem } from "../Helpers/utils";
 import Flexbox, { flexbox } from "../StyledComponents/Flexbox";
 import Text from "../StyledComponents/Text";
+import { IconButton } from "@material-ui/core";
+
 export interface SidebarProps {}
 
 // const SidebarWrapper = styled.div`

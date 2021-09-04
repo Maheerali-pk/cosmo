@@ -3,13 +3,17 @@ import Grid from "../StyledComponents/Grid";
 import styled from "styled-components";
 import { colors, interpolate, toRem } from "../Helpers/utils";
 import Text, { text } from "../StyledComponents/Text";
+import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
+import SearchIcon from "@material-ui/icons/Search";
+import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
+import { IconButton } from "@material-ui/core";
 export interface NavbarProps {
    headingItems: string[];
 }
 
 const UserImage = styled.img`
    border-radius: 50%;
-   height: 2rem;
+   height: 1.75rem;
    aspect-ratio: 1/1;
    object-fit: cover;
 `;
@@ -18,7 +22,7 @@ const NavbarWrapper = styled.div`
    width: 100%;
    height: fit-content;
    border-bottom: #f3f3f3;
-   padding: 0.75rem;
+   padding: 0.25rem 0.75rem;
    i {
       color: ${colors.grayText};
    }
@@ -60,15 +64,23 @@ const Navbar: React.FC<NavbarProps> = ({ headingItems }) => {
                      <Text fontFamily="semibold">{item}</Text>
                   ))}
                </HeadingTextWrapper>
-               <Flexbox gap={27}>
-                  <i className="fas fa-search fa-lg"></i>
-                  <i className="far fa-bell fa-lg"></i>
-                  <i className="far fa-question-circle fa-lg"></i>
-                  <UserImage
-                     src={
-                        "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                     }
-                  ></UserImage>
+               <Flexbox>
+                  <IconButton>
+                     <NotificationsNoneOutlinedIcon fontSize="inherit"></NotificationsNoneOutlinedIcon>
+                  </IconButton>
+                  <IconButton>
+                     <SearchIcon fontSize="inherit"></SearchIcon>
+                  </IconButton>
+                  <IconButton>
+                     <HelpOutlineOutlinedIcon fontSize="inherit"></HelpOutlineOutlinedIcon>
+                  </IconButton>
+                  <IconButton>
+                     <UserImage
+                        src={
+                           "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        }
+                     ></UserImage>
+                  </IconButton>
                </Flexbox>
             </Flexbox>
          </Grid>

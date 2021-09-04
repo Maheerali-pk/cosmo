@@ -34,19 +34,19 @@ export const flexbox = (p: FlexboxProps) => css`
       & > * {
          ${p.column
             ? css`
-                 margin-bottom: ${typeof p.gap === "number" ? toRem(p.gap) : p.gap};
+                 margin-bottom: ${typeof p.gap === "number" ? toRem(p.gap) : p.gap} !important;
               `
             : css`
-                 margin-right: ${typeof p.gap === "number" ? toRem(p.gap) : p.gap};
+                 margin-right: ${typeof p.gap === "number" ? toRem(p.gap) : p.gap} !important;
               `}
       }
       & > *:last-child {
          ${p.column
             ? css`
-                 margin-bottom: 0;
+                 margin-bottom: 0 !important;
               `
             : css`
-                 margin-right: 0;
+                 margin-right: 0 !important;
               `}
       }
    `}
