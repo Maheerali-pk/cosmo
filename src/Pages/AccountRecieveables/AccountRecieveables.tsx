@@ -3,7 +3,8 @@ import { colors, toRem } from "../../Helpers/utils";
 import Flexbox, { flexbox } from "../../StyledComponents/Flexbox";
 import Text from "../../StyledComponents/Text";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
-import AccountRecieveableHeader from "./AccountRecieveablesHeader";
+import Header from "./Header";
+import SubHeader from "./SubHeader";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled(Flexbox)`
@@ -13,7 +14,8 @@ const PageWrapper = styled(Flexbox)`
 const AccountRecieveables: React.FC<AccountRecieveablesProps> = () => {
    return (
       <PageWrapper column fullWidth fullHeight>
-         <AccountRecieveableHeader></AccountRecieveableHeader>
+         <Header></Header>
+         <SubHeader></SubHeader>
       </PageWrapper>
    );
 };

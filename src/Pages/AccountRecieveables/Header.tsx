@@ -4,6 +4,9 @@ import Flexbox, { flexbox } from "../../StyledComponents/Flexbox";
 import Text from "../../StyledComponents/Text";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 
+//Sub Header
+
+//Main Header
 const HeaderWrapper = styled(Flexbox)`
    padding: 0.75rem 0.75rem 0.75rem 1.25rem;
 `;
@@ -20,8 +23,7 @@ const CtrlKWrapper = styled.div`
    background-color: ${colors.graySelection};
    border-radius: ${toRem(2)};
 `;
-
-const AccountRecieveableHeader: React.FC = () => {
+const Header: React.FC = () => {
    const headerItems = ["Accounts", "Sales", "Purchases", "Company", "Reports"];
    return (
       <HeaderWrapper justify="space-between" fullWidth>
@@ -43,4 +45,4 @@ const AccountRecieveableHeader: React.FC = () => {
    );
 };
 
-export default AccountRecieveableHeader;
+export default Header;

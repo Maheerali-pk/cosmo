@@ -9,6 +9,7 @@ interface FlexboxProps {
    gap?: string | number;
    fullWidth?: boolean;
    fullHeight?: boolean;
+   padding?: string;
 }
 
 const flexPosObject: { [k in FlexPos]: string } = {
@@ -53,4 +54,6 @@ export const flexbox = (p: FlexboxProps) => css`
    `}
    ${p.fullWidth && `width: 100%`};
    ${p.fullHeight && `height: 100%`};
+
+   ${p.padding && `padding: ${p.padding}`};
 `;
