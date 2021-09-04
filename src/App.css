@@ -10,3 +10,56 @@ html,
    height: 100%;
    width: 100%;
 }
+
+/* Overriding */
+.MuiSelect-icon {
+   top: calc(50% - 0.75rem) !important;
+}
+.MuiSelect-root {
+   width: 16rem !important;
+}
+
+label + .MuiInput-formControl {
+   margin-top: 1rem !important;
+}
+.mui-date-picker .MuiIconButton-root {
+   padding: 0rem;
+}
+.mui-date-picker .MuiInputAdornment-positionEnd {
+   margin-left: 0 !important;
+}
+@media (max-width: 1900px) {
+   html,
+   body {
+      font-size: 100%;
+   }
+}
+@media (max-width: 1700px) {
+   html,
+   body {
+      font-size: 90%;
+   }
+}
+@media (max-width: 1500px) {
+   html,
+   body {
+      font-size: 80%;
+   }
+}
+@media (max-width: 1300px) {
+   html,
+   body {
+      font-size: 70%;
+   }
+}
+@media (max-width: 1100px) {
+   html,
+   body {
+      font-size: 60%;
+   }
+}
+@media (max-width: 900px) {
+   html {
+      font-size: 50%;
+   }
+}

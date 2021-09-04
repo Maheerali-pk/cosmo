@@ -1,3 +1,5 @@
+import { SelectOption } from "../Components/CustomSelect";
+
 export const toRem = (px: number) => px / 16 + "rem";
 
 export const interpolate = (arr: any[], item: any) => arr.flatMap((x) => [x, item]).slice(0, -1);
@@ -19,5 +21,11 @@ export const colors = {
    white: "white",
    pageOutlineSkyblue: "#F3F3F3",
 };
+export type FontFamilyKey = "regular" | "semibold" | "myraid-pro";
 
-export const fonts = {};
+export const fonts: { [k in FontFamilyKey]: string } = {
+   "myraid-pro": "myraid-pro",
+   regular: "Segoe UI",
+   semibold: "SegoeUISemibold",
+};
+export const stringsToOptions = (arr: string[]): SelectOption[] => arr.map((x) => ({ text: x, value: x }));
