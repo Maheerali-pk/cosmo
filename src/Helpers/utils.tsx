@@ -17,6 +17,7 @@ export const colors = {
    sidebarBackground: "#EAEAEA",
    sidebarLogoPurple: "#0701B5",
    white: "white",
+   pageOutlineSkyblue: "#F3F3F3",
 };
 
 export const fonts = {};

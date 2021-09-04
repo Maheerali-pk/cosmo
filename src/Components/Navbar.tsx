@@ -21,7 +21,7 @@ const UserImage = styled.img`
 const NavbarWrapper = styled.div`
    width: 100%;
    height: fit-content;
-   border-bottom: #f3f3f3;
+   border-bottom: 2px solid ${colors.pageOutlineSkyblue};
    padding: 0.25rem 0.75rem;
    i {
       color: ${colors.grayText};
