@@ -3,7 +3,10 @@ import { useGlobalContext } from "../Contexts/GlobalContext/GlobalContext";
 import { colors, toRem } from "../Helpers/utils";
 import Flexbox, { flexbox } from "../StyledComponents/Flexbox";
 import Text from "../StyledComponents/Text";
-import { IconButton } from "@material-ui/core";
+import { Icon, IconButton } from "@material-ui/core";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { useState } from "react";
 
 export interface SidebarProps {}
 
@@ -68,43 +71,59 @@ const SidebarWrapper = styled.div`
    height: 100%;
 `;
 
+const BackArrowIcon = styled(Icon)`
+   cursor: pointer;
+`;
+
 const Sidebar: React.FC<SidebarProps> = () => {
+   const [isOpen, setIsOpen] = useState(true);
+
    const [{ sidebarItems, selectedItem }] = useGlobalContext();
    const renderSidebarItems = () => {
       return sidebarItems.map((item) => <SidebarItem text={item} isSelected={selectedItem === item}></SidebarItem>);
    };
-   return (
-      <SidebarWrapper>
-         <Flexbox column fullWidth>
-            <SidebarItemWrapper>
-               <SidebarLogoWrapper>
-                  <SidebarLogo>
-                     <Text color="white" fontFamily="semibold">
-                        A
+   if (isOpen) {
+      return (
+         <SidebarWrapper>
+            <Flexbox column fullWidth>
+               <SidebarItemWrapper>
+                  <SidebarLogoWrapper>
+                     <SidebarLogo>
+                        <Text color="white" fontFamily="semibold">
+                           A
+                        </Text>
+                     </SidebarLogo>
+                     <Text color="grayHeading" fontFamily="semibold">
+                        Airmed
                      </Text>
-                  </SidebarLogo>
-                  <Text color="grayHeading" fontFamily="semibold">
-                     Airmed
-                  </Text>
-               </SidebarLogoWrapper>
-            </SidebarItemWrapper>
-            <Flexbox column gap="0.5rem">
-               {renderSidebarItems()}
-            </Flexbox>
-         </Flexbox>
-         <SidebarItemWrapper>
-            <SidebarSetttingWrapper>
-               <Flexbox gap={8}>
-                  <i className="fas fa-cog fa-lg" />
-                  <Text fontFamily="semibold">Settings</Text>
+                  </SidebarLogoWrapper>
+               </SidebarItemWrapper>
+               <Flexbox column gap="0.5rem">
+                  {renderSidebarItems()}
                </Flexbox>
-               <div>
-                  <i className="fas fa-angle-left fa-lg"></i>
-               </div>
-            </SidebarSetttingWrapper>
-         </SidebarItemWrapper>
-      </SidebarWrapper>
-   );
+            </Flexbox>
+            <SidebarItemWrapper>
+               <SidebarSetttingWrapper>
+                  <Flexbox gap={8}>
+                     <i className="fas fa-cog fa-lg" />
+                     <Text fontFamily="semibold">Settings</Text>
+                  </Flexbox>
+                  <BackArrowIcon onClick={() => setIsOpen(false)}>
+                     <ArrowBackIosIcon></ArrowBackIosIcon>
+                  </BackArrowIcon>
+               </SidebarSetttingWrapper>
+            </SidebarItemWrapper>
+         </SidebarWrapper>
+      );
+   } else {
+      return (
+         <SidebarWrapper style={{ width: "fit-content", justifyContent: "flex-end" }}>
+            <BackArrowIcon onClick={() => setIsOpen(true)}>
+               <ArrowForwardIosIcon></ArrowForwardIosIcon>
+            </BackArrowIcon>
+         </SidebarWrapper>
+      );
+   }
 };
 
 export default Sidebar;

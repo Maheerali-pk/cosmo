@@ -4,6 +4,7 @@ interface IGlobalState {
    user: IUser;
    sidebarItems: string[];
    selectedItem: string;
+   isSidebarOpen: boolean;
 }
 
 interface IUser {
@@ -16,6 +17,7 @@ const initialState: IGlobalState = {
       name: "John",
       image: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
    },
+   isSidebarOpen: true,
    sidebarItems: [
       "Dashboards",
       "Accounting",
