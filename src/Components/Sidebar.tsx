@@ -67,7 +67,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ text, isSelected }) => {
 const SidebarWrapper = styled.div`
    ${flexbox({ column: true, justify: "space-between" })};
    background-color: ${colors.sidebarBackground};
-   width: 20vw;
    height: 100%;
 `;
 
@@ -76,13 +75,11 @@ const BackArrowIcon = styled(Icon)`
 `;
 
 const Sidebar: React.FC<SidebarProps> = () => {
-   const [isOpen, setIsOpen] = useState(true);
-
-   const [{ sidebarItems, selectedItem }] = useGlobalContext();
+   const [{ sidebarItems, selectedItem, isSidebarOpen }, dispatch] = useGlobalContext();
    const renderSidebarItems = () => {
       return sidebarItems.map((item) => <SidebarItem text={item} isSelected={selectedItem === item}></SidebarItem>);
    };
-   if (isOpen) {
+   if (isSidebarOpen) {
       return (
          <SidebarWrapper>
             <Flexbox column fullWidth>
@@ -108,7 +105,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
                      <i className="fas fa-cog fa-lg" />
                      <Text fontFamily="semibold">Settings</Text>
                   </Flexbox>
-                  <BackArrowIcon onClick={() => setIsOpen(false)}>
+                  <BackArrowIcon onClick={() => dispatch({ setIsSidebarOpen: false })}>
                      <ArrowBackIosIcon></ArrowBackIosIcon>
                   </BackArrowIcon>
                </SidebarSetttingWrapper>
@@ -118,7 +115,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
    } else {
       return (
          <SidebarWrapper style={{ width: "fit-content", justifyContent: "flex-end" }}>
-            <BackArrowIcon onClick={() => setIsOpen(true)}>
+            <BackArrowIcon onClick={() => dispatch({ setIsSidebarOpen: true })}>
                <ArrowForwardIosIcon></ArrowForwardIosIcon>
             </BackArrowIcon>
          </SidebarWrapper>

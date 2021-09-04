@@ -18,9 +18,10 @@ const UserImage = styled.img`
    object-fit: cover;
 `;
 
-const NavbarWrapper = styled.div`
+const NavbarWrapper = styled(Grid)`
    width: 100%;
-   height: fit-content;
+
+   height: 6.5vh;
    border-bottom: 2px solid ${colors.pageOutlineSkyblue};
    padding: 0.25rem 0.75rem;
    i {
@@ -52,38 +53,36 @@ const Circle = styled.div`
 
 const Navbar: React.FC<NavbarProps> = ({ headingItems }) => {
    return (
-      <NavbarWrapper>
-         <Grid columns="20% 80%">
-            <Flexbox justify="start" gap={16}>
-               <Circle></Circle>
-               <Logo>COSMO</Logo>
+      <NavbarWrapper columns={`${toRem(240)} auto`}>
+         <Flexbox justify="start" gap={16}>
+            <Circle></Circle>
+            <Logo>COSMO</Logo>
+         </Flexbox>
+         <Flexbox fullWidth justify="space-between">
+            <HeadingTextWrapper>
+               {interpolate(headingItems, "/").map((item) => (
+                  <Text fontFamily="semibold">{item}</Text>
+               ))}
+            </HeadingTextWrapper>
+            <Flexbox>
+               <IconButton>
+                  <NotificationsNoneOutlinedIcon fontSize="inherit"></NotificationsNoneOutlinedIcon>
+               </IconButton>
+               <IconButton>
+                  <SearchIcon fontSize="inherit"></SearchIcon>
+               </IconButton>
+               <IconButton>
+                  <HelpOutlineOutlinedIcon fontSize="inherit"></HelpOutlineOutlinedIcon>
+               </IconButton>
+               <IconButton>
+                  <UserImage
+                     src={
+                        "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                     }
+                  ></UserImage>
+               </IconButton>
             </Flexbox>
-            <Flexbox fullWidth justify="space-between">
-               <HeadingTextWrapper>
-                  {interpolate(headingItems, "/").map((item) => (
-                     <Text fontFamily="semibold">{item}</Text>
-                  ))}
-               </HeadingTextWrapper>
-               <Flexbox>
-                  <IconButton>
-                     <NotificationsNoneOutlinedIcon fontSize="inherit"></NotificationsNoneOutlinedIcon>
-                  </IconButton>
-                  <IconButton>
-                     <SearchIcon fontSize="inherit"></SearchIcon>
-                  </IconButton>
-                  <IconButton>
-                     <HelpOutlineOutlinedIcon fontSize="inherit"></HelpOutlineOutlinedIcon>
-                  </IconButton>
-                  <IconButton>
-                     <UserImage
-                        src={
-                           "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                        }
-                     ></UserImage>
-                  </IconButton>
-               </Flexbox>
-            </Flexbox>
-         </Grid>
+         </Flexbox>
       </NavbarWrapper>
    );
 };

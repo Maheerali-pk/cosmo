@@ -29,3 +29,8 @@ export const fonts: { [k in FontFamilyKey]: string } = {
    semibold: "SegoeUISemibold",
 };
 export const stringsToOptions = (arr: string[]): SelectOption[] => arr.map((x) => ({ text: x, value: x }));
+
+export const repeat = (item: any, times: number): any[] =>
+   Array(times)
+      .fill(0)
+      .map((x) => item);

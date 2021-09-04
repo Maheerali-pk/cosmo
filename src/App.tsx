@@ -2,27 +2,35 @@ import React from "react";
 import "./App.css";
 import "./Fonts.css";
 import Navbar from "./Components/Navbar";
-import { GlobalContextProvider } from "./Contexts/GlobalContext/GlobalContext";
+import { GlobalContextProvider, useGlobalContext } from "./Contexts/GlobalContext/GlobalContext";
 import Sidebar from "./Components/Sidebar";
 import styled from "styled-components";
 import { flexbox } from "./StyledComponents/Flexbox";
 import AccountRecieveables from "./Pages/AccountRecieveables/AccountRecieveables";
 import { createTheme, MuiThemeProvider } from "@material-ui/core";
-import { colors, fonts } from "./Helpers/utils";
+import { colors, fonts, toRem } from "./Helpers/utils";
 
 const AppWrapper = styled.div`
    display: flex;
    flex-direction: column;
-   height: 100%;
+   height: 100vh;
    width: 100%;
+   overflow: hidden;
 `;
 
-const BottomArea = styled.div`
-   ${flexbox({})};
-   flex-grow: 1;
+const BottomArea = styled.div<{ isSidebarOpen: boolean }>`
+   display: grid;
+   grid-template-columns: ${(p) => `${p.isSidebarOpen ? toRem(240) : "min-content"} auto`};
+   height: 93.5vh;
+   /* flex-grow: 1; */
    width: 100%;
    /* height: 100%; */
 `;
+
+const PageWrapper = styled.div`
+   overflow: auto;
+`;
+
 const theme = createTheme({
    overrides: {
       MuiInputLabel: {
@@ -49,18 +57,17 @@ const theme = createTheme({
 });
 
 function App() {
+   const [{ isSidebarOpen }] = useGlobalContext();
    return (
-      <GlobalContextProvider>
-         <MuiThemeProvider theme={theme}>
-            <AppWrapper>
-               <Navbar headingItems={["Airmed", "Accounting", "Accounts"]}></Navbar>
-               <BottomArea>
-                  <Sidebar></Sidebar>
-                  <AccountRecieveables></AccountRecieveables>
-               </BottomArea>
-            </AppWrapper>
-         </MuiThemeProvider>
-      </GlobalContextProvider>
+      <MuiThemeProvider theme={theme}>
+         <AppWrapper>
+            <Navbar headingItems={["Airmed", "Accounting", "Accounts"]}></Navbar>
+            <BottomArea isSidebarOpen={isSidebarOpen}>
+               <Sidebar></Sidebar>
+               <AccountRecieveables></AccountRecieveables>
+            </BottomArea>
+         </AppWrapper>
+      </MuiThemeProvider>
    );
 }
 

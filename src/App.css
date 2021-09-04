@@ -34,19 +34,19 @@ label + .MuiInput-formControl {
       font-size: 100%;
    }
 }
-@media (max-width: 1700px) {
+@media (max-width: 1650px) {
    html,
    body {
       font-size: 90%;
    }
 }
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
    html,
    body {
       font-size: 80%;
    }
 }
-@media (max-width: 1300px) {
+@media (max-width: 1150px) {
    html,
    body {
       font-size: 70%;

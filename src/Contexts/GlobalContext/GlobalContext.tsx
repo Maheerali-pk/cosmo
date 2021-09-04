@@ -31,7 +31,16 @@ const initialState: IGlobalState = {
    selectedItem: "Accounting",
 };
 
-const { Context, Provider, useContextHook } = createCustomContext<IGlobalState, {}>({ initialState, functions: {} });
+function setIsSidebarOpen(state: IGlobalState, value: boolean): IGlobalState {
+   return { ...state, isSidebarOpen: value };
+}
+
+const functions = { setIsSidebarOpen };
+
+const { Context, Provider, useContextHook } = createCustomContext<IGlobalState, typeof functions>({
+   initialState,
+   functions: { setIsSidebarOpen },
+});
 
 export const GlobalContextProvider = Provider;
 export const useGlobalContext = useContextHook;
