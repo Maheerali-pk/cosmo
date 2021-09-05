@@ -11,17 +11,29 @@ export interface RowProps {
 const RowWrapper = styled.div`
    display: grid;
    width: 100%;
-   grid-template-columns: 1fr 2fr repeat(6, 1fr);
+   grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
    padding: ${toRem(10)} 2rem;
    border-bottom: 1px solid ${colors.skyBlueLines};
+   ${Text} {
+      text-align: center;
+      font-size: ${toRem(13)};
+   }
+
+   & > ${Text}:nth-child(1) {
+      text-align: left;
+   }
+   & > ${Text}:nth-child(7),
+   & > ${Text}:nth-child(8) {
+      text-align: right !important;
+   }
 `;
 
-const HeadingsWrapper = styled(RowWrapper)``;
+// const HeadingsWrapper = styled(RowWrapper)``;
 
 const Row: React.FC<RowProps> = ({ items }) => {
    return (
       <RowWrapper>
-         <Text size={13} color={"bueLink"}>
+         <Text size={13} isLink>
             {items[0]}
          </Text>
          <div></div>
@@ -33,17 +45,75 @@ const Row: React.FC<RowProps> = ({ items }) => {
       </RowWrapper>
    );
 };
+const FooterRowWrapper = styled(RowWrapper)`
+   padding: 0 2rem;
+   text-align: center;
+   ${Text} {
+      font-size: ${toRem(13)};
+      padding: ${toRem(10)} 0;
+   }
+   border: none;
+`;
+
+const FooterSubRowWrapper = styled(RowWrapper)`
+   text-align: right;
+   border: none;
+`;
 
 const HeadingsRow = () => {
    const headings = ["Name", "", "Future", "0-30", "31-60", "61-90", "Over 90", "Total"];
    return (
       <RowWrapper style={{ overflowY: "scroll" }}>
-         {headings.map((x) => (
-            <Text size={13} style={{ textAlign: "center" }}>
-               {x}
-            </Text>
-         ))}
+         <Text>Name</Text>
+         <Text></Text>
+         <Text>Future</Text>
+         <Text>0-30</Text>
+         <Text>31-60</Text>
+         <Text>61-90</Text>
+         <Text style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ transform: "translate(50%)", width: "fit-content" }}>Over 90</div>
+         </Text>
+         <Text style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ transform: "translate(50%, 0)", width: "fit-content" }}>Total</div>
+         </Text>
       </RowWrapper>
+   );
+};
+
+const Footer = () => {
+   return (
+      <>
+         <FooterRowWrapper style={{ textAlign: "center", fontSize: toRem(13) }}>
+            <Text>Total</Text>
+            <div></div>
+            <Text>360,000</Text>
+            <Text>325,000</Text>
+            <Text>620,000</Text>
+            <Text>2,400,000</Text>
+            <Text style={{ borderBottom: `1px solid ${colors.tableFooterHrColor}` }}>850,000</Text>
+            <Text style={{ borderBottom: `1px solid ${colors.tableFooterHrColor}` }}>4,555,000</Text>
+         </FooterRowWrapper>
+         <FooterSubRowWrapper>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <Text>Allowance for bad debt</Text>
+            <Text>PKR 55,000</Text>
+         </FooterSubRowWrapper>
+         <FooterSubRowWrapper>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <Text>Allowance for bad debt</Text>
+            <Text>PKR 55,000</Text>
+         </FooterSubRowWrapper>
+      </>
    );
 };
 
@@ -56,11 +126,6 @@ const TableBody = styled(Flexbox)`
    overflow-y: scroll;
 `;
 
-const TableWrapper = styled.div`
-   display: grid;
-   grid-template-columns: 1fr 2fr repeat(6, 1fr);
-`;
-
 const Table: React.FC<TableProps> = () => {
    return (
       <>
@@ -70,6 +135,7 @@ const Table: React.FC<TableProps> = () => {
                <Row items={row}></Row>
             ))}
          </TableBody>
+         <Footer></Footer>
       </>
    );
 };
