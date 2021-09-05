@@ -1,5 +1,5 @@
 import { SelectOption } from "../Components/CustomSelect";
-
+import starPurple from "../Assets/Icons/starPurple.svg";
 export const toRem = (px: number) => px / 16 + "rem";
 
 export const interpolate = (arr: any[], item: any) => arr.flatMap((x) => [x, item]).slice(0, -1);
@@ -16,6 +16,7 @@ export const colors = {
    skyBlueLines: "#EDF2F9",
    headingBackground: "#FCFCFC",
    indigoLogo: "#A81FA8",
+   indigoDark: "#650097",
    sidebarBackground: "#EAEAEA",
    sidebarLogoPurple: "#0701B5",
    white: "white",
@@ -35,3 +36,7 @@ export const repeat = (item: any, times: number): any[] =>
    Array(times)
       .fill(0)
       .map((x) => item);
+
+export const allIcons = {
+   starPurple,
+};

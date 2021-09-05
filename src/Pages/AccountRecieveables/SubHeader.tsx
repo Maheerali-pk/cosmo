@@ -4,6 +4,7 @@ import Flexbox, { flexbox } from "../../StyledComponents/Flexbox";
 import Text from "../../StyledComponents/Text";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import { IconButton } from "@material-ui/core";
+import PageSubHeaderWrapper from "../../StyledComponents/PageSubHeaderWrapper";
 
 const IconsWrapper = styled(Flexbox)`
    border-left: 2px solid ${colors.sidebarBackground};
@@ -13,7 +14,7 @@ const IconsWrapper = styled(Flexbox)`
 
 const SubHeader: React.FC = () => {
    return (
-      <Flexbox padding="0.75rem 0 0.75rem 2.5rem" justify="space-between" fullWidth>
+      <PageSubHeaderWrapper>
          <Text size={20} fontFamily="semibold">
             Accounts Receivables
          </Text>
@@ -32,7 +33,7 @@ const SubHeader: React.FC = () => {
                </IconButton>
             </IconsWrapper>
          </Flexbox>
-      </Flexbox>
+      </PageSubHeaderWrapper>
    );
 };
 

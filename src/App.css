@@ -10,6 +10,9 @@ html,
    height: 100%;
    width: 100%;
 }
+* {
+   color: #7d7d7d;
+}
 
 /* Overriding */
 .MuiSelect-icon {

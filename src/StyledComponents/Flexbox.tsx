@@ -10,6 +10,15 @@ interface FlexboxProps {
    fullWidth?: boolean;
    fullHeight?: boolean;
    padding?: string;
+   pb?: number;
+   pt?: number;
+   pl?: number;
+   pr?: number;
+
+   mb?: number;
+   mt?: number;
+   ml?: number;
+   mr?: number;
 }
 
 const flexPosObject: { [k in FlexPos]: string } = {
@@ -56,4 +65,14 @@ export const flexbox = (p: FlexboxProps) => css`
    ${p.fullHeight && `height: 100%`};
 
    ${p.padding && `padding: ${p.padding}`};
+
+   ${p.pb && `padding-bottom: ${toRem(p.pb)}`}
+   ${p.pt && `padding-top: ${toRem(p.pt)}`} 
+   ${p.pl && `padding-left: ${toRem(p.pl)}`} 
+   ${p.pr && `padding-right: ${toRem(p.pr)}`}
+
+   ${p.mb && `margin-bottom: ${toRem(p.mb)}`}
+   ${p.mt && `margin-top: ${toRem(p.mt)}`} 
+   ${p.ml && `margin-left: ${toRem(p.ml)}`} 
+   ${p.mr && `margin-right: ${toRem(p.mr)}`}
 `;

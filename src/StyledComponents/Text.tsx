@@ -6,6 +6,11 @@ interface TextProps {
    fontFamily?: FontFamilyKey;
    color?: keyof typeof colors;
    isLink?: boolean;
+   mb?: number;
+   mt?: number;
+   ml?: number;
+   mr?: number;
+   underline?: boolean;
 }
 console.log("hello");
 
@@ -23,4 +28,9 @@ export const text = (p: TextProps) => css`
       color: ${colors.bueLink};
       text-decoration: underline;
    `}
+   ${p.mb && `margin-bottom: ${toRem(p.mb)}`};
+   ${p.mt && `margin-top: ${toRem(p.mt)}`};
+   ${p.ml && `margin-left: ${toRem(p.ml)}`};
+   ${p.mr && `margin-right: ${toRem(p.mr)}`};
+   ${p.underline && `text-decoration: underline;`};
 `;

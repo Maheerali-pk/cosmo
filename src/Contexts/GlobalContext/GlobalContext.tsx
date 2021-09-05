@@ -7,7 +7,7 @@ interface IGlobalState {
    isSidebarOpen: boolean;
 }
 
-interface IUser {
+export interface IUser {
    name: string;
    image: string;
 }

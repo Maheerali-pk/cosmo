@@ -9,6 +9,7 @@ import { flexbox } from "./StyledComponents/Flexbox";
 import AccountRecieveables from "./Pages/AccountRecieveables/AccountRecieveables";
 import { createTheme, MuiThemeProvider } from "@material-ui/core";
 import { colors, fonts, toRem } from "./Helpers/utils";
+import Construction from "./Pages/Construction/Construction";
 
 const AppWrapper = styled.div`
    display: flex;
@@ -64,7 +65,7 @@ function App() {
             <Navbar headingItems={["Airmed", "Accounting", "Accounts"]}></Navbar>
             <BottomArea isSidebarOpen={isSidebarOpen}>
                <Sidebar></Sidebar>
-               <AccountRecieveables></AccountRecieveables>
+               <Construction></Construction>
             </BottomArea>
          </AppWrapper>
       </MuiThemeProvider>
