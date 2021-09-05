@@ -16,7 +16,7 @@ const PageWrapper = styled.div`
    min-width: 100%;
    border-left: 2px solid ${colors.pageOutlineSkyblue};
    overflow: auto;
-   grid-template-rows: auto auto auto 10fr;
+   grid-template-rows: min-content min-content min-content auto;
 `;
 
 const AccountRecieveables: React.FC<AccountRecieveablesProps> = () => {
