@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { colors, toRem } from "../../Helpers/utils";
-import Flexbox, { flexbox } from "../../StyledComponents/Flexbox";
-import Text from "../../StyledComponents/Text";
+import { colors, toRem } from "../Helpers/utils";
+import Flexbox, { flexbox } from "../StyledComponents/Flexbox";
+import Text from "../StyledComponents/Text";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 
 //Sub Header
@@ -23,12 +23,15 @@ const CtrlKWrapper = styled.div`
    background-color: ${colors.graySelection};
    border-radius: ${toRem(2)};
 `;
-const Header: React.FC = () => {
-   const headerItems = ["Accounts", "Sales", "Purchases", "Company", "Reports"];
+interface PageContentHeaderProps {
+   items: string[];
+}
+
+const PageContentHeader: React.FC<PageContentHeaderProps> = ({ items }) => {
    return (
       <HeaderWrapper justify="space-between" fullWidth>
          <Flexbox gap={32}>
-            {headerItems.map((item) => (
+            {items.map((item) => (
                <Text fontFamily="semibold">{item}</Text>
             ))}
          </Flexbox>
@@ -45,4 +48,4 @@ const Header: React.FC = () => {
    );
 };
 
-export default Header;
+export default PageContentHeader;

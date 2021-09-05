@@ -3,10 +3,10 @@ import { colors, toRem } from "../../Helpers/utils";
 import Flexbox, { flexbox } from "../../StyledComponents/Flexbox";
 import Text from "../../StyledComponents/Text";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
-import Header from "./Header";
 import SubHeader from "./SubHeader";
 import SelectsRow from "./SelectsRow";
 import Table from "./Table";
+import PageContentHeader from "../../Components/PageContentHeader";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled.div`
@@ -22,7 +22,7 @@ const PageWrapper = styled.div`
 const AccountRecieveables: React.FC<AccountRecieveablesProps> = () => {
    return (
       <PageWrapper>
-         <Header></Header>
+         <PageContentHeader items={["Accounts", "Sales", "Purchases", "Company", "Reports"]}></PageContentHeader>
          <SubHeader></SubHeader>
          <SelectsRow></SelectsRow>
          <Table></Table>
