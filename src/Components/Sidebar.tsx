@@ -6,6 +6,7 @@ import Text from "../StyledComponents/Text";
 import { Icon, IconButton } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import { useState } from "react";
 
 export interface SidebarProps {}
@@ -15,13 +16,19 @@ export interface SidebarProps {}
 // 	flex-direction: column;
 // `
 
-const SidebarItemWrapper = styled.div`
-   ${flexbox({ gap: 8 })}
+const SidebarItemWrapper = styled.div<{ selected?: boolean }>`
+   ${flexbox({ gap: 12 })}
    display: flex;
    padding: 0.7rem;
    width: 100%;
    color: ${colors.grayText};
    margin-bottom: 0.5rem;
+   cursor: pointer;
+   &:hover {
+      background-color: ${colors.graySelection};
+   }
+   transition: all 0.2s ease-in-out;
+   ${(p) => p.selected && `background-color: ${colors.graySelection}`}
 `;
 
 const SidebarRectangle = styled.div`
@@ -57,7 +64,7 @@ interface SidebarItemProps {
 
 const SidebarItem: React.FC<SidebarItemProps> = ({ text, isSelected }) => {
    return (
-      <SidebarItemWrapper>
+      <SidebarItemWrapper selected={isSelected}>
          <SidebarRectangle></SidebarRectangle>
          <Text fontFamily="semibold">{text}</Text>
       </SidebarItemWrapper>
@@ -68,10 +75,12 @@ const SidebarWrapper = styled.div`
    ${flexbox({ column: true, justify: "space-between" })};
    background-color: ${colors.sidebarBackground};
    height: 100%;
+   color: ${colors.grayText};
 `;
 
 const BackArrowIcon = styled(Icon)`
    cursor: pointer;
+   color: ${colors.grayText};
 `;
 
 const Sidebar: React.FC<SidebarProps> = () => {
@@ -95,14 +104,14 @@ const Sidebar: React.FC<SidebarProps> = () => {
                      </Text>
                   </SidebarLogoWrapper>
                </SidebarItemWrapper>
-               <Flexbox column gap="0.5rem">
+               <Flexbox column gap="0.5rem" fullWidth>
                   {renderSidebarItems()}
                </Flexbox>
             </Flexbox>
             <SidebarItemWrapper>
                <SidebarSetttingWrapper>
                   <Flexbox gap={8}>
-                     <i className="fas fa-cog fa-lg" />
+                     <SettingsOutlinedIcon />
                      <Text fontFamily="semibold">Settings</Text>
                   </Flexbox>
                   <BackArrowIcon onClick={() => dispatch({ setIsSidebarOpen: false })}>
@@ -114,10 +123,34 @@ const Sidebar: React.FC<SidebarProps> = () => {
       );
    } else {
       return (
-         <SidebarWrapper style={{ width: "fit-content", justifyContent: "flex-end" }}>
-            <BackArrowIcon onClick={() => dispatch({ setIsSidebarOpen: true })}>
+         <SidebarWrapper style={{ width: "fit-content", justifyContent: "space-between" }}>
+            <Flexbox column>
+               <IconButton>
+                  <SettingsOutlinedIcon />
+               </IconButton>
+               <IconButton>
+                  <SettingsOutlinedIcon />
+               </IconButton>
+               <IconButton>
+                  <SettingsOutlinedIcon />
+               </IconButton>
+               <IconButton>
+                  <SettingsOutlinedIcon />
+               </IconButton>
+               <IconButton>
+                  <SettingsOutlinedIcon />
+               </IconButton>
+               <IconButton>
+                  <SettingsOutlinedIcon />
+               </IconButton>
+               <IconButton>
+                  <SettingsOutlinedIcon />
+               </IconButton>
+            </Flexbox>
+
+            <IconButton onClick={() => dispatch({ setIsSidebarOpen: true })}>
                <ArrowForwardIosIcon></ArrowForwardIosIcon>
-            </BackArrowIcon>
+            </IconButton>
          </SidebarWrapper>
       );
    }

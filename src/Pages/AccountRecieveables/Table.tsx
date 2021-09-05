@@ -26,6 +26,9 @@ const RowWrapper = styled.div`
    & > ${Text}:nth-child(8) {
       text-align: right !important;
    }
+   sup {
+      font-size: 0.55rem;
+   }
 `;
 
 // const HeadingsWrapper = styled(RowWrapper)``;
@@ -49,7 +52,6 @@ const FooterRowWrapper = styled(RowWrapper)`
    padding: 0 2rem;
    text-align: center;
    ${Text} {
-      font-size: ${toRem(13)};
       padding: ${toRem(10)} 0;
    }
    border: none;
@@ -58,6 +60,7 @@ const FooterRowWrapper = styled(RowWrapper)`
 const FooterSubRowWrapper = styled(RowWrapper)`
    text-align: right;
    border: none;
+   padding: 0 2rem;
 `;
 
 const HeadingsRow = () => {
@@ -74,7 +77,7 @@ const HeadingsRow = () => {
             <div style={{ transform: "translate(50%)", width: "fit-content" }}>Over 90</div>
          </Text>
          <Text style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
-            <div style={{ transform: "translate(50%, 0)", width: "fit-content" }}>Total</div>
+            <div style={{ transform: "", width: "fit-content" }}>Total</div>
          </Text>
       </RowWrapper>
    );
@@ -93,7 +96,7 @@ const Footer = () => {
             <Text style={{ borderBottom: `1px solid ${colors.tableFooterHrColor}` }}>850,000</Text>
             <Text style={{ borderBottom: `1px solid ${colors.tableFooterHrColor}` }}>4,555,000</Text>
          </FooterRowWrapper>
-         <FooterSubRowWrapper>
+         <FooterSubRowWrapper style={{ paddingTop: toRem(10) }}>
             <div></div>
             <div></div>
             <div></div>
@@ -101,17 +104,21 @@ const Footer = () => {
             <div></div>
             <div></div>
             <Text>Allowance for bad debt</Text>
-            <Text>PKR 55,000</Text>
+            <Text>
+               PKR 55,000<sup> PKR</sup>
+            </Text>
          </FooterSubRowWrapper>
-         <FooterSubRowWrapper>
+         <FooterSubRowWrapper style={{ marginBottom: "4rem" }}>
             <div></div>
             <div></div>
             <div></div>
             <div></div>
             <div></div>
             <div></div>
-            <Text>Allowance for bad debt</Text>
-            <Text>PKR 55,000</Text>
+            <Text fontFamily="semibold">Net Receivables</Text>
+            <Text fontFamily="semibold">
+               PKR 4,500,000<sup> PKR</sup>
+            </Text>
          </FooterSubRowWrapper>
       </>
    );

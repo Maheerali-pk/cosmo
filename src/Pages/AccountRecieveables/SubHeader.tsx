@@ -25,7 +25,7 @@ const SubHeader: React.FC = () => {
             </Flexbox>
             <IconsWrapper>
                <IconButton>
-                  <SettingsOutlinedIcon></SettingsOutlinedIcon>
+                  <i className="fas fa-filter" />
                </IconButton>
                <IconButton>
                   <SettingsOutlinedIcon></SettingsOutlinedIcon>

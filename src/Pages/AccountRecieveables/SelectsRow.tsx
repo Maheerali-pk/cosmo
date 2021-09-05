@@ -49,7 +49,7 @@ const SelectsRow: React.FC<SelectsRowProps> = () => {
                   label="Branch"
                   options={branchSelectOptions}
                ></CustomSelect>
-               <Text color="bueLink">Advanced</Text>
+               <Text isLink>Advanced</Text>
             </Flexbox>
          </Flexbox>
       </MuiPickersUtilsProvider>
