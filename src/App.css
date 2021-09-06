@@ -31,6 +31,11 @@ label + .MuiInput-formControl {
 .mui-date-picker .MuiInputAdornment-positionEnd {
    margin-left: 0 !important;
 }
+
+/* .MuiFormControlLabel-label {
+   font-size: 1.25rem !important;
+   font-family: SegoeUISemibold !important;
+} */
 @media (max-width: 1900px) {
    html,
    body {

@@ -8,4 +8,5 @@ export default styled(Button)`
    padding: 0.5rem 2.25rem !important;
    background-color: ${colors.blueButton};
    margin-top: 3.25rem;
+   border-radius: 0.125rem !important;
 `;

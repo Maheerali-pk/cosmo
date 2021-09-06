@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Register from "./Pages/Register/Register";
 import Register2 from "./Pages/Register2/Register2";
+import Login from "./Pages/Login/Login";
 const theme = createTheme({
    overrides: {
       MuiInputLabel: {
@@ -80,6 +81,9 @@ function App() {
                </Route>
                <Route path="/register2">
                   <Register2></Register2>
+               </Route>
+               <Route path="/login">
+                  <Login></Login>
                </Route>
             </MuiThemeProvider>
          </Switch>
