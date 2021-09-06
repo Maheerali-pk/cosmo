@@ -14,7 +14,7 @@ const CustomIconButton = styled(IconButton)`
 
 const SubHeader: React.FC = () => {
    return (
-      <PageSubHeaderWrapper style={{ borderBottom: `2px solid ${colors.tableFooterHrColor}` }}>
+      <PageSubHeaderWrapper column style={{ borderBottom: `2px solid ${colors.tableFooterHrColor}` }}>
          <Flexbox fullWidth justify="space-between">
             <Flexbox gap={10}>
                <img src={allIcons.starPurple} />
