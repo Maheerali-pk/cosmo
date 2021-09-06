@@ -4,7 +4,8 @@ import Flexbox, { flexbox } from "../../StyledComponents/Flexbox";
 import Text from "../../StyledComponents/Text";
 import CustomInput from "../../Components/CustomInput";
 import ButtonPrimary from "../../StyledComponents/ButtonPrimary";
-const ForgotPassword1: React.FC = () => {
+import UnderlinedHeading from "../../StyledComponents/UnderlinedHeading";
+const ForgotPassword2: React.FC = () => {
    return (
       <LoggedOutLayout showBackToLogin background="#F2F6FC" image={images.register}>
          <>
@@ -12,19 +13,32 @@ const ForgotPassword1: React.FC = () => {
                Forgot Password
             </Text>
             <Text size={20} fontFamily="semibold" mb={40}>
-               Please enter your email to get an OTP
+               Please enter the OTP sent on your email
             </Text>
-
-            <CustomInput placeholder="ali.suleman@airmed.pk" type="email"></CustomInput>
+            <Flexbox gap={56}>
+               <CustomInput></CustomInput>
+               <CustomInput></CustomInput>
+               <CustomInput></CustomInput>
+               <CustomInput></CustomInput>
+            </Flexbox>
             <ButtonPrimary fullWidth style={{ background: colors.blueButton }}>
                <Text fontFamily="semibold" size={24} color="white">
                   {" "}
                   Request OTP
                </Text>
             </ButtonPrimary>
+            <Flexbox gap={16} mt={40}>
+               <Text size={20} fontFamily="semibold">
+                  Didn't get OTP?
+               </Text>
+               <Text size={20} fontFamily="semibold" cursorPointer underline>
+                  {" "}
+                  Resend Code
+               </Text>
+            </Flexbox>
          </>
       </LoggedOutLayout>
    );
 };
 
-export default ForgotPassword1;
+export default ForgotPassword2;

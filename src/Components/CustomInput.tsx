@@ -8,7 +8,7 @@ import { useState } from "react";
 import { fonts } from "../Helpers/utils";
 interface CustomInputProps {
    type?: "email" | "password" | "text";
-   placeholder: string;
+   placeholder?: string;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder }) => {
@@ -50,11 +50,10 @@ const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder })
             startAdornment: renderStartAdornment(),
             endAdornment: renderEndAdornment(),
             disableUnderline: true,
-
             style: { fontSize: "1.25rem" },
          }}
          placeholder={placeholder}
-         type={isVisible ? "text" : "password"}
+         type={isVisible || type !== "password" ? "text" : "password"}
       ></TextField>
    );
 };

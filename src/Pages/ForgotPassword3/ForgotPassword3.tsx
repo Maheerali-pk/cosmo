@@ -4,7 +4,8 @@ import Flexbox, { flexbox } from "../../StyledComponents/Flexbox";
 import Text from "../../StyledComponents/Text";
 import CustomInput from "../../Components/CustomInput";
 import ButtonPrimary from "../../StyledComponents/ButtonPrimary";
-const ForgotPassword1: React.FC = () => {
+import UnderlinedHeading from "../../StyledComponents/UnderlinedHeading";
+const ForgotPassword3: React.FC = () => {
    return (
       <LoggedOutLayout showBackToLogin background="#F2F6FC" image={images.register}>
          <>
@@ -12,14 +13,15 @@ const ForgotPassword1: React.FC = () => {
                Forgot Password
             </Text>
             <Text size={20} fontFamily="semibold" mb={40}>
-               Please enter your email to get an OTP
+               Please enter a new Password
             </Text>
-
-            <CustomInput placeholder="ali.suleman@airmed.pk" type="email"></CustomInput>
+            <Flexbox fullWidth gap={56}>
+               <CustomInput></CustomInput>
+            </Flexbox>
             <ButtonPrimary fullWidth style={{ background: colors.blueButton }}>
                <Text fontFamily="semibold" size={24} color="white">
                   {" "}
-                  Request OTP
+                  Update
                </Text>
             </ButtonPrimary>
          </>
@@ -27,4 +29,4 @@ const ForgotPassword1: React.FC = () => {
    );
 };
 
-export default ForgotPassword1;
+export default ForgotPassword3;
