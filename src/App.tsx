@@ -15,6 +15,7 @@ import Layout from "./Components/Layout";
 import Register from "./Pages/Register/Register";
 import Register2 from "./Pages/Register2/Register2";
 import Login from "./Pages/Login/Login";
+import ForgotPassword1 from "./Pages/FotgotPassword1/ForgotPassword1";
 const theme = createTheme({
    overrides: {
       MuiInputLabel: {
@@ -84,6 +85,9 @@ function App() {
                </Route>
                <Route path="/login">
                   <Login></Login>
+               </Route>
+               <Route path="/forgot-password1">
+                  <ForgotPassword1></ForgotPassword1>
                </Route>
             </MuiThemeProvider>
          </Switch>

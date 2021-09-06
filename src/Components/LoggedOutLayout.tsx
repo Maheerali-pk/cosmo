@@ -6,12 +6,19 @@ import Text from "../StyledComponents/Text";
 interface LoggedOutLayout {
    background: string;
    image: string;
+   showBackToLogin?: boolean;
 }
 
 const FormCard = styled(Flexbox)`
    width: 50%;
    box-shadow: 0px 0px 12px 0px #00000029;
    background: white;
+   position: relative;
+   .back-to-login {
+      position: absolute;
+      top: 2rem;
+      left: 2.5rem;
+   }
 `;
 
 const PageWrapper = styled(Flexbox)`
@@ -41,11 +48,16 @@ const CornerImage = styled.img`
    bottom: 0;
 `;
 
-const LoggedOutLayout: React.FC<LoggedOutLayout> = ({ background, image, children }) => {
+const LoggedOutLayout: React.FC<LoggedOutLayout> = ({ background, image, children, showBackToLogin }) => {
    return (
       <PageWrapper style={{ background }} align="start" justify="center" fullWidth>
-         <FormCard pt={40} pb={52} pl={120} pr={120} column align="center" mt={80}>
+         <FormCard pt={showBackToLogin ? 72 : 40} pb={52} pl={120} pr={120} column align="center" mt={80}>
             {children}
+            {showBackToLogin && (
+               <Text fontFamily="semibold" size={20} className="back-to-login" cursorPointer>
+                  {"<Back to Log in"}
+               </Text>
+            )}
          </FormCard>
          <LogoWrapper pt={24} pb={40} pl={40} pr={40} gap={24}>
             <Circle></Circle>
