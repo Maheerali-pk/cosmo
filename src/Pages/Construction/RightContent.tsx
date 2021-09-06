@@ -1,4 +1,5 @@
 import { Button } from "@material-ui/core";
+import Dropdown from "../../Components/Dropdown";
 import { allIcons } from "../../Helpers/utils";
 import Flexbox from "../../StyledComponents/Flexbox";
 import Grid from "../../StyledComponents/Grid";
@@ -20,7 +21,9 @@ const ListItem: React.FC<ListItemProps> = ({ icon, number, text }) => {
             <Text size={13}>{number}</Text>
             <Text size={13}>{text}</Text>
          </Flexbox>
-         <Text size={13}>X</Text>
+         <Text size={13} cursorPointer>
+            X
+         </Text>
       </Flexbox>
    );
 };
@@ -69,7 +72,13 @@ const RightContent: React.FC = () => {
          </Grid>
          <UnderlinedHeading justify="space-between" fullWidth>
             <Text size={13}>Related</Text>
-            <Text size={13}>Add Link</Text>
+            <Dropdown
+               label="Add Link"
+               items={[
+                  { text: "Option 1", onClick: () => {} },
+                  { text: "Option 2", onClick: () => {} },
+               ]}
+            ></Dropdown>
          </UnderlinedHeading>
          <Text size={13} color="graySubHeading" mb={8}>
             Child

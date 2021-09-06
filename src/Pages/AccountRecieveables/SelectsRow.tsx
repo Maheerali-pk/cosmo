@@ -7,7 +7,6 @@ import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker, DatePi
 import MomentUtils from "@date-io/moment";
 import useDatePicker from "../../Hooks/useDatePicker";
 import Text from "../../StyledComponents/Text";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import CustomDatePicker from "../../Components/CustomDatePicker";
 
 export interface SelectsRowProps {}
