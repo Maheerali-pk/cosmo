@@ -49,6 +49,8 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, placeholder }) => {
             startAdornment: renderStartAdornment(),
             endAdornment: renderEndAdornment(),
             disableUnderline: true,
+
+            style: { fontSize: "1.25rem" },
          }}
          placeholder={placeholder}
          type={isVisible ? "text" : "password"}

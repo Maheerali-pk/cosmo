@@ -11,10 +11,10 @@ interface LoggedOutLayout {
 const FormCard = styled(Flexbox)`
    width: 50%;
    box-shadow: 0px 0px 12px 0px #00000029;
+   background: white;
 `;
 
 const PageWrapper = styled(Flexbox)`
-   background: #fafbfc;
    height: 100%;
 `;
 
@@ -43,7 +43,7 @@ const CornerImage = styled.img`
 
 const LoggedOutLayout: React.FC<LoggedOutLayout> = ({ background, image, children }) => {
    return (
-      <PageWrapper align="start" justify="center" fullWidth>
+      <PageWrapper style={{ background }} align="start" justify="center" fullWidth>
          <FormCard pt={40} pb={52} pl={120} pr={120} column align="center" mt={80}>
             {children}
          </FormCard>

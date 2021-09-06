@@ -10,7 +10,7 @@ import CustomInput from "../../Components/CustomInput";
 import ButtonPrimary from "../../StyledComponents/ButtonPrimary";
 const Register: React.FC = () => {
    return (
-      <LoggedOutLayout background="white" image={images.register}>
+      <LoggedOutLayout background="#F2F6FC" image={images.register}>
          <>
             <AirmedLogo></AirmedLogo>
             <Text align="center" fontFamily="semibold" size={20} mb={52} mt={52}>
