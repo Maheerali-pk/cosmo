@@ -54,6 +54,14 @@ const theme = createTheme({
             color: colors.grayText,
          },
       },
+      MuiButton: {
+         root: {
+            borderRadius: "2px",
+            backgroundColor: colors.graySelection2,
+            color: colors.grayText,
+            padding: `${toRem(4)} ${toRem(16)}`,
+         },
+      },
    },
 });
 

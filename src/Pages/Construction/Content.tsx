@@ -5,7 +5,7 @@ import RightContent from "./RightContent";
 
 const Content: React.FC = () => {
    return (
-      <Grid padding="2.5rem" columns="65% 35%">
+      <Grid padding="2.5rem" gap="2.5rem" columns="2fr 1fr">
          <LeftContent></LeftContent>
          <RightContent></RightContent>
       </Grid>

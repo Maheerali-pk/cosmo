@@ -11,6 +11,11 @@ interface GridProps {
    pt?: number;
    pl?: number;
    pr?: number;
+   mb?: number;
+   mt?: number;
+   ml?: number;
+   mr?: number;
+   minHeight?: boolean;
 }
 
 export const grid = (p: GridProps) => css`
@@ -18,7 +23,7 @@ export const grid = (p: GridProps) => css`
    gap: ${p.gap || ""};
    grid-template-columns: ${p.noOfColumns && `repeat(${p.noOfColumns}, 1fr)`};
    ${p.columns && `grid-template-columns: ${p.columns}`};
-   height: 100%;
+   ${!p.minHeight && `height: 100%`};
    ${p.fullWidth && `width: 100%`};
    ${p.padding && `padding: ${p.padding}`};
 
@@ -26,6 +31,11 @@ export const grid = (p: GridProps) => css`
    ${p.pt && `padding-top: ${toRem(p.pt)}`} 
    ${p.pl && `padding-left: ${toRem(p.pl)}`} 
    ${p.pr && `padding-right: ${toRem(p.pr)}`}
+
+   ${p.mb && `margin-bottom: ${toRem(p.mb)}`}
+   ${p.mt && `margin-top: ${toRem(p.mt)}`} 
+   ${p.ml && `margin-left: ${toRem(p.ml)}`} 
+   ${p.mr && `margin-right: ${toRem(p.mr)}`}
 `;
 
 export default styled.div<GridProps>`

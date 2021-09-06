@@ -1,5 +1,7 @@
 import { SelectOption } from "../Components/CustomSelect";
 import starPurple from "../Assets/Icons/starPurple.svg";
+import tick from "../Assets/Icons/tick.svg";
+import noun from "../Assets/Icons/noun.png";
 export const toRem = (px: number) => px / 16 + "rem";
 
 export const interpolate = (arr: any[], item: any) => arr.flatMap((x) => [x, item]).slice(0, -1);
@@ -39,4 +41,6 @@ export const repeat = (item: any, times: number): any[] =>
 
 export const allIcons = {
    starPurple,
+   tick,
+   noun,
 };
