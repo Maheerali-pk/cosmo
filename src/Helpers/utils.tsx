@@ -2,8 +2,11 @@ import { SelectOption } from "../Components/CustomSelect";
 import starPurple from "../Assets/Icons/starPurple.svg";
 import tick from "../Assets/Icons/tick.svg";
 import noun from "../Assets/Icons/noun.png";
-export const toRem = (px: number) => px / 16 + "rem";
+import register from "../Assets/Images/register-image.png";
+import register2 from "../Assets/Images/register-image-2.png";
+import login from "../Assets/Images/login-image.png";
 
+export const toRem = (px: number) => px / 16 + "rem";
 export const interpolate = (arr: any[], item: any) => arr.flatMap((x) => [x, item]).slice(0, -1);
 
 export const colors = {
@@ -24,6 +27,7 @@ export const colors = {
    white: "white",
    pageOutlineSkyblue: "#F3F3F3",
    tableFooterHrColor: "#E1E1E1",
+   blueButton: "#418BCA",
 };
 export type FontFamilyKey = "regular" | "semibold" | "myraid-pro";
 
@@ -43,4 +47,10 @@ export const allIcons = {
    starPurple,
    tick,
    noun,
+};
+
+export const images = {
+   register,
+   register2,
+   login,
 };

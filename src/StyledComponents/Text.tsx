@@ -11,6 +11,7 @@ interface TextProps {
    ml?: number;
    mr?: number;
    underline?: boolean;
+   align?: "left" | "center" | "right";
    cursorPointer?: boolean;
 }
 console.log("hello");
@@ -34,6 +35,6 @@ export const text = (p: TextProps) => css`
    ${p.ml && `margin-left: ${toRem(p.ml)}`};
    ${p.mr && `margin-right: ${toRem(p.mr)}`};
    ${p.underline && `text-decoration: underline;`};
-
+   ${p.align && `text-align: ${p.align}`};
    ${p.cursorPointer && `cursor: pointer`};
 `;

@@ -66,13 +66,13 @@ export const flexbox = (p: FlexboxProps) => css`
 
    ${p.padding && `padding: ${p.padding}`};
 
-   ${p.pb && `padding-bottom: ${toRem(p.pb)}`}
-   ${p.pt && `padding-top: ${toRem(p.pt)}`} 
-   ${p.pl && `padding-left: ${toRem(p.pl)}`} 
-   ${p.pr && `padding-right: ${toRem(p.pr)}`}
+   ${p.pb && `padding-bottom: ${toRem(p.pb)}`};
+   ${p.pt && `padding-top: ${toRem(p.pt)}`};
+   ${p.pl && `padding-left: ${toRem(p.pl)}`};
+   ${p.pr && `padding-right: ${toRem(p.pr)}`};
 
-   ${p.mb && `margin-bottom: ${toRem(p.mb)}`}
-   ${p.mt && `margin-top: ${toRem(p.mt)}`} 
-   ${p.ml && `margin-left: ${toRem(p.ml)}`} 
-   ${p.mr && `margin-right: ${toRem(p.mr)}`}
+   ${p.mb && `margin-bottom: ${toRem(p.mb)}`};
+   ${p.mt && `margin-top: ${toRem(p.mt)}`};
+   ${p.ml && `margin-left: ${toRem(p.ml)}`};
+   ${p.mr && `margin-right: ${toRem(p.mr)}`};
 `;
