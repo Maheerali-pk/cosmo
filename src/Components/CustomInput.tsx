@@ -5,12 +5,13 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
+import { fonts } from "../Helpers/utils";
 interface CustomInputProps {
    type?: "email" | "password" | "text";
    placeholder: string;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({ type, placeholder }) => {
+const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder }) => {
    const [isVisible, setIsVisible] = useState(false);
    const [value, setValue] = useState();
    const renderStartAdornment = () => {

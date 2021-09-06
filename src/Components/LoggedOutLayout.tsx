@@ -34,8 +34,8 @@ const Circle = styled.div`
 `;
 
 const CornerImage = styled.img`
-   height: ${toRem(327)};
    width: ${toRem(436)};
+
    position: absolute;
    right: 0;
    bottom: 0;
