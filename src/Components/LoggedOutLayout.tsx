@@ -1,6 +1,6 @@
 import { createTheme, MuiThemeProvider } from "@material-ui/core";
 import styled from "styled-components";
-import { colors, toRem } from "../Helpers/utils";
+import { colors, fonts, toRem } from "../Helpers/utils";
 import Flexbox, { flexbox } from "../StyledComponents/Flexbox";
 import Text from "../StyledComponents/Text";
 
@@ -54,6 +54,12 @@ const theme = createTheme({
          root: {
             borderBottom: `${toRem(3)} solid #A4A4A4`,
             marginBottom: toRem(40),
+         },
+      },
+      MuiInputBase: {
+         root: {
+            fontFamily: fonts.semibold,
+            color: colors.grayText,
          },
       },
    },

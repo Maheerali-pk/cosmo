@@ -7,7 +7,7 @@ import ButtonPrimary from "../../StyledComponents/ButtonPrimary";
 import UnderlinedHeading from "../../StyledComponents/UnderlinedHeading";
 const ForgotPassword2: React.FC = () => {
    return (
-      <LoggedOutLayout showBackToLogin background="#F2F6FC" image={images.register}>
+      <LoggedOutLayout showBackToLogin background="#F2F6FC" image={images.login}>
          <>
             <Text size={32} fontFamily="semibold" mb={40}>
                Forgot Password

@@ -18,7 +18,7 @@ import CustomInput from "../../Components/CustomInput";
 import ButtonPrimary from "../../StyledComponents/ButtonPrimary";
 const Login: React.FC = () => {
    return (
-      <LoggedOutLayout background="#F2F6FC" image={images.register}>
+      <LoggedOutLayout background="#F2F6FC" image={images.login}>
          <>
             <Text size={32} mb={48} fontFamily="semibold">
                Log In to your account
