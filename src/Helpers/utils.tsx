@@ -28,6 +28,7 @@ export const colors = {
    pageOutlineSkyblue: "#F3F3F3",
    tableFooterHrColor: "#E1E1E1",
    blueButton: "#418BCA",
+   companyCardBackground: "#F5F5F5",
 };
 export type FontFamilyKey = "regular" | "semibold" | "myraid-pro";
 

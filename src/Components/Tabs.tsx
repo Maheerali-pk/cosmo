@@ -32,7 +32,7 @@ const Tabs: React.FC<TabsProps> = ({ titles, currentIndex, children }) => {
                </ButtonBase>
             ))}
          </Flexbox>
-         <div>{childrenArr[tabIndex]}</div>
+         {childrenArr[tabIndex]}
       </>
    );
 };
