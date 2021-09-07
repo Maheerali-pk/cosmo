@@ -19,6 +19,10 @@ import ForgotPassword1 from "./Pages/FotgotPassword1/ForgotPassword1";
 import ForgotPassword2 from "./Pages/ForgotPassword2/ForgotPassword2";
 import ForgotPassword3 from "./Pages/ForgotPassword3/ForgotPassword3";
 import Main from "./Pages/Main/Main";
+
+import "./Fonts/MyriadProSemibold.ttf";
+import "./Fonts/SegoeUISemibold.ttf";
+
 const theme = createTheme({
    overrides: {
       MuiInputLabel: {

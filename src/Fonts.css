@@ -1,9 +1,9 @@
 @font-face {
    font-family: SegoeUISemibold;
-   src: url(./Fonts/Segoe\ UI\ Semibold.ttf);
+   src: local("SegoeUISemibold"), url(./Fonts/SegoeUISemibold.ttf) format("truetype");
 }
 
 @font-face {
    font-family: myraid-pro;
-   src: url(./Fonts/Myriad\ Pro\ Semibold.ttf);
+   src: local("MyriadProSemibold"), url(./Fonts/MyriadProSemibold.ttf) format("truetype");
 }
