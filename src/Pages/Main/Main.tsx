@@ -20,13 +20,55 @@ const Main: React.FC = () => {
             <Tabs titles={["Dashboard", "Companies"]}>
                <Flexbox padding={`${toRem(24)} ${toRem(10)}`}>Dashbaord</Flexbox>
                <CompanyCardsWrapper padding={`${toRem(24)} ${toRem(10)}`} fullWidth noOfColumns={5}>
-                  <CompanyCard dots={1} logoColor="#B56701" logoText="AC" text="AdChem China"></CompanyCard>
-                  <CompanyCard dots={3} logoColor="#1C5E68" logoText="AC" text="AdChem China"></CompanyCard>
-                  <CompanyCard dots={6} logoColor="#8855C2" logoText="AC" text="AdChem China"></CompanyCard>
-                  <CompanyCard dots={4} logoColor="#F16F6F" logoText="AC" text="AdChem China"></CompanyCard>
-                  <CompanyCard dots={1} logoColor="#B56701" logoText="AC" text="AdChem China"></CompanyCard>
-                  <CompanyCard dots={2} logoColor="#B4C461" logoText="AC" text="AdChem China"></CompanyCard>
-                  <CompanyCard dots={3} logoColor="#01B555" logoText="AC" text="AdChem China"></CompanyCard>
+                  <CompanyCard
+                     description="Some Text"
+                     dots={1}
+                     logoColor="#B56701"
+                     logoText="AC"
+                     text="AdChem China"
+                  ></CompanyCard>
+                  <CompanyCard
+                     description="Some Text"
+                     dots={3}
+                     logoColor="#1C5E68"
+                     logoText="AE"
+                     text="AdChem Egypt"
+                  ></CompanyCard>
+                  <CompanyCard
+                     description="Some Text"
+                     dots={6}
+                     logoColor="#8855C2"
+                     logoText="AF"
+                     text="AdChem FZE"
+                  ></CompanyCard>
+                  <CompanyCard
+                     description="Some Text"
+                     dots={4}
+                     logoColor="#F16F6F"
+                     logoText="AI"
+                     text="AdChem India"
+                  ></CompanyCard>
+                  <CompanyCard
+                     description="Some Text"
+                     dots={1}
+                     logoColor="#B56701"
+                     logoText="AT"
+                     text="AdChem Turkey"
+                  ></CompanyCard>
+                  <CompanyCard
+                     description="Some Text"
+                     dots={2}
+                     logoColor="#B4C461"
+                     logoText="A"
+                     text="Airmed"
+                  ></CompanyCard>
+                  <CompanyCard
+                     description="Some Text"
+                     dots={3}
+                     logoColor="#01B555"
+                     logoText="AC"
+                     text="Alternative Chemicals"
+                  ></CompanyCard>
                </CompanyCardsWrapper>
             </Tabs>
          </Flexbox>

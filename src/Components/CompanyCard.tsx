@@ -9,6 +9,7 @@ interface CompanyCardProps {
    text: string;
    dots: number;
    dotSize?: "small" | "larege";
+   description: string;
 }
 
 const CardWrapper = styled(Flexbox)`
@@ -29,7 +30,7 @@ const Dot = styled.div`
    border-radius: 50%;
 `;
 
-const CompanyCard: React.FC<CompanyCardProps> = ({ dots, logoColor, logoText, dotSize, text }) => {
+const CompanyCard: React.FC<CompanyCardProps> = ({ dots, logoColor, logoText, dotSize, text, description }) => {
    const renderDots = () => {
       return (
          <Flexbox gap={16}>
@@ -51,7 +52,10 @@ const CompanyCard: React.FC<CompanyCardProps> = ({ dots, logoColor, logoText, do
                {text}
             </Text>
          </Flexbox>
-         {renderDots()}
+         <Text size={14} fontFamily="semibold">
+            {description}
+         </Text>
+         {/* {renderDots()} */}
       </CardWrapper>
    );
 };
