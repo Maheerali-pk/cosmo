@@ -16,11 +16,10 @@ const ForgotPassword3: React.FC = () => {
                Please enter a new Password
             </Text>
             <Flexbox fullWidth gap={56}>
-               <CustomInput></CustomInput>
+               <CustomInput staticType="password"></CustomInput>
             </Flexbox>
             <ButtonPrimary fullWidth style={{ background: colors.blueButton }}>
                <Text fontFamily="semibold" size={24} color="white">
-                  {" "}
                   Update
                </Text>
             </ButtonPrimary>

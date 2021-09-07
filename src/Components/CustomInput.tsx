@@ -8,10 +8,11 @@ import { useState } from "react";
 import { fonts } from "../Helpers/utils";
 interface CustomInputProps {
    type?: "email" | "password" | "text";
+   staticType?: "text" | "password";
    placeholder?: string;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder }) => {
+const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder, staticType }) => {
    const [isVisible, setIsVisible] = useState(false);
    const [value, setValue] = useState();
    const renderStartAdornment = () => {
@@ -53,7 +54,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder })
             style: { fontSize: "1.25rem" },
          }}
          placeholder={placeholder}
-         type={isVisible || type !== "password" ? "text" : "password"}
+         type={(isVisible || type !== "password") && staticType !== "password" ? "text" : "password"}
       ></TextField>
    );
 };
