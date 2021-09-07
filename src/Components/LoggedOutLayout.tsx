@@ -10,7 +10,7 @@ interface LoggedOutLayout {
 }
 
 const FormCard = styled(Flexbox)`
-   width: 50%;
+   width: ${toRem(810)};
    box-shadow: 0px 0px 12px 0px #00000029;
    background: white;
    position: relative;
