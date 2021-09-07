@@ -57,12 +57,6 @@ const theme = createTheme({
             color: "white",
          },
       },
-      MuiTextField: {
-         root: {
-            borderBottom: `${toRem(3)} solid #A4A4A4`,
-            marginBottom: toRem(40),
-         },
-      },
    },
 });
 function App() {

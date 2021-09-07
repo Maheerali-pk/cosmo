@@ -14,12 +14,14 @@ interface CompanyCardProps {
 
 const CardWrapper = styled(Flexbox)`
    background: ${colors.companyCardBackground};
-   height: ${toRem(95)};
+   min-height: ${toRem(95)};
+   width: ${toRem(286)};
 `;
 
 const LogoWrapper = styled(Flexbox)`
    height: ${toRem(26)};
    width: ${toRem(26)};
+   min-width: ${toRem(26)};
    border-radius: 0.25rem;
 `;
 
@@ -44,7 +46,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({ dots, logoColor, logoText, do
    };
    return (
       <CardWrapper padding="1rem" justify="space-between" column>
-         <Flexbox gap={11}>
+         <Flexbox align="start" gap={11}>
             <LogoWrapper justify="center" style={{ backgroundColor: logoColor }}>
                <Text color="white">{logoText}</Text>
             </LogoWrapper>

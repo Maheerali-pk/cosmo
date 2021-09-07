@@ -1,3 +1,4 @@
+import { createTheme, MuiThemeProvider } from "@material-ui/core";
 import styled from "styled-components";
 import { colors, toRem } from "../Helpers/utils";
 import Flexbox, { flexbox } from "../StyledComponents/Flexbox";
@@ -47,26 +48,37 @@ const CornerImage = styled.img`
    right: 0;
    bottom: 0;
 `;
-
+const theme = createTheme({
+   overrides: {
+      MuiTextField: {
+         root: {
+            borderBottom: `${toRem(3)} solid #A4A4A4`,
+            marginBottom: toRem(40),
+         },
+      },
+   },
+});
 const LoggedOutLayout: React.FC<LoggedOutLayout> = ({ background, image, children, showBackToLogin }) => {
    return (
-      <PageWrapper style={{ background }} align="start" justify="center" fullWidth>
-         <FormCard pt={showBackToLogin ? 72 : 40} pb={52} pl={120} pr={120} column align="center" mt={80}>
-            {children}
-            {showBackToLogin && (
-               <Text fontFamily="semibold" size={20} className="back-to-login" cursorPointer>
-                  {"<Back to Log in"}
+      <MuiThemeProvider theme={theme}>
+         <PageWrapper style={{ background }} align="start" justify="center" fullWidth>
+            <FormCard pt={showBackToLogin ? 72 : 40} pb={52} pl={120} pr={120} column align="center" mt={80}>
+               {children}
+               {showBackToLogin && (
+                  <Text fontFamily="semibold" size={20} className="back-to-login" cursorPointer>
+                     {"<Back to Log in"}
+                  </Text>
+               )}
+            </FormCard>
+            <LogoWrapper pt={24} pb={40} pl={40} pr={40} gap={24}>
+               <Circle></Circle>
+               <Text color="indigoLogo" size={32} style={{ letterSpacing: "0.2rem" }}>
+                  COSMO
                </Text>
-            )}
-         </FormCard>
-         <LogoWrapper pt={24} pb={40} pl={40} pr={40} gap={24}>
-            <Circle></Circle>
-            <Text color="indigoLogo" size={32} style={{ letterSpacing: "0.2rem" }}>
-               COSMO
-            </Text>
-         </LogoWrapper>
-         <CornerImage src={image}></CornerImage>
-      </PageWrapper>
+            </LogoWrapper>
+            <CornerImage src={image}></CornerImage>
+         </PageWrapper>
+      </MuiThemeProvider>
    );
 };
 export default LoggedOutLayout;

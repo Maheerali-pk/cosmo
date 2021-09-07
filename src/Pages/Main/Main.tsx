@@ -9,7 +9,8 @@ import Grid from "../../StyledComponents/Grid";
 
 const CompanyCardsWrapper = styled(Grid)`
    grid-row-gap: ${toRem(54)};
-   grid-column-gap: ${toRem(100)};
+   /* grid-column-gap: ${toRem(100)}; */
+   grid-column-gap: auto;
 `;
 
 const Main: React.FC = () => {
@@ -25,7 +26,7 @@ const Main: React.FC = () => {
                      dots={1}
                      logoColor="#B56701"
                      logoText="AC"
-                     text="AdChem China"
+                     text="AdChem Chin dfasdfas dfsad "
                   ></CompanyCard>
                   <CompanyCard
                      description="Some Text"
