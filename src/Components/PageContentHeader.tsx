@@ -9,6 +9,7 @@ import FileCopyIcon from "@material-ui/icons/FileCopy";
 //Main Header
 const HeaderWrapper = styled(Flexbox)`
    padding: 0.75rem 0.75rem 0.75rem 1.25rem;
+   background: #fcfcfc;
 `;
 
 const QuickAccessWrapper = styled(Flexbox)`

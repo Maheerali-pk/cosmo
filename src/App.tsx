@@ -23,7 +23,7 @@ const theme = createTheme({
    overrides: {
       MuiInputLabel: {
          root: {
-            color: colors.graySelection2,
+            color: colors.graySubHeading,
          },
       },
       MuiSelect: {
@@ -83,7 +83,7 @@ function App() {
                <Route path="/forgot-password3">
                   <ForgotPassword3></ForgotPassword3>
                </Route>
-               <Route path="/">
+               <Route exact path="/">
                   <Main></Main>
                </Route>
             </MuiThemeProvider>

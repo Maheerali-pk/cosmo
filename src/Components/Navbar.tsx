@@ -60,8 +60,10 @@ const Navbar: React.FC<NavbarProps> = ({ headingItems }) => {
          </Flexbox>
          <Flexbox fullWidth justify="space-between">
             <HeadingTextWrapper>
-               {interpolate(headingItems, "/").map((item) => (
-                  <Text fontFamily="semibold">{item}</Text>
+               {interpolate(headingItems, "/").map((item, i) => (
+                  <Text breakcrumb={i % 2 === 0} fontFamily="semibold">
+                     {item}
+                  </Text>
                ))}
             </HeadingTextWrapper>
             <Flexbox>

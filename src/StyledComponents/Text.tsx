@@ -13,6 +13,7 @@ interface TextProps {
    underline?: boolean;
    align?: "left" | "center" | "right";
    cursorPointer?: boolean;
+   breakcrumb?: boolean;
 }
 console.log("hello");
 
@@ -37,4 +38,11 @@ export const text = (p: TextProps) => css`
    ${p.underline && `text-decoration: underline;`};
    ${p.align && `text-align: ${p.align}`};
    ${p.cursorPointer && `cursor: pointer`};
+   ${p.breakcrumb &&
+   css`
+      cursor: pointer;
+      &:hover {
+         text-decoration: underline;
+      }
+   `}
 `;

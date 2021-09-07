@@ -66,7 +66,7 @@ const FooterSubRowWrapper = styled(RowWrapper)`
 const HeadingsRow = () => {
    const headings = ["Name", "", "Future", "0-30", "31-60", "61-90", "Over 90", "Total"];
    return (
-      <RowWrapper style={{ overflowY: "scroll" }}>
+      <RowWrapper style={{ overflowY: "scroll", background: colors.headingBackground }}>
          <Text>Name</Text>
          <Text></Text>
          <Text>Future</Text>
