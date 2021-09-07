@@ -44,17 +44,8 @@ const theme = createTheme({
       MuiButton: {
          root: {
             borderRadius: "2px",
-            backgroundColor: colors.graySelection2,
             color: colors.grayText,
             padding: `${toRem(4)} ${toRem(16)}`,
-         },
-         containedPrimary: {
-            backgroundColor: colors.blueButton,
-            color: "white",
-            fontSize: "1.5rem",
-         },
-         textPrimary: {
-            color: "white",
          },
       },
    },
