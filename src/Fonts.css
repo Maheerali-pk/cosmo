@@ -7,3 +7,8 @@
    font-family: myraid-pro;
    src: local("MyriadProSemibold"), url(./Fonts/MyriadProSemibold.ttf) format("truetype");
 }
+
+@font-face {
+   font-family: SegoeUI;
+   src: local("SegoeUI"), url(./Fonts/SegoeUI.ttf) format("truetype");
+}

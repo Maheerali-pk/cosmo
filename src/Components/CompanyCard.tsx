@@ -14,7 +14,7 @@ interface CompanyCardProps {
 
 const CardWrapper = styled(Flexbox)`
    background: ${colors.companyCardBackground};
-   min-height: ${toRem(95)};
+   height: ${toRem(95)};
    width: ${toRem(286)};
 `;
 

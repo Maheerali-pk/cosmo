@@ -8,6 +8,8 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import { useState } from "react";
+import SidebarItemWrapper from "../StyledComponents/SidebarItemWrapper";
+import SidebarItem, { SidebarRectangle } from "./SidebarItem";
 
 export interface SidebarProps {}
 
@@ -15,29 +17,6 @@ export interface SidebarProps {}
 // 	display: flex;
 // 	flex-direction: column;
 // `
-
-const SidebarItemWrapper = styled.div<{ selected?: boolean }>`
-   ${flexbox({ gap: 12 })}
-   display: flex;
-   padding: 0.7rem;
-   width: 100%;
-   color: ${colors.grayText};
-   margin-bottom: 0.5rem;
-   cursor: pointer;
-   &:hover {
-      background-color: ${colors.graySelection};
-   }
-   transition: all 0.2s ease-in-out;
-   ${(p) => p.selected && `background-color: ${colors.graySelection}`}
-`;
-
-const SidebarRectangle = styled.div`
-   background-color: ${colors.grayShapes};
-   height: ${toRem(26)};
-   width: ${toRem(26)};
-   border-radius: 4px;
-   /* margin-left: 0.5rem; */
-`;
 
 const SidebarLogo = styled(SidebarRectangle)`
    background-color: ${colors.sidebarLogoPurple};
@@ -61,15 +40,6 @@ interface SidebarItemProps {
    text: string;
    isSelected?: boolean;
 }
-
-const SidebarItem: React.FC<SidebarItemProps> = ({ text, isSelected }) => {
-   return (
-      <SidebarItemWrapper selected={isSelected}>
-         <SidebarRectangle></SidebarRectangle>
-         <Text fontFamily="semibold">{text}</Text>
-      </SidebarItemWrapper>
-   );
-};
 
 const SidebarWrapper = styled.div`
    ${flexbox({ column: true, justify: "space-between" })};

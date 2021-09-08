@@ -22,6 +22,8 @@ import Main from "./Pages/Main/Main";
 
 import "./Fonts/MyriadProSemibold.ttf";
 import "./Fonts/SegoeUISemibold.ttf";
+import "./Fonts/SegoeUI.ttf";
+import Overview from "./Pages/Settings/Overview/Overview";
 
 const theme = createTheme({
    overrides: {
@@ -86,6 +88,9 @@ function App() {
                </Route>
                <Route path="/forgot-password3">
                   <ForgotPassword3></ForgotPassword3>
+               </Route>
+               <Route exact path="/settings/overview">
+                  <Overview></Overview>
                </Route>
                <Route exact path="/">
                   <Main></Main>

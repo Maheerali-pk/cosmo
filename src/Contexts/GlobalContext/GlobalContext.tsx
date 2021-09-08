@@ -4,6 +4,8 @@ interface IGlobalState {
    user: IUser;
    sidebarItems: string[];
    selectedItem: string;
+   settingsSidebarItems: string[];
+   selectedSettingsSidebarItem: string;
    isSidebarOpen: boolean;
 }
 
@@ -28,6 +30,8 @@ const initialState: IGlobalState = {
       "Customer Relations",
       "Human Resource",
    ],
+   settingsSidebarItems: ["Overview", "Teams", "Permissions", "Approvals", "Notifications", "Directory"],
+   selectedSettingsSidebarItem: "Overview",
    selectedItem: "Accounting",
 };
 

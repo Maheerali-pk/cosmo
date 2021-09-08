@@ -34,7 +34,7 @@ export type FontFamilyKey = "regular" | "semibold" | "myraid-pro";
 
 export const fonts: { [k in FontFamilyKey]: string } = {
    "myraid-pro": "myraid-pro",
-   regular: "Segoe UI",
+   regular: "SegoeUI",
    semibold: "SegoeUISemibold",
 };
 export const stringsToOptions = (arr: string[]): SelectOption[] => arr.map((x) => ({ text: x, value: x }));
