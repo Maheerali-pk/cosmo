@@ -6,6 +6,8 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 const AppWrapper = styled.div`
    display: flex;
+   /* display: grid; */
+   /* grid-template-rows: min-content auto; */
    flex-direction: column;
    height: 100vh;
    width: 100%;
@@ -15,9 +17,11 @@ const AppWrapper = styled.div`
 const BottomArea = styled.div<{ isSidebarOpen: boolean }>`
    display: grid;
    grid-template-columns: ${(p) => `${p.isSidebarOpen ? toRem(240) : "min-content"} auto`};
-   height: 93.5vh;
-   /* flex-grow: 1; */
+   height: 80vh;
+   /* height: auto; */
+   flex-grow: 1;
    width: 100%;
+   /* overflow: none; */
    /* height: 100%; */
 `;
 

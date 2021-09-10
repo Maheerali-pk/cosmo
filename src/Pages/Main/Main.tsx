@@ -11,6 +11,7 @@ const CompanyCardsWrapper = styled(Grid)`
    grid-row-gap: ${toRem(54)};
    /* grid-column-gap: ${toRem(100)}; */
    grid-column-gap: auto;
+   height: fit-content;
 `;
 
 const Main: React.FC = () => {

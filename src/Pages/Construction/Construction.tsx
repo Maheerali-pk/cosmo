@@ -6,12 +6,13 @@ import SubHeader from "./SubHeader";
 
 const PageWrapper = styled.div`
    display: grid;
-   height: 93.5vh;
+   /* height: 93.5vh; */
+   height: 100%;
    width: 100%;
    min-width: 100%;
    border-left: 2px solid ${colors.pageOutlineSkyblue};
    overflow: auto;
-   grid-template-rows: min-content min-content min-content auto;
+   grid-template-rows: min-content min-content auto;
 `;
 
 const Construction: React.FC = () => {

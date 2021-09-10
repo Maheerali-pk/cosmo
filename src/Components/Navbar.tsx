@@ -21,7 +21,7 @@ const UserImage = styled.img`
 const NavbarWrapper = styled(Grid)`
    width: 100%;
 
-   height: 6.5vh;
+   height: fit-content;
    border-bottom: 2px solid ${colors.pageOutlineSkyblue};
    padding: 0.25rem 0.75rem;
    i {
