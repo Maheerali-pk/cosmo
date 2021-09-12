@@ -24,8 +24,14 @@ import "./Fonts/MyriadProSemibold.ttf";
 import "./Fonts/SegoeUISemibold.ttf";
 import "./Fonts/SegoeUI.ttf";
 import Overview from "./Pages/Settings/Overview/Overview";
+import Teams from "./Pages/Settings/Teams/Teams";
 
 const theme = createTheme({
+   palette: {
+      secondary: {
+         main: colors.blueButton,
+      },
+   },
    overrides: {
       MuiInputLabel: {
          root: {
@@ -52,6 +58,7 @@ const theme = createTheme({
             borderRadius: "2px",
             color: colors.grayText,
             padding: `${toRem(4)} ${toRem(16)}`,
+            textTransform: "initial",
          },
       },
    },
@@ -91,6 +98,9 @@ function App() {
                </Route>
                <Route exact path="/settings/overview">
                   <Overview></Overview>
+               </Route>
+               <Route exact path="/settings/teams">
+                  <Teams></Teams>
                </Route>
                <Route exact path="/">
                   <Main></Main>

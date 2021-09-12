@@ -10,7 +10,7 @@ html,
    height: 100%;
    width: 100%;
 }
-* {
+*:not(path) {
    color: #7d7d7d;
 }
 

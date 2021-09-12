@@ -62,7 +62,7 @@ const Overview: React.FC = () => {
       <SettingsPageLayout>
          <Flexbox fullWidth column justify="space-between">
             <Flexbox column fullWidth>
-               <Header gap={14} padding="1.25rem 2rem" fullWidth>
+               <Header gap={14} padding="0 2rem 1.25rem 2rem" fullWidth>
                   <LogoWrapper align="center" justify="center">
                      <Text size={20} fontFamily="semibold">
                         A
