@@ -14,7 +14,7 @@ const SettingsSidebar: React.FC = () => {
    const [{ settingsSidebarItems, selectedSettingsSidebarItem }] = useGlobalContext();
 
    return (
-      <Wrapper column gap={111}>
+      <Wrapper column gap={11}>
          {settingsSidebarItems.map((item) => (
             <SidebarItem isSelected={item === selectedSettingsSidebarItem} text={item}></SidebarItem>
          ))}

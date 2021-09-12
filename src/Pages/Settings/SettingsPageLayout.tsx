@@ -5,10 +5,8 @@ import SettingsSidebar from "./SettingsSidebar";
 const InnerContentWrapper = styled.div<{ isSidebarOpen?: boolean }>`
    display: grid;
    grid-template-columns: ${(p) => `${p.isSidebarOpen ? toRem(210) : "min-content"} auto`};
-   height: 93.5vh;
-   /* flex-grow: 1; */
    width: 100%;
-   /* height: 100%; */
+   padding-top: ${toRem(21)};
 `;
 const PageWrapper = styled.div`
    display: grid;
@@ -22,7 +20,7 @@ const PageWrapper = styled.div`
 const SettingsPageLayout: React.FC = ({ children }) => {
    return (
       <Layout navbarItems={[]}>
-         <InnerContentWrapper>
+         <InnerContentWrapper className="bottom-area">
             <SettingsSidebar></SettingsSidebar>
             {children}
          </InnerContentWrapper>

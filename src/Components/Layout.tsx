@@ -5,10 +5,8 @@ import { colors, fonts, toRem } from "../Helpers/utils";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 const AppWrapper = styled.div`
-   display: flex;
-   /* display: grid; */
-   /* grid-template-rows: min-content auto; */
-   flex-direction: column;
+   display: grid;
+   grid-template-rows: ${toRem(52)} auto;
    height: 100vh;
    width: 100%;
    overflow: hidden;
@@ -17,9 +15,7 @@ const AppWrapper = styled.div`
 const BottomArea = styled.div<{ isSidebarOpen: boolean }>`
    display: grid;
    grid-template-columns: ${(p) => `${p.isSidebarOpen ? toRem(240) : "min-content"} auto`};
-   height: 80vh;
    /* height: auto; */
-   flex-grow: 1;
    width: 100%;
    /* overflow: none; */
    /* height: 100%; */
@@ -38,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ children, navbarItems }) => {
    return (
       <AppWrapper>
          <Navbar headingItems={navbarItems}></Navbar>
-         <BottomArea isSidebarOpen={isSidebarOpen}>
+         <BottomArea className="bottom-area" isSidebarOpen={isSidebarOpen}>
             <Sidebar></Sidebar>
             {children}
          </BottomArea>

@@ -11,6 +11,10 @@ export interface NavbarProps {
    headingItems: string[];
 }
 
+const IconWrapper = styled(IconButton)`
+   padding: 0.3rem !important;
+`;
+
 const UserImage = styled.img`
    border-radius: 50%;
    height: 1.75rem;
@@ -21,9 +25,10 @@ const UserImage = styled.img`
 const NavbarWrapper = styled(Grid)`
    width: 100%;
 
-   height: fit-content;
+   height: ${toRem(52)};
    border-bottom: 2px solid ${colors.pageOutlineSkyblue};
-   padding: 0.25rem 0.75rem;
+   padding: 0 0.75rem;
+   align-items: center;
    i {
       color: ${colors.grayText};
    }
@@ -66,23 +71,23 @@ const Navbar: React.FC<NavbarProps> = ({ headingItems }) => {
                   </Text>
                ))}
             </HeadingTextWrapper>
-            <Flexbox>
-               <IconButton>
+            <Flexbox gap={16}>
+               <IconWrapper>
                   <NotificationsNoneOutlinedIcon fontSize="inherit"></NotificationsNoneOutlinedIcon>
-               </IconButton>
-               <IconButton>
+               </IconWrapper>
+               <IconWrapper>
                   <SearchIcon fontSize="inherit"></SearchIcon>
-               </IconButton>
-               <IconButton>
+               </IconWrapper>
+               <IconWrapper>
                   <HelpOutlineOutlinedIcon fontSize="inherit"></HelpOutlineOutlinedIcon>
-               </IconButton>
-               <IconButton>
+               </IconWrapper>
+               <IconWrapper>
                   <UserImage
                      src={
                         "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                      }
                   ></UserImage>
-               </IconButton>
+               </IconWrapper>
             </Flexbox>
          </Flexbox>
       </NavbarWrapper>

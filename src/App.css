@@ -31,7 +31,9 @@ label + .MuiInput-formControl {
 .mui-date-picker .MuiInputAdornment-positionEnd {
    margin-left: 0 !important;
 }
-
+.bottom-area {
+   height: calc(100vh - 3.25rem) !important;
+}
 /* .MuiFormControlLabel-label {
    font-size: 1.25rem !important;
    font-family: SegoeUISemibold !important;
