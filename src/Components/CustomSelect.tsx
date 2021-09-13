@@ -11,7 +11,7 @@ export interface SelectOption {
 }
 export interface SelectProps extends MUISelectProps {
    options: SelectOption[];
-   label: string;
+   label?: string;
    onValueChange: (option: string) => void;
    value: string;
 }
@@ -19,7 +19,7 @@ export interface SelectProps extends MUISelectProps {
 const CustomSelect: React.FC<SelectProps> = ({ onValueChange, label, options, value, ...rest }) => {
    return (
       <FormControl>
-         <InputLabel>{label}</InputLabel>
+         {label && <InputLabel>{label}</InputLabel>}
          <MUISelect
             {...rest}
             disableUnderline

@@ -1,3 +1,4 @@
+import React from "react";
 import { createCustomContext } from "../../Helpers/CreateCustomContext";
 
 interface IGlobalState {
@@ -7,6 +8,7 @@ interface IGlobalState {
    settingsSidebarItems: string[];
    selectedSettingsSidebarItem: string;
    isSidebarOpen: boolean;
+   dialog?: React.FC;
 }
 
 export interface IUser {
@@ -39,11 +41,14 @@ function setIsSidebarOpen(state: IGlobalState, value: boolean): IGlobalState {
    return { ...state, isSidebarOpen: value };
 }
 
-const functions = { setIsSidebarOpen };
+const functions = {
+   setIsSidebarOpen,
+   setDialog: (state: IGlobalState, dialog: React.FC | undefined): IGlobalState => ({ ...state, dialog }),
+};
 
 const { Context, Provider, useContextHook } = createCustomContext<IGlobalState, typeof functions>({
    initialState,
-   functions: { setIsSidebarOpen },
+   functions,
 });
 
 export const GlobalContextProvider = Provider;

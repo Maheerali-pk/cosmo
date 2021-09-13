@@ -7,8 +7,8 @@ import Sidebar from "./Components/Sidebar";
 import styled from "styled-components";
 import { flexbox } from "./StyledComponents/Flexbox";
 import AccountRecieveables from "./Pages/AccountRecieveables/AccountRecieveables";
-import { createTheme, MuiThemeProvider } from "@material-ui/core";
-import { colors, fonts, toRem } from "./Helpers/utils";
+import { createTheme, MuiThemeProvider, ThemeOptions } from "@material-ui/core";
+import { colors, commonStyles, fonts, toRem } from "./Helpers/utils";
 import Construction from "./Pages/Construction/Construction";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Layout from "./Components/Layout";
@@ -25,49 +25,16 @@ import "./Fonts/SegoeUISemibold.ttf";
 import "./Fonts/SegoeUI.ttf";
 import Overview from "./Pages/Settings/Overview/Overview";
 import Teams from "./Pages/Settings/Teams/Teams";
+import Dialog from "./Components/Dialog";
 
-const theme = createTheme({
-   palette: {
-      secondary: {
-         main: colors.blueButton,
-      },
-   },
-   overrides: {
-      MuiInputLabel: {
-         root: {
-            color: colors.graySubHeading,
-         },
-      },
-      MuiSelect: {
-         root: {
-            fontFamily: fonts.semibold,
-            color: colors.grayText,
-         },
-         select: {
-            paddingRight: 0,
-         },
-      },
-      MuiInputBase: {
-         root: {
-            fontFamily: fonts.semibold,
-            color: colors.grayText,
-         },
-      },
-      MuiButton: {
-         root: {
-            borderRadius: "2px",
-            color: colors.grayText,
-            padding: `${toRem(4)} ${toRem(16)}`,
-            textTransform: "initial",
-         },
-      },
-   },
-});
+const theme = createTheme(commonStyles);
 function App() {
+   const [{ dialog: CurrentDialog }] = useGlobalContext();
    return (
       <Router>
          <Switch>
             <MuiThemeProvider theme={theme}>
+               {CurrentDialog && <CurrentDialog></CurrentDialog>}
                <Route path="/projects">
                   <Layout navbarItems={["Airmed", "Accounting", "Company"]}>
                      <Construction></Construction>

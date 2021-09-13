@@ -18,9 +18,9 @@ html,
 .MuiSelect-icon {
    top: calc(50% - 0.75rem) !important;
 }
-.MuiSelect-root {
+/* .MuiSelect-root {
    width: 16rem !important;
-}
+} */
 
 label + .MuiInput-formControl {
    margin-top: 1rem !important;

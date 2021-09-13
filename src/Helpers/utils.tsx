@@ -5,6 +5,7 @@ import noun from "../Assets/Icons/noun.png";
 import register from "../Assets/Images/register-image.png";
 import register2 from "../Assets/Images/register-image-2.png";
 import login from "../Assets/Images/login-image.png";
+import { Theme, ThemeOptions } from "@material-ui/core";
 
 export const toRem = (px: number) => px / 16 + "rem";
 export const interpolate = (arr: any[], item: any) => arr.flatMap((x) => [x, item]).slice(0, -1);
@@ -55,3 +56,51 @@ export const images = {
    register2,
    login,
 };
+
+export const commonStyles: ThemeOptions = {
+   palette: {
+      secondary: {
+         main: colors.blueButton,
+      },
+   },
+   overrides: {
+      MuiInputLabel: {
+         root: {
+            color: colors.graySubHeading,
+         },
+      },
+      MuiSelect: {
+         root: {
+            fontFamily: fonts.semibold,
+            color: colors.grayText,
+         },
+         select: {
+            paddingRight: 0,
+            width: "16rem",
+         },
+      },
+      MuiInputBase: {
+         root: {
+            fontFamily: fonts.semibold,
+            color: colors.grayText,
+         },
+      },
+      MuiButton: {
+         root: {
+            borderRadius: "2px",
+            color: colors.grayText,
+            padding: `${toRem(4)} ${toRem(16)}`,
+            textTransform: "initial",
+         },
+      },
+   },
+};
+// export function mergeOuterLocalTheme(outerTheme: Theme, localTheme: Theme) {
+//    if (typeof localTheme === "function") {
+//       const mergedTheme = localTheme (outerTheme);
+
+//       return mergedTheme;
+//    }
+
+//    return { ...outerTheme, ...localTheme };
+// }

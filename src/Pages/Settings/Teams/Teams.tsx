@@ -12,6 +12,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import ButtonPrimary from "../../../StyledComponents/ButtonPrimary";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import { useGlobalContext } from "../../../Contexts/GlobalContext/GlobalContext";
+import InviteAMemberDialog from "../../../Dialogs/InviteAMemberDialog";
 
 const Header = styled(Flexbox)`
    border-bottom: ${toRem(2)} solid ${colors.sidebarBackground};
@@ -82,6 +84,7 @@ const Row: React.FC<RowProps> = ({ members, name, showIcon, status }) => {
 };
 
 const Teams: React.FC = () => {
+   const [_, dispatch] = useGlobalContext();
    return (
       <SettingsPageLayout>
          <Flexbox column fullWidth>
@@ -90,7 +93,11 @@ const Teams: React.FC = () => {
                   Teams
                </Text>
                <Flexbox gap={32}>
-                  <Button variant="contained" color="secondary">
+                  <Button
+                     onClick={() => dispatch({ setDialog: InviteAMemberDialog })}
+                     variant="contained"
+                     color="secondary"
+                  >
                      <Flexbox gap={15}>
                         <PersonAddIcon style={{ color: "white" }} />
                         <Text color="white">Invite New Member</Text>
