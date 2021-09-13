@@ -8,7 +8,7 @@ import Text from "../../../StyledComponents/Text";
 import UnderlinedHeading from "../../../StyledComponents/UnderlinedHeading";
 import SettingsPageLayout from "../SettingsPageLayout";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-
+import StarIcon from "@material-ui/icons/Star";
 const Header = styled(Flexbox)`
    border-bottom: ${toRem(2)} solid ${colors.sidebarBackground};
 `;
@@ -61,6 +61,15 @@ const Overview: React.FC = () => {
    return (
       <SettingsPageLayout>
          <Flexbox fullWidth column justify="space-between">
+            <StarIcon
+               style={{
+                  fontSize: toRem(20),
+                  color: colors.orangeStar,
+                  position: "absolute",
+                  marginTop: toRem(-20),
+                  marginLeft: toRem(-20),
+               }}
+            />
             <Flexbox column fullWidth>
                <Header gap={14} padding="0 2rem 1.25rem 2rem" fullWidth>
                   <LogoWrapper align="center" justify="center">

@@ -30,6 +30,7 @@ export const colors = {
    tableFooterHrColor: "#E1E1E1",
    blueButton: "#418BCA",
    companyCardBackground: "#F5F5F5",
+   orangeStar: "#FB9F00",
 };
 export type FontFamilyKey = "regular" | "semibold" | "myraid-pro";
 

@@ -6,7 +6,7 @@ const InnerContentWrapper = styled.div<{ isSidebarOpen?: boolean }>`
    display: grid;
    grid-template-columns: ${(p) => `${p.isSidebarOpen ? toRem(210) : "min-content"} auto`};
    width: 100%;
-   padding-top: ${toRem(21)};
+   padding-top: ${toRem(20)};
 `;
 const PageWrapper = styled.div`
    display: grid;
