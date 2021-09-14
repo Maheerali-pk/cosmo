@@ -59,17 +59,8 @@ const EmptyRow = () => {
 
 const Overview: React.FC = () => {
    return (
-      <SettingsPageLayout>
+      <SettingsPageLayout navbarItems={["Settings", "Overview"]}>
          <Flexbox fullWidth column justify="space-between">
-            <StarIcon
-               style={{
-                  fontSize: toRem(20),
-                  color: colors.orangeStar,
-                  position: "absolute",
-                  marginTop: toRem(-20),
-                  marginLeft: toRem(-20),
-               }}
-            />
             <Flexbox column fullWidth>
                <Header gap={14} padding="0 2rem 1.25rem 2rem" fullWidth>
                   <LogoWrapper align="center" justify="center">

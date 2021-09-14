@@ -52,7 +52,7 @@ const Row: React.FC<RowProps> = ({ members, name }) => {
 
 const Permissions: React.FC = () => {
    return (
-      <SettingsPageLayout>
+      <SettingsPageLayout navbarItems={["Settings", "Permissions"]}>
          <Flexbox column fullWidth>
             <Flexbox fullWidth justify="space-between" padding="0 2rem 1.25rem 2rem">
                <Text size={20} fontFamily="semibold">

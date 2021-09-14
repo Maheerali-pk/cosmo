@@ -17,9 +17,14 @@ const PageWrapper = styled.div`
    overflow: auto;
    grid-template-rows: min-content min-content min-content auto;
 `;
-const SettingsPageLayout: React.FC = ({ children }) => {
+
+interface SettingsPageLayoutProps {
+   navbarItems?: string[];
+}
+
+const SettingsPageLayout: React.FC<SettingsPageLayoutProps> = ({ children, navbarItems }) => {
    return (
-      <Layout navbarItems={[]}>
+      <Layout navbarItems={navbarItems || []}>
          <InnerContentWrapper className="bottom-area">
             <SettingsSidebar></SettingsSidebar>
             {children}

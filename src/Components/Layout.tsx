@@ -15,10 +15,7 @@ const AppWrapper = styled.div`
 const BottomArea = styled.div<{ isSidebarOpen: boolean }>`
    display: grid;
    grid-template-columns: ${(p) => `${p.isSidebarOpen ? toRem(240) : "min-content"} auto`};
-   /* height: auto; */
    width: 100%;
-   /* overflow: none; */
-   /* height: 100%; */
 `;
 
 const PageWrapper = styled.div`

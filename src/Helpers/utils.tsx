@@ -65,6 +65,20 @@ export const commonStyles: ThemeOptions = {
       },
    },
    overrides: {
+      MuiCheckbox: {
+         root: {
+            "&:hover": {
+               backgroundColor: "transparent !important",
+            },
+            "& .MuiSvgIcon-root": {
+               height: "1rem !important",
+               width: "1rem",
+            },
+
+            padding: 0,
+            width: "fit-content",
+         },
+      },
       MuiInputLabel: {
          root: {
             color: colors.graySubHeading,
