@@ -28,6 +28,7 @@ import Teams from "./Pages/Settings/Teams/Teams";
 import Dialog from "./Components/Dialog";
 import Permissions from "./Pages/Settings/Permissions/Permissions";
 import PermissionsUser from "./Pages/Settings/PermissionsUser/PermissionsUser";
+import Approvals from "./Pages/Settings/Approvals/Approvals";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -76,6 +77,9 @@ function App() {
                </Route>
                <Route exact path="/settings/permissions/user">
                   <PermissionsUser name="Nate Anderson"></PermissionsUser>
+               </Route>
+               <Route exact path="/settings/approvals">
+                  <Approvals></Approvals>
                </Route>
                <Route exact path="/">
                   <Main></Main>

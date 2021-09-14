@@ -4,7 +4,7 @@ import { colors, FontFamilyKey, fonts, toRem } from "../Helpers/utils";
 interface TextProps {
    size?: number;
    fontFamily?: FontFamilyKey;
-   color?: keyof typeof colors;
+   color?: keyof typeof colors | "inherit";
    isLink?: boolean;
    mb?: number;
    mt?: number;
@@ -24,7 +24,7 @@ export default styled.div<TextProps>`
 export const text = (p: TextProps) => css`
    font-size: ${toRem(p.size || 16)};
    font-family: ${fonts[p.fontFamily || "regular"]};
-   color: ${colors[p.color || "grayText"]};
+   color: ${p.color === "inherit" ? "inherit" : colors[p.color || "grayText"]};
    ${p.isLink &&
    css`
       cursor: pointer;

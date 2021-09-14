@@ -22,12 +22,13 @@ const HeaderWrapper = styled(Flexbox)`
 
 interface DialogProps {
    title: string;
+   dialogWidth?: number;
 }
 
-const Dialog: React.FC<DialogProps> = ({ title, children }) => {
+const Dialog: React.FC<DialogProps> = ({ title, children, dialogWidth }) => {
    const [_, dispatch] = useGlobalContext();
    return (
-      <DialogWrapper column>
+      <DialogWrapper style={{ width: toRem(dialogWidth || 550) }} column>
          <HeaderWrapper padding="1.25rem 2rem" fullWidth justify="space-between">
             <Text fontFamily="semibold">{title}</Text>
             <IconButton onClick={() => dispatch({ setDialog: undefined })} style={{ padding: 0 }}>

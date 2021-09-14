@@ -107,6 +107,12 @@ export const commonStyles: ThemeOptions = {
             padding: `${toRem(4)} ${toRem(16)}`,
             textTransform: "initial",
          },
+         containedSecondary: {
+            color: "white",
+            "& > *": {
+               color: "white",
+            },
+         },
       },
    },
 };

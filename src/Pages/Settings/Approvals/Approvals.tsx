@@ -9,21 +9,16 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { useGlobalContext } from "../../../Contexts/GlobalContext/GlobalContext";
 import Tabs from "../../../Components/Tabs";
 import Dropdown from "../../../Components/Dropdown";
+import ApprovalsDialog from "../../../Dialogs/ApprovalsDialog";
+import { useState } from "react";
 const RowWrapper = styled(Grid)`
-   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+   grid-template-columns: 1.5fr 1fr 1fr;
    min-height: ${toRem(37)};
    ${Text} {
       font-size: ${toRem(13)};
    }
    align-items: center;
    border-bottom: 1px solid #edf2f9;
-   & > *:nth-child(2),
-   & > *:nth-child(3),
-   & > *:nth-child(4),
-   & > *:nth-child(5) {
-      text-align: center;
-      width: 100%;
-   }
    & > *:nth-child(1) {
       padding-left: 2rem;
    }
@@ -52,6 +47,8 @@ const SubHeadingsRowWrapper = styled(RowWrapper)`
 
 interface RowProps {
    name: string;
+   reviewer: string;
+   approver: string;
 }
 
 interface RowGroupProps {
@@ -59,31 +56,50 @@ interface RowGroupProps {
    rows: RowProps[];
 }
 
-const rows: RowProps[] = [...repeat({ name: "Team Name", members: "2" }, 6)];
+const rows: RowProps[] = [...repeat({ name: "Team Name", reviewer: "Reviewer 1", approver: "Approver 1" }, 3)];
 
 const rowGroups: RowGroupProps[] = [
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Purchase" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Sales" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Others" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
-   { rows: repeat({ name: "Some Item" }, 4), title: "Accounting - Statements" },
+   {
+      rows: repeat({ name: "Some Item", reviewer: "Reviewer 1", approver: "Approver 1" }, 4),
+      title: "Accounting - Purchase",
+   },
+   {
+      rows: repeat({ name: "Some Item", reviewer: "Reviewer 1", approver: "Approver 1" }, 4),
+      title: "Accounting - Sales",
+   },
+   {
+      rows: repeat({ name: "Some Item", reviewer: "Reviewer 1", approver: "Approver 1" }, 4),
+      title: "Supply Chain - Purchase",
+   },
+   {
+      rows: repeat({ name: "Some Item", reviewer: "Reviewer 1", approver: "Approver 1" }, 4),
+      title: "Supply Chain - Sale",
+   },
+   {
+      rows: repeat({ name: "Some Item", reviewer: "Reviewer 1", approver: "Approver 1" }, 4),
+      title: "Supply Chain - Sale",
+   },
+   {
+      rows: repeat({ name: "Some Item", reviewer: "Reviewer 1", approver: "Approver 1" }, 4),
+      title: "Supply Chain - Sale",
+   },
+   {
+      rows: repeat({ name: "Some Item", reviewer: "Reviewer 1", approver: "Approver 1" }, 4),
+      title: "Supply Chain - Sale",
+   },
+   {
+      rows: repeat({ name: "Some Item", reviewer: "Reviewer 1", approver: "Approver 1" }, 4),
+      title: "Supply Chain - Sale",
+   },
 ];
 
-const Row: React.FC<RowProps> = ({ name }) => {
+const Row: React.FC<RowProps> = ({ name, approver, reviewer }) => {
+   const [_, dispatch] = useGlobalContext();
    return (
-      <RowWrapper fullWidth>
+      <RowWrapper onClick={() => dispatch({ setDialog: ApprovalsDialog })} fullWidth>
          <Text>{name}</Text>
-         <Checkbox disableRipple></Checkbox>
-         <Checkbox disableRipple></Checkbox>
-         <Checkbox disableRipple></Checkbox>
-         <Checkbox disableRipple></Checkbox>
+         <Text>{reviewer}</Text>
+         <Text>{approver}</Text>
       </RowWrapper>
    );
 };
@@ -93,10 +109,8 @@ const RowGroup: React.FC<RowGroupProps> = ({ rows, title }) => {
       <>
          <SubHeadingsRowWrapper fullWidth>
             <Text>{title}</Text>
-            <Checkbox disableRipple></Checkbox>
-            <Checkbox disableRipple></Checkbox>
-            <Checkbox disableRipple></Checkbox>
-            <Checkbox disableRipple></Checkbox>
+            <div></div>
+            <div></div>
          </SubHeadingsRowWrapper>
          {rows.map((row) => (
             <Row {...row}></Row>
@@ -105,17 +119,13 @@ const RowGroup: React.FC<RowGroupProps> = ({ rows, title }) => {
    );
 };
 
-interface PermissionUserProps {
-   name: string;
-}
-
-const PermissionsUser: React.FC<PermissionUserProps> = ({ name }) => {
+const Approvals: React.FC = () => {
    return (
-      <SettingsPageLayout navbarItems={["Settings", "Permissions", name]}>
-         <Grid fullWidth style={{ overflow: "auto" }}>
+      <SettingsPageLayout navbarItems={["Settings", "Approvals"]}>
+         <Flexbox column fullWidth style={{ overflow: "auto" }}>
             <Flexbox fullWidth justify="space-between" padding="0 2rem 1.25rem 2rem">
                <Text size={20} fontFamily="semibold">
-                  {name}
+                  Approvals
                </Text>
 
                <Button variant="contained">
@@ -126,20 +136,18 @@ const PermissionsUser: React.FC<PermissionUserProps> = ({ name }) => {
                </Button>
             </Flexbox>
 
-            <Flexbox column fullWidth style={{ overflow: "auto", height: "100%" }}>
+            <Flexbox style={{ overflow: "auto" }} column fullWidth>
                <HeadingsRowWrapper fullWidth>
                   <Text size={13}>Item</Text>
-                  <Text size={13}>View</Text>
-                  <Text size={13}>Edit</Text>
-                  <Text size={13}>Create</Text>
-                  <Text size={13}>Delete</Text>
+                  <Text size={13}>Reviewers</Text>
+                  <Text size={13}>Approvers</Text>
                </HeadingsRowWrapper>
                {rowGroups.map((x) => (
                   <RowGroup {...x}></RowGroup>
                ))}
             </Flexbox>
-         </Grid>
+         </Flexbox>
       </SettingsPageLayout>
    );
 };
-export default PermissionsUser;
+export default Approvals;
