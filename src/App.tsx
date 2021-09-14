@@ -26,6 +26,7 @@ import "./Fonts/SegoeUI.ttf";
 import Overview from "./Pages/Settings/Overview/Overview";
 import Teams from "./Pages/Settings/Teams/Teams";
 import Dialog from "./Components/Dialog";
+import Permissions from "./Pages/Settings/Permissions/Permissions";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -68,6 +69,9 @@ function App() {
                </Route>
                <Route exact path="/settings/teams">
                   <Teams></Teams>
+               </Route>
+               <Route exact path="/settings/permissions">
+                  <Permissions></Permissions>
                </Route>
                <Route exact path="/">
                   <Main></Main>
