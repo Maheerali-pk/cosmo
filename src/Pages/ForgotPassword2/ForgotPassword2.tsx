@@ -16,10 +16,10 @@ const ForgotPassword2: React.FC = () => {
                Please enter the OTP sent on your email
             </Text>
             <Flexbox gap={56}>
-               <CustomInput></CustomInput>
-               <CustomInput></CustomInput>
-               <CustomInput></CustomInput>
-               <CustomInput></CustomInput>
+               <CustomInput inputStyles={{ fontSize: "3rem", textAlign: "center" }}></CustomInput>
+               <CustomInput inputStyles={{ fontSize: "3rem", textAlign: "center" }}></CustomInput>
+               <CustomInput inputStyles={{ fontSize: "3rem", textAlign: "center" }}></CustomInput>
+               <CustomInput inputStyles={{ fontSize: "3rem", textAlign: "center" }}></CustomInput>
             </Flexbox>
             <ButtonPrimary fullWidth style={{ background: colors.blueButton }}>
                <Text fontFamily="semibold" size={24} color="white">

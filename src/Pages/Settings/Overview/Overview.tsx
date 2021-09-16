@@ -75,7 +75,7 @@ const Overview: React.FC = () => {
                </Header>
                <Flexbox fullWidth padding="2rem" column>
                   <UnderlinedHeading>About</UnderlinedHeading>
-                  <Grid gap="2rem" fullWidth mt={20} mb={32} noOfColumns={3}>
+                  <Grid gap="2rem" fullWidth mb={32} noOfColumns={3}>
                      <Paragraph>
                         <Text>Title</Text>
                         <Text>Airmed</Text>

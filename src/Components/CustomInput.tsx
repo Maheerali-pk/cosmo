@@ -54,7 +54,10 @@ const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder, s
             endAdornment: renderEndAdornment(),
             disableUnderline: true,
             style: { fontSize: "1.25rem", ...inputStyles },
+            //@ts-ignore
          }}
+         //@ts-ignore
+         inputProps={{ maxLength: "1", style: { ...inputStyles } }}
          placeholder={placeholder}
          type={(isVisible || type !== "password") && staticType !== "password" ? "text" : "password"}
       ></TextField>
