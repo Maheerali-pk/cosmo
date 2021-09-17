@@ -12,11 +12,17 @@ interface CustomInputProps {
    staticType?: "text" | "password";
    placeholder?: string;
    inputStyles?: CSSProperties;
+   maxLength?: number;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder, staticType, inputStyles }) => {
+const CustomInput: React.FC<CustomInputProps> = ({
+   type = "text",
+   placeholder,
+   staticType,
+   inputStyles,
+   maxLength,
+}) => {
    const [isVisible, setIsVisible] = useState(false);
-   const [value, setValue] = useState();
    const renderStartAdornment = () => {
       if (type === "email") {
          return (
@@ -57,7 +63,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ type = "text", placeholder, s
             //@ts-ignore
          }}
          //@ts-ignore
-         inputProps={{ maxLength: "1", style: { ...inputStyles } }}
+         inputProps={{ maxLength: maxLength || "", style: { ...inputStyles } }}
          placeholder={placeholder}
          type={(isVisible || type !== "password") && staticType !== "password" ? "text" : "password"}
       ></TextField>

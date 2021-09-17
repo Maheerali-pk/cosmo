@@ -37,6 +37,9 @@ const HeadingsRowWrapper = styled(RowWrapper)`
    & > *:nth-child(1) {
       padding-left: 0rem;
    }
+   border-top: ${toRem(2)} solid ${colors.sidebarBackground};
+   height: fit-content;
+   overflow-y: scroll;
 `;
 
 const SubHeadingsRowWrapper = styled(RowWrapper)`
@@ -126,7 +129,7 @@ const PermissionsUser: React.FC<PermissionUserProps> = ({ name }) => {
                </Button>
             </Flexbox>
 
-            <Flexbox column fullWidth style={{ overflow: "auto", height: "100%" }}>
+            <Flexbox column fullWidth overflowAuto>
                <HeadingsRowWrapper fullWidth>
                   <Text size={13}>Item</Text>
                   <Text size={13}>View</Text>
@@ -134,9 +137,11 @@ const PermissionsUser: React.FC<PermissionUserProps> = ({ name }) => {
                   <Text size={13}>Create</Text>
                   <Text size={13}>Delete</Text>
                </HeadingsRowWrapper>
-               {rowGroups.map((x) => (
-                  <RowGroup {...x}></RowGroup>
-               ))}
+               <Flexbox column fullWidth overflowAuto>
+                  {rowGroups.map((x) => (
+                     <RowGroup {...x}></RowGroup>
+                  ))}
+               </Flexbox>
             </Flexbox>
          </Grid>
       </SettingsPageLayout>

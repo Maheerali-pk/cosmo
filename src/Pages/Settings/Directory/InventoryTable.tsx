@@ -34,6 +34,8 @@ const HeadingsRowWrapper = styled(RowWrapper)`
    }
    background: ${colors.headingBackground};
    border: none;
+   border-top: ${toRem(2)} solid ${colors.sidebarBackground};
+   height: fit-content;
 `;
 
 type RowProps = string[];

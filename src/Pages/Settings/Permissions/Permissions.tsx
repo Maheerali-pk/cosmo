@@ -10,7 +10,6 @@ import { useGlobalContext } from "../../../Contexts/GlobalContext/GlobalContext"
 import Tabs from "../../../Components/Tabs";
 const RowWrapper = styled(Grid)`
    grid-template-columns: 8fr 1fr;
-   height: ${toRem(37)};
    ${Text} {
       font-size: ${toRem(13)};
    }
@@ -19,8 +18,7 @@ const RowWrapper = styled(Grid)`
    & > *:nth-child(2) {
       text-align: center;
    }
-   padding-left: 2rem;
-   padding-right: 2rem;
+   padding: 0.5rem 2rem;
    &:hover {
       background-color: ${colors.headingBackground};
    }
@@ -32,6 +30,8 @@ const HeadingsRowWrapper = styled(RowWrapper)`
    }
    background: ${colors.headingBackground};
    border: none;
+   border-top: ${toRem(2)} solid ${colors.sidebarBackground};
+   height: fit-content;
 `;
 
 interface RowProps {
@@ -39,7 +39,7 @@ interface RowProps {
    members: string;
 }
 
-const rows: RowProps[] = [...repeat({ name: "Team Name", members: "2" }, 6)];
+const rows: RowProps[] = [...repeat({ name: "Team Name", members: "2" }, 66)];
 
 const Row: React.FC<RowProps> = ({ members, name }) => {
    return (
@@ -53,7 +53,7 @@ const Row: React.FC<RowProps> = ({ members, name }) => {
 const Permissions: React.FC = () => {
    return (
       <SettingsPageLayout navbarItems={["Settings", "Permissions"]}>
-         <Flexbox column fullWidth>
+         <Flexbox overflowAuto column fullWidth>
             <Flexbox fullWidth justify="space-between" padding="0 2rem 1.25rem 2rem">
                <Text size={20} fontFamily="semibold">
                   Permissions
@@ -71,14 +71,16 @@ const Permissions: React.FC = () => {
                headerStyles={{ paddingLeft: "2rem" }}
                titles={["Teams", "Users"]}
             >
-               <Flexbox column fullWidth>
+               <Flexbox overflowAuto column fullWidth>
                   <HeadingsRowWrapper fullWidth>
                      <Text size={13}>Name</Text>
                      <Text size={13}>Members</Text>
                   </HeadingsRowWrapper>
-                  {rows.map((x) => (
-                     <Row {...x}></Row>
-                  ))}
+                  <Flexbox column fullWidth overflowAuto>
+                     {rows.map((x) => (
+                        <Row {...x}></Row>
+                     ))}
+                  </Flexbox>
                </Flexbox>
                <div style={{ paddingLeft: "2rem" }}>Users</div>
             </Tabs>

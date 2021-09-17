@@ -32,6 +32,7 @@ const HeadingsRowWrapper = styled(RowWrapper)`
    & > *:nth-child(1) {
       padding-left: 0rem;
    }
+   border-top: ${toRem(2)} solid ${colors.sidebarBackground};
 `;
 
 const SubHeadingsRowWrapper = styled(RowWrapper)`

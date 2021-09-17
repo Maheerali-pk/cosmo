@@ -25,28 +25,29 @@ const PaginationButton = styled(Button)`
 
 const PaginationNumberButton = styled(PaginationButton)`
    height: auto;
-   /* aspect-ratio: 1/1 !important; */
-   /* min-width: none; */
 `;
 
 const PaginationTable: React.FC<PaginationTableProps> = ({ headings, rows, HeadingsRowWrapper, RowWrapper }) => {
    const [page, setPage] = useState(0);
    let noOfPages = Math.ceil(rows.length / rowsPerPage);
    return (
-      <Flexbox column fullWidth style={{ overflow: "auto" }}>
-         <HeadingsRowWrapper>
-            {headings.map((x) => (
-               <Text>{x}</Text>
-            ))}
-         </HeadingsRowWrapper>
-         {rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((row) => (
-            <RowWrapper>
-               {row.map((text) => (
-                  <Text>{text}</Text>
+      <Flexbox column fullWidth justify="space-between" overflowAuto style={{ height: "100%" }}>
+         <Flexbox column fullWidth overflowAuto>
+            <HeadingsRowWrapper>
+               {headings.map((x) => (
+                  <Text>{x}</Text>
                ))}
-            </RowWrapper>
-         ))}
-         <Flexbox></Flexbox>
+            </HeadingsRowWrapper>
+            <Flexbox column fullWidth overflowAuto>
+               {rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((row) => (
+                  <RowWrapper>
+                     {row.map((text) => (
+                        <Text>{text}</Text>
+                     ))}
+                  </RowWrapper>
+               ))}
+            </Flexbox>
+         </Flexbox>
          <Flexbox padding="0.5rem 2rem">
             <ButtonGroup variant="outlined">
                <PaginationButton onClick={() => setPage(page - 1)} disabled={page === 0}>
