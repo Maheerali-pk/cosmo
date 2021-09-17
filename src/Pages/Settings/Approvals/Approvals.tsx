@@ -33,6 +33,8 @@ const HeadingsRowWrapper = styled(RowWrapper)`
       padding-left: 0rem;
    }
    border-top: ${toRem(2)} solid ${colors.sidebarBackground};
+   height: fit-content;
+   overflow-y: scroll;
 `;
 
 const SubHeadingsRowWrapper = styled(RowWrapper)`
@@ -137,15 +139,17 @@ const Approvals: React.FC = () => {
                </Button>
             </Flexbox>
 
-            <Flexbox style={{ overflow: "auto" }} column fullWidth>
+            <Flexbox overflowAuto column fullWidth>
                <HeadingsRowWrapper fullWidth>
                   <Text size={13}>Item</Text>
                   <Text size={13}>Reviewers</Text>
                   <Text size={13}>Approvers</Text>
                </HeadingsRowWrapper>
-               {rowGroups.map((x) => (
-                  <RowGroup {...x}></RowGroup>
-               ))}
+               <Flexbox overflowAuto column fullWidth>
+                  {rowGroups.map((x) => (
+                     <RowGroup {...x}></RowGroup>
+                  ))}
+               </Flexbox>
             </Flexbox>
          </Flexbox>
       </SettingsPageLayout>
