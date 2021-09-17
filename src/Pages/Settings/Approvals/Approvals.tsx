@@ -123,8 +123,10 @@ const RowGroup: React.FC<RowGroupProps> = ({ rows, title }) => {
 };
 
 const Approvals: React.FC = () => {
+   const [{ dialog: CurrentDialog }, dispatch] = useGlobalContext();
    return (
       <SettingsPageLayout navbarItems={["Settings", "Approvals"]}>
+         {CurrentDialog === ApprovalsDialog ? <CurrentDialog></CurrentDialog> : null}
          <Flexbox column fullWidth style={{ overflow: "auto" }}>
             <Flexbox fullWidth justify="space-between" padding="0 2rem 1.25rem 2rem">
                <Text size={20} fontFamily="semibold">

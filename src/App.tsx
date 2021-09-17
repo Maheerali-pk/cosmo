@@ -33,12 +33,10 @@ import Directory from "./Pages/Settings/Directory/Directory";
 
 const theme = createTheme(commonStyles);
 function App() {
-   const [{ dialog: CurrentDialog }] = useGlobalContext();
    return (
       <Router>
          <Switch>
             <MuiThemeProvider theme={theme}>
-               {CurrentDialog && <CurrentDialog></CurrentDialog>}
                <Route path="/projects">
                   <Layout navbarItems={["Airmed", "Accounting", "Company"]}>
                      <Construction></Construction>
