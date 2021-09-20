@@ -30,6 +30,7 @@ import Permissions from "./Pages/Settings/Permissions/Permissions";
 import PermissionsUser from "./Pages/Settings/PermissionsUser/PermissionsUser";
 import Approvals from "./Pages/Settings/Approvals/Approvals";
 import Directory from "./Pages/Settings/Directory/Directory";
+import Journal from "./Pages/Accounts/Journal";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -37,20 +38,20 @@ function App() {
       <Router>
          <Switch>
             <MuiThemeProvider theme={theme}>
-               <Route path="/projects">
+               <Route exact path="/projects">
                   <Layout navbarItems={["Airmed", "Accounting", "Company"]}>
                      <Construction></Construction>
                   </Layout>
                </Route>
-               <Route path="/accounting">
+               <Route exact path="/accounting">
                   <Layout navbarItems={["Airmed", "Accounting", "Sales"]}>
                      <AccountRecieveables></AccountRecieveables>
                   </Layout>
                </Route>
-               <Route path="/register">
+               <Route exact path="/register">
                   <Register></Register>
                </Route>
-               <Route path="/register2">
+               <Route exact path="/register2">
                   <Register2></Register2>
                </Route>
                <Route path="/login">
@@ -82,6 +83,9 @@ function App() {
                </Route>
                <Route exact path="/settings/directory">
                   <Directory></Directory>
+               </Route>
+               <Route exact path="/accounting/journal">
+                  <Journal></Journal>
                </Route>
                <Route exact path="/">
                   <Main></Main>
