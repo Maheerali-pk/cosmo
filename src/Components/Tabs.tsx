@@ -16,24 +16,39 @@ interface TabsProps {
    currentIndex?: number;
    headerStyles?: CSSProperties;
    buttonStyles?: CSSProperties;
+   rightSideContent?: JSX.Element;
 }
 
-const Tabs: React.FC<TabsProps> = ({ titles, currentIndex, children, headerStyles, buttonStyles = {} }) => {
+const Tabs: React.FC<TabsProps> = ({
+   titles,
+   currentIndex,
+   children,
+   headerStyles,
+   buttonStyles = {},
+   rightSideContent = null,
+}) => {
    const [tabIndex, setTabIndex] = useState(currentIndex || 0);
    const childrenArr = React.Children.toArray(children);
    return (
       <>
-         <Flexbox style={headerStyles ? { ...headerStyles } : {}} gap={32}>
-            {titles.map((title, i) => (
-               <ButtonBase
-                  style={{ borderBottom: i === tabIndex ? `0.2rem solid` : "", padding: "0.2rem 0", ...buttonStyles }}
-                  onClick={() => setTabIndex(i)}
-               >
-                  <Text style={{}} size={15} fontFamily="semibold">
-                     {title}
-                  </Text>
-               </ButtonBase>
-            ))}
+         <Flexbox justify="space-between" fullWidth>
+            <Flexbox style={headerStyles ? { ...headerStyles } : {}} gap={32}>
+               {titles.map((title, i) => (
+                  <ButtonBase
+                     style={{
+                        borderBottom: i === tabIndex ? `0.2rem solid` : "",
+                        padding: "0.2rem 0",
+                        ...buttonStyles,
+                     }}
+                     onClick={() => setTabIndex(i)}
+                  >
+                     <Text style={{}} size={15} fontFamily="semibold">
+                        {title}
+                     </Text>
+                  </ButtonBase>
+               ))}
+            </Flexbox>
+            {rightSideContent}
          </Flexbox>
          {childrenArr[tabIndex]}
       </>

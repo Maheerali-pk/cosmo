@@ -1,6 +1,6 @@
 import { Button, IconButton, Icon } from "@material-ui/core";
 import styled from "styled-components";
-import { colors, repeat, toRem } from "../../../Helpers/utils";
+import { colors, repeat, stringsToOptions, toRem } from "../../../Helpers/utils";
 import Flexbox from "../../../StyledComponents/Flexbox";
 import Grid from "../../../StyledComponents/Grid";
 import Paragraph from "../../../StyledComponents/Paragraph";
@@ -14,6 +14,7 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { useGlobalContext } from "../../../Contexts/GlobalContext/GlobalContext";
 import InviteAMemberDialog from "../../../Dialogs/InviteAMemberDialog";
+import Dropdown from "../../../Components/Dropdown";
 
 const Header = styled(Flexbox)`
    border-bottom: ${toRem(2)} solid ${colors.sidebarBackground};
@@ -76,9 +77,18 @@ const Row: React.FC<RowProps> = ({ members, name, showIcon, status }) => {
          <Text>{name}</Text>
          <Text>{members}</Text>
          <Text>{status}</Text>
-         <IconWrapper>
-            <MoreHorizIcon></MoreHorizIcon>
-         </IconWrapper>
+         <Dropdown
+            label={
+               <IconWrapper>
+                  <MoreHorizIcon></MoreHorizIcon>
+               </IconWrapper>
+            }
+            items={[
+               { text: "Option 1", onClick: () => {} },
+               { text: "Option 2", onClick: () => {} },
+               { text: "Option 3", onClick: () => {} },
+            ]}
+         ></Dropdown>
       </RowWrapper>
    );
 };

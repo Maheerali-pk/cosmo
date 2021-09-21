@@ -11,7 +11,7 @@ import Tabs from "../../../Components/Tabs";
 import PaginationTable from "../../../Components/PaginationTable";
 import CustomersTable from "./CustomersTable";
 import InventoryTable from "./InventoryTable";
-
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 const Directory: React.FC = () => {
    return (
       <SettingsPageLayout navbarItems={["Settings", "Permissions"]}>
@@ -32,6 +32,16 @@ const Directory: React.FC = () => {
                buttonStyles={{ paddingBottom: "0.75rem", marginBottom: "0.2rem" }}
                headerStyles={{ paddingLeft: "2rem" }}
                titles={["Customers", "Supplies", "Inventory", "Services"]}
+               rightSideContent={
+                  <Flexbox gap={24} mr={40}>
+                     <IconButton style={{ padding: "0" }}>
+                        <i className="fas fa-filter fa-xs"></i>
+                     </IconButton>
+                     <IconButton style={{ padding: "0" }}>
+                        <SettingsOutlinedIcon></SettingsOutlinedIcon>
+                     </IconButton>
+                  </Flexbox>
+               }
             >
                <CustomersTable></CustomersTable>
                <div></div>

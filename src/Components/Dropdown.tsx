@@ -10,15 +10,16 @@ interface DropdownItem {
 }
 
 interface DropdownProps {
-   label: string;
+   label: string | JSX.Element;
    items: DropdownItem[];
+   showDropdownIcon?: boolean;
 }
 
 const DropdownButton = styled(Button)`
    background-color: transparent !important;
 `;
 
-const Dropdown: React.FC<DropdownProps> = ({ label, items }) => {
+const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon }) => {
    const [anchorEl, setAnchorEl] = React.useState(null);
 
    const handleClick = (event: any) => {
@@ -36,7 +37,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, items }) => {
             <Text fontFamily="regular" size={16}>
                {label}
             </Text>
-            <ArrowDropDownIcon></ArrowDropDownIcon>
+            {showDropdownIcon ? <ArrowDropDownIcon></ArrowDropDownIcon> : null}
          </DropdownButton>
          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} keepMounted onClose={handleClose}>
             {items.map((item) => (
