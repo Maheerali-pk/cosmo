@@ -30,7 +30,8 @@ import Permissions from "./Pages/Settings/Permissions/Permissions";
 import PermissionsUser from "./Pages/Settings/PermissionsUser/PermissionsUser";
 import Approvals from "./Pages/Settings/Approvals/Approvals";
 import Directory from "./Pages/Settings/Directory/Directory";
-import Journal from "./Pages/Accounts/Journal";
+import Journal from "./Pages/Accounts/Journal/Journal";
+import JournalEntry from "./Pages/Accounts/JournalEntry/JournalEntry";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -86,6 +87,9 @@ function App() {
                </Route>
                <Route exact path="/accounting/journal">
                   <Journal></Journal>
+               </Route>
+               <Route exact path="/accounting/journal/entry">
+                  <JournalEntry></JournalEntry>
                </Route>
                <Route exact path="/">
                   <Main></Main>

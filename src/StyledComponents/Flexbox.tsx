@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { toRem } from "../Helpers/utils";
+import { colors, toRem } from "../Helpers/utils";
 
 type FlexPos = "center" | "end" | "start" | "around" | "space-between" | "evenly";
 interface FlexboxProps {
@@ -10,6 +10,7 @@ interface FlexboxProps {
    fullWidth?: boolean;
    fullHeight?: boolean;
    padding?: string;
+   background?: keyof typeof colors;
    pb?: number;
    pt?: number;
    pl?: number;
@@ -77,4 +78,5 @@ export const flexbox = (p: FlexboxProps) => css`
    ${p.ml && `margin-left: ${toRem(p.ml)}`};
    ${p.mr && `margin-right: ${toRem(p.mr)}`};
    ${p.overflowAuto && `overflow: auto`};
+   ${p.background && `background: ${colors[p.background]}`};
 `;

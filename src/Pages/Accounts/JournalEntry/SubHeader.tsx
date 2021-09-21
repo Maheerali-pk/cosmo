@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { colors, toRem } from "../../Helpers/utils";
-import Flexbox, { flexbox } from "../../StyledComponents/Flexbox";
-import Text from "../../StyledComponents/Text";
+import { colors, toRem } from "../../../Helpers/utils";
+import Flexbox, { flexbox } from "../../../StyledComponents/Flexbox";
+import Text from "../../../StyledComponents/Text";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import { Button, IconButton, Menu } from "@material-ui/core";
-import PageSubHeaderWrapper from "../../StyledComponents/PageSubHeaderWrapper";
-import Dropdown from "../../Components/Dropdown";
+import PageSubHeaderWrapper from "../../../StyledComponents/PageSubHeaderWrapper";
+import Dropdown from "../../../Components/Dropdown";
 
 const IconsWrapper = styled(Flexbox)`
    border-left: 2px solid ${colors.sidebarBackground};
@@ -16,7 +16,7 @@ const SubHeader: React.FC = () => {
    return (
       <PageSubHeaderWrapper>
          <Text size={20} fontFamily="semibold">
-            General Journal
+            125 General Journal Entry
          </Text>
          <Flexbox gap={24}>
             <Flexbox gap={24}>

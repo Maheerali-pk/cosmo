@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { colors, repeat, toRem } from "../../Helpers/utils";
-import Flexbox from "../../StyledComponents/Flexbox";
-import Text from "../../StyledComponents/Text";
+import { colors, repeat, toRem } from "../../../Helpers/utils";
+import Flexbox from "../../../StyledComponents/Flexbox";
+import Text from "../../../StyledComponents/Text";
 
 export interface TableProps {}
 
@@ -137,7 +137,7 @@ const RowGroup: React.FC<RowGroupProps> = ({
             <div></div>
             <div></div>
             <div></div>
-            <TotalWrapper style={{ marginLeft: "70%" }} fontFamily="semibold">
+            <TotalWrapper style={{ marginLeft: "40%" }} fontFamily="semibold">
                Total - USD
             </TotalWrapper>
             <BorderTextWrapper fontFamily="semibold">{totalUSDDebit}</BorderTextWrapper>
@@ -151,7 +151,7 @@ const RowGroup: React.FC<RowGroupProps> = ({
             <div></div>
             <div></div>
             <div></div>
-            <TotalWrapper style={{ marginLeft: "70%" }} fontFamily="semibold">
+            <TotalWrapper style={{ marginLeft: "40%" }} fontFamily="semibold">
                Total - PKR
             </TotalWrapper>
             <BorderTextWrapper style={{ borderTop: "none" }} fontFamily="semibold">
