@@ -19,7 +19,7 @@ const DropdownButton = styled(Button)`
    background-color: transparent !important;
 `;
 
-const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon }) => {
+const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon = true }) => {
    const [anchorEl, setAnchorEl] = React.useState(null);
 
    const handleClick = (event: any) => {

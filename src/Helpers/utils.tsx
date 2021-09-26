@@ -44,7 +44,7 @@ export const stringsToOptions = (arr: string[]): SelectOption[] => arr.map((x) =
 export const repeat = (item: any, times: number): any[] =>
    Array(times)
       .fill(0)
-      .map((x) => item);
+      .map((x) => (typeof item === "object" ? { ...item } : item));
 
 export const allIcons = {
    starPurple,

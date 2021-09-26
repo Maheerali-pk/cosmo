@@ -8,7 +8,6 @@ import SettingsPageLayout from "../SettingsPageLayout";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { useGlobalContext } from "../../../Contexts/GlobalContext/GlobalContext";
 import Tabs from "../../../Components/Tabs";
-import PaginationTable from "../../../Components/PaginationTable";
 import CustomersTable from "./CustomersTable";
 import InventoryTable from "./InventoryTable";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";

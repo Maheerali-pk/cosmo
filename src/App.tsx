@@ -32,6 +32,7 @@ import Approvals from "./Pages/Settings/Approvals/Approvals";
 import Directory from "./Pages/Settings/Directory/Directory";
 import Journal from "./Pages/Accounts/Journal/Journal";
 import JournalEntry from "./Pages/Accounts/JournalEntry/JournalEntry";
+import ChartOfAccounts from "./Pages/Accounts/ChartOfAccounts/ChartOfAccounts";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -90,6 +91,9 @@ function App() {
                </Route>
                <Route exact path="/accounting/journal/entry">
                   <JournalEntry></JournalEntry>
+               </Route>
+               <Route exact path="/accounting/chart-of-accounts">
+                  <ChartOfAccounts></ChartOfAccounts>
                </Route>
                <Route exact path="/">
                   <Main></Main>
