@@ -10,7 +10,6 @@ import PageContentHeader from "../../../Components/PageContentHeader";
 import Layout from "../../../Components/Layout";
 import useSelect from "../../../Hooks/useSelect";
 import useDatePicker from "../../../Hooks/useDatePicker";
-import Table from "./Table";
 import TableRowCollapse from "../../../Components/TableRowCollapse";
 import { Icon } from "@material-ui/core";
 import ArrowForwardIosIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -38,6 +37,7 @@ const FirstLevelRow = styled(Flexbox)`
    ${Text} {
       font-size: ${toRem(13)};
    }
+   background: ${colors};
 `;
 const SecondLevelRow = styled(FirstLevelRow)`
    padding-left: 3rem;

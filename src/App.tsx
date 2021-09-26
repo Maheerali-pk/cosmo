@@ -33,6 +33,7 @@ import Directory from "./Pages/Settings/Directory/Directory";
 import Journal from "./Pages/Accounts/Journal/Journal";
 import JournalEntry from "./Pages/Accounts/JournalEntry/JournalEntry";
 import ChartOfAccounts from "./Pages/Accounts/ChartOfAccounts/ChartOfAccounts";
+import GeneralLedgerExtra from "./Pages/Accounts/GeneralLedgerExtra/GeneralLegerExtra";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -94,6 +95,9 @@ function App() {
                </Route>
                <Route exact path="/accounting/chart-of-accounts">
                   <ChartOfAccounts></ChartOfAccounts>
+               </Route>
+               <Route exact path="/accounting/general-ledger-extra">
+                  <GeneralLedgerExtra></GeneralLedgerExtra>
                </Route>
                <Route exact path="/">
                   <Main></Main>

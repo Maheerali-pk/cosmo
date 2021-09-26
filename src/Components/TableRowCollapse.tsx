@@ -36,9 +36,7 @@ const TableRowCollapse: React.FC<TableRowCollapseProps> = ({
                         <MoreVertIcon fontSize="small"></MoreVertIcon>
                      </IconButton>
                   )}
-                  <Text isLink ml={showMenuIcon ? arrowGap / 2 : arrowGap}>
-                     {label}
-                  </Text>
+                  <Text ml={showMenuIcon ? arrowGap / 2 : arrowGap}>{label}</Text>
                </Flexbox>
                <Text>{balance}</Text>
             </Flexbox>
