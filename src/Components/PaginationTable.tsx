@@ -1,18 +1,19 @@
 import { Button, ButtonGroup } from "@material-ui/core";
-import { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { CSSProperties } from "styled-components";
 import { colors, toRem } from "../Helpers/utils";
 import Flexbox from "../StyledComponents/Flexbox";
 import Grid from "../StyledComponents/Grid";
 import Text from "../StyledComponents/Text";
 
 interface PaginationTableProps {
-   rows: string[][];
+   rows?: string[][];
    headings: string[];
-   RowWrapper: React.FC;
+   RowWrapper?: React.FC;
    HeadingsRowWrapper: React.FC;
+   rowsPerPage?: number;
+   wrapperStyles?: CSSProperties;
 }
-let rowsPerPage = 20;
 
 const PaginationButton = styled(Button)`
    padding: 0.25rem 0.75rem !important;
@@ -27,11 +28,41 @@ const PaginationNumberButton = styled(PaginationButton)`
    height: auto;
 `;
 
-const PaginationTable: React.FC<PaginationTableProps> = ({ headings, rows, HeadingsRowWrapper, RowWrapper }) => {
+const PaginationTable: React.FC<PaginationTableProps> = ({
+   headings,
+   rows,
+   HeadingsRowWrapper,
+   RowWrapper,
+   rowsPerPage = 20,
+   wrapperStyles,
+   children,
+}) => {
    const [page, setPage] = useState(0);
-   let noOfPages = Math.ceil(rows.length / rowsPerPage);
+   let noOfPages = Math.ceil((rows || React.Children.toArray(children)).length / rowsPerPage);
+   const renderRows = () => {
+      if (rows && RowWrapper) {
+         return rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((row) => (
+            <RowWrapper>
+               {row.map((text) => (
+                  <Text>{text}</Text>
+               ))}
+            </RowWrapper>
+         ));
+      } else if (children) {
+         const childrenArr = React.Children.toArray(children);
+         console.log(childrenArr.length, "child arr length");
+         return childrenArr.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((child) => <>{child}</>);
+      }
+   };
+
    return (
-      <Flexbox column fullWidth justify="space-between" overflowAuto style={{ height: "100%" }}>
+      <Flexbox
+         column
+         fullWidth
+         justify="space-between"
+         overflowAuto
+         style={{ height: "100%", ...(wrapperStyles || {}) }}
+      >
          <Flexbox column fullWidth overflowAuto>
             <HeadingsRowWrapper>
                {headings.map((x) => (
@@ -39,13 +70,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({ headings, rows, Headi
                ))}
             </HeadingsRowWrapper>
             <Flexbox column fullWidth overflowAuto>
-               {rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((row) => (
-                  <RowWrapper>
-                     {row.map((text) => (
-                        <Text>{text}</Text>
-                     ))}
-                  </RowWrapper>
-               ))}
+               {renderRows()}
             </Flexbox>
          </Flexbox>
          <Flexbox padding="0.5rem 2rem">

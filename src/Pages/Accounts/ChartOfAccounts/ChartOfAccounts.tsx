@@ -38,6 +38,7 @@ const FirstLevelRow = styled(Flexbox)`
       font-size: ${toRem(13)};
    }
    background: ${colors};
+   justify-content: space-between;
 `;
 const SecondLevelRow = styled(FirstLevelRow)`
    padding-left: 3rem;
@@ -53,7 +54,7 @@ const HeadingsRowWrapper = styled(Flexbox)`
 `;
 
 interface TableRowData {
-   balance: string;
+   rowItems: string[];
    label: string;
    showMenuIcon: boolean;
    childRows?: TableRowData[];
@@ -62,13 +63,11 @@ interface TableRowData {
 const tempTableData: TableRowData[] = [
    ...repeat(
       {
-         balance: "300,000",
-         label: "Item 1",
+         rowItems: ["Item 1", "300,000"],
          childRows: repeat(
             {
-               balance: "100,000",
-               label: "Sub Item 1",
-               childRows: repeat({ balance: "5000", label: "Sub Sub Item 1" }, 5),
+               rowItems: ["Sub Item 1", "100,000"],
+               childRows: repeat({ rowItems: ["Sub Item 1", "100,000"] }, 5),
             },
             5
          ),

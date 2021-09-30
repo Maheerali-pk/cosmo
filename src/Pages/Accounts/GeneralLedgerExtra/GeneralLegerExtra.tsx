@@ -33,6 +33,7 @@ const FirstLevelRow = styled(Flexbox)`
       font-size: ${toRem(13)};
    }
    background: ${colors.sidebarBackground};
+   justify-content: space-between;
 `;
 const SecondLevelRow = styled(FirstLevelRow)`
    padding-left: 2.5rem;
@@ -79,8 +80,7 @@ const HeadingsRowWrapper = styled(SubTableRowWrapper)`
 `;
 
 interface TableRowData {
-   balance: string;
-   label: string;
+   rowItems: string[];
    showMenuIcon: boolean;
    childRows?: TableRowData[];
    subTableRows?: string[][];
@@ -89,20 +89,16 @@ interface TableRowData {
 const tempTableData: TableRowData[] = [
    ...repeat(
       {
-         balance: "300,000",
-         label: "Item 1",
+         rowItems: ["Item 1", "300,000"],
          childRows: repeat(
             {
-               balance: "100,000",
-               label: "Sub Item 1",
+               rowItems: ["Sub Item 1", "100,000"],
                childRows: repeat(
                   {
-                     balance: "5000",
-                     label: "Sub Sub Item 1",
+                     rowItems: ["Sub Sub Item 1", "1000"],
                      childRows: repeat(
                         {
-                           balance: "200",
-                           label: "Level 4 Item",
+                           rowItems: ["Level 4 Item", "100"],
                            subTableRows: [
                               ["Title", ...Array(8).fill(""), "649,411"],
                               ...repeat(
