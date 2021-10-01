@@ -33,7 +33,12 @@ const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon = tr
 
    return (
       <>
-         <DropdownButton variant="text" style={{ padding: "0", minWidth: "fit-content" }} onClick={handleClick}>
+         <DropdownButton
+            className="dropdown-btn"
+            variant="text"
+            style={{ padding: "0", minWidth: "fit-content" }}
+            onClick={handleClick}
+         >
             <Text fontFamily="regular" size={16}>
                {label}
             </Text>

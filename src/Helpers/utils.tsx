@@ -31,6 +31,7 @@ export const colors = {
    blueButton: "#418BCA",
    companyCardBackground: "#F5F5F5",
    orangeStar: "#FB9F00",
+   inputLightText: "#B2B2B2",
 };
 export type FontFamilyKey = "regular" | "semibold" | "myraid-pro";
 

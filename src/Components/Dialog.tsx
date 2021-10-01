@@ -14,6 +14,7 @@ const DialogWrapper = styled(Flexbox)`
    top: ${toRem(40)};
    left: 50%;
    transform: translate(-50%, 0);
+   z-index: 2;
 `;
 
 const HeaderWrapper = styled(Flexbox)`

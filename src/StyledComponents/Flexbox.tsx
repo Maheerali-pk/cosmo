@@ -10,6 +10,7 @@ interface FlexboxProps {
    fullWidth?: boolean;
    fullHeight?: boolean;
    padding?: string;
+   margin?: string;
    background?: keyof typeof colors;
    pb?: number;
    pt?: number;
@@ -67,6 +68,7 @@ export const flexbox = (p: FlexboxProps) => css`
    ${p.fullHeight && `height: 100%`};
 
    ${p.padding && `padding: ${p.padding}`};
+   ${p.margin && `margin: ${p.margin}`};
 
    ${p.pb && `padding-bottom: ${toRem(p.pb)}`};
    ${p.pt && `padding-top: ${toRem(p.pt)}`};

@@ -14,6 +14,9 @@ import PageSubHeaderWrapper from "../../../StyledComponents/PageSubHeaderWrapper
 import Tabs from "../../../Components/Tabs";
 import SalesCustomer from "./SalesCustomer";
 import SalesList from "./SalesList";
+import SalesDetailed from "./SalesDetailed";
+import { useGlobalContext } from "../../../Contexts/GlobalContext/GlobalContext";
+import NewInvoiceDialog from "../../../Dialogs/NewInvoiceDialog";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled.div`
@@ -53,6 +56,7 @@ const tempTableData: TableRowData[] = [
 console.log(tempTableData);
 
 const SalesCenter: React.FC<AccountRecieveablesProps> = () => {
+   const [state, dispatch] = useGlobalContext();
    return (
       <Layout navbarItems={["Airmed", "Accounting", "Accounts"]}>
          <PageWrapper>
@@ -68,7 +72,7 @@ const SalesCenter: React.FC<AccountRecieveablesProps> = () => {
                titles={["Customer", "List", "Detailed"]}
                rightSideContent={
                   <Flexbox gap={24} mr={40}>
-                     <IconButton style={{ padding: "0" }}>
+                     <IconButton onClick={() => dispatch({ setDialog: NewInvoiceDialog })} style={{ padding: "0" }}>
                         <i className="fas fa-filter fa-xs"></i>
                      </IconButton>
                      <IconButton style={{ padding: "0" }}>
@@ -79,6 +83,7 @@ const SalesCenter: React.FC<AccountRecieveablesProps> = () => {
             >
                <SalesCustomer></SalesCustomer>
                <SalesList></SalesList>
+               <SalesDetailed></SalesDetailed>
             </Tabs>
          </PageWrapper>
       </Layout>

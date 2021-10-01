@@ -1,4 +1,5 @@
 import React from "react";
+import NewInvoiceDialog from "../../Dialogs/NewInvoiceDialog";
 import { createCustomContext } from "../../Helpers/CreateCustomContext";
 
 interface IGlobalState {
