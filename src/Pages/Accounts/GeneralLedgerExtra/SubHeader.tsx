@@ -3,7 +3,7 @@ import { colors, toRem } from "../../../Helpers/utils";
 import Flexbox, { flexbox } from "../../../StyledComponents/Flexbox";
 import Text from "../../../StyledComponents/Text";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
-import { IconButton, Menu } from "@material-ui/core";
+import { Button, IconButton, Menu } from "@material-ui/core";
 import PageSubHeaderWrapper from "../../../StyledComponents/PageSubHeaderWrapper";
 import Dropdown from "../../../Components/Dropdown";
 
@@ -20,8 +20,12 @@ const SubHeader: React.FC = () => {
          </Text>
          <Flexbox gap={24}>
             <Flexbox gap={24}>
-               <Text>Email</Text>
-               <Text>Print</Text>
+               <Button style={{ padding: 0, minWidth: "fit-content" }}>
+                  <Text>Email</Text>
+               </Button>
+               <Button style={{ padding: 0, minWidth: "fit-content" }}>
+                  <Text>Print</Text>
+               </Button>
                <Dropdown
                   label="Export"
                   items={[

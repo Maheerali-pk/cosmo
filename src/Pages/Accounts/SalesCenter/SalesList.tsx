@@ -29,6 +29,10 @@ const TableRowWrapper = styled(Grid)`
    padding: ${toRem(10)} 1rem;
    width: 100%;
 
+   & ${Text}:first-child {
+      color: ${colors.bueLink} !important;
+      text-decoration: underline;
+   }
    ${Text} {
       text-align: center;
       font-size: ${toRem(13)};
@@ -44,6 +48,10 @@ const HeadingsRowWrapper = styled(TableRowWrapper)`
    height: fit-content;
    border-top: 1px solid ${colors.skyBlueLines};
    border-bottom: none;
+   & ${Text}:first-child {
+      color: ${colors.grayText} !important;
+      text-decoration: none;
+   }
 `;
 
 interface TableRowData {

@@ -43,6 +43,7 @@ const FirstLevelRow = styled(Grid)`
    & > *:first-child {
       text-align: left;
    }
+
    height: fit-content;
 `;
 const HeadingsRowWrapper = styled(Grid)`
@@ -64,6 +65,10 @@ const HeadingsRowWrapper = styled(Grid)`
       text-align: left;
    }
    width: 100%;
+   & ${Text}:first-child {
+      color: ${colors.grayText} !important;
+      text-decoration: none;
+   }
    /* overflow-y: scroll; */
 `;
 
@@ -81,6 +86,10 @@ const SubTableRowWrapper = styled(Grid)`
    & > *:nth-child(7) {
       text-align: right;
    }
+   & ${Text}:first-child {
+      color: ${colors.bueLink} !important;
+      text-decoration: underline;
+   }
 `;
 
 const SubTableHeadingsRowWrapper = styled(SubTableRowWrapper)`
@@ -88,6 +97,10 @@ const SubTableHeadingsRowWrapper = styled(SubTableRowWrapper)`
    height: fit-content;
    border-top: 1px solid ${colors.skyBlueLines};
    border-bottom: none;
+   & ${Text}:first-child {
+      color: ${colors.grayText} !important;
+      text-decoration: none;
+   }
 `;
 
 interface TableRowData {
@@ -234,7 +247,7 @@ const SalesDetailed: React.FC<AccountRecieveablesProps> = () => {
                         "Aging",
                         "Amount",
                      ]}
-                     wrapperStyles={{ minHeight: "45rem" }}
+                     wrapperStyles={{ minHeight: "42rem" }}
                   ></PaginationTable>
                </TableRowCollapse>
             ))}

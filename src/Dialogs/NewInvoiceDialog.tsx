@@ -17,10 +17,18 @@ const RowWrapper = styled(Grid)`
    ${Text} {
       font-size: ${toRem(13)};
    }
+   & ${Text}:first-child {
+      color: ${colors.bueLink} !important;
+      text-decoration: underline;
+   }
 `;
 
 const HeadingsRowWrapper = styled(RowWrapper)`
    background: ${colors.headingBackground};
+   & ${Text}:first-child {
+      color: ${colors.grayText} !important;
+      text-decoration: none;
+   }
 `;
 
 const theme = createTheme({
@@ -47,6 +55,7 @@ const tableRows: string[][] = [...repeat(["73450", "Website", "Invoiced"], 2)];
 
 const NewInvoiceDialog: React.FC = () => {
    const [team, setTeam] = useState("Accounts");
+   const [customer, setCustomer] = useState("Twin Food Stores");
    console.log("hello");
    return (
       <MuiThemeProvider theme={theme}>
@@ -54,11 +63,22 @@ const NewInvoiceDialog: React.FC = () => {
             <Text mb={12} size={13}>
                Kindly select a Customer for whom you'd like to create the invoice
             </Text>
-            <Flexbox mb={20} gap={32}>
+            <Flexbox mb={20} gap={32} fullWidth>
                <Text size={13} color="graySubHeading">
                   Customer
                </Text>
-               <Text size={13}>Twin Food Stores</Text>
+               <CustomSelect
+                  wrapperWidth="100%"
+                  fullWidth
+                  options={[
+                     { text: "Twin Food Stores", value: "Twin Food Stores" },
+                     { text: "Item 2", value: "Item 2" },
+                     { text: "Item 3", value: "Item 3" },
+                  ]}
+                  value={customer}
+                  onValueChange={(x) => setCustomer(x)}
+               ></CustomSelect>
+               {/* <Text size={13}>Twin Food Stores</Text> */}
             </Flexbox>
             <Text mb={16} size={13}>
                Ongoing Sales for the following Customer

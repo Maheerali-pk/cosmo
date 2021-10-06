@@ -39,6 +39,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
 }) => {
    const [page, setPage] = useState(0);
    let noOfPages = Math.ceil((rows || React.Children.toArray(children)).length / rowsPerPage);
+   let noOfItems = (rows || React.Children.toArray(children)).length;
    const renderRows = () => {
       if (rows && RowWrapper) {
          return rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((row) => (
@@ -54,7 +55,17 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
          return childrenArr.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((child) => <>{child}</>);
       }
    };
-
+   const renderPaginationStatus = () => {
+      const childrenArr = React.Children.toArray(children);
+      let firstRowNo = rowsPerPage * page + 1;
+      let lastRowNo = rowsPerPage * (page + 1) + 1;
+      lastRowNo = lastRowNo > noOfItems ? noOfItems : lastRowNo;
+      return (
+         <Text size={13}>
+            {firstRowNo} - {lastRowNo} of {noOfItems} Items
+         </Text>
+      );
+   };
    return (
       <Flexbox
          column
@@ -73,7 +84,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
                {renderRows()}
             </Flexbox>
          </Flexbox>
-         <Flexbox padding="0.5rem 2rem">
+         <Flexbox style={{ background: "#FCFCFC" }} padding="0.5rem 2rem" justify="space-between" fullWidth>
             <ButtonGroup variant="outlined">
                <PaginationButton onClick={() => setPage(page - 1)} disabled={page === 0}>
                   Prev
@@ -92,6 +103,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
                   Next
                </PaginationButton>
             </ButtonGroup>
+            {renderPaginationStatus()}
          </Flexbox>
       </Flexbox>
    );

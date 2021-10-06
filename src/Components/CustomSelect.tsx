@@ -14,11 +14,12 @@ export interface SelectProps extends MUISelectProps {
    label?: string;
    onValueChange: (option: string) => void;
    value: string;
+   wrapperWidth?: string;
 }
 
-const CustomSelect: React.FC<SelectProps> = ({ onValueChange, label, options, value, ...rest }) => {
+const CustomSelect: React.FC<SelectProps> = ({ onValueChange, label, options, value, wrapperWidth, ...rest }) => {
    return (
-      <FormControl>
+      <FormControl style={{ width: wrapperWidth || "" }}>
          {label && <InputLabel>{label}</InputLabel>}
          <MUISelect
             {...rest}

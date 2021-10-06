@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyledComponent } from "styled-components";
 import ArrowForwardIosIcon from "@material-ui/icons/KeyboardArrowRight";
+import ArrowDownIosIcon from "@material-ui/icons/KeyboardArrowDown";
 import Text from "../StyledComponents/Text";
 import Flexbox from "../StyledComponents/Flexbox";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -26,7 +27,12 @@ const TableRowCollapse: React.FC<TableRowCollapseProps> = ({
       <>
          <WrapperComponent onClick={() => setOpen(!open)}>
             <Flexbox>
-               {showArrow && <ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>}
+               {showArrow &&
+                  (open ? (
+                     <ArrowDownIosIcon fontSize="small"></ArrowDownIosIcon>
+                  ) : (
+                     <ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
+                  ))}
                {showMenuIcon && (
                   <IconButton style={{ marginLeft: arrowGap / 2, padding: 0 }}>
                      {" "}

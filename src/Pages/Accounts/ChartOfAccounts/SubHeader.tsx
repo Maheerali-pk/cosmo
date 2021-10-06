@@ -19,7 +19,9 @@ const SubHeader: React.FC = () => {
             Chart of Accounts
          </Text>
          <Flexbox gap={24}>
-            <Text>Expand All</Text>
+            <Button>
+               <Text>Expand All</Text>
+            </Button>
             <Dropdown
                label="Actions"
                items={[

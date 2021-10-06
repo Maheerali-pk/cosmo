@@ -30,6 +30,10 @@ const FirstLevelRow = styled(Grid)`
    ${Text} {
       font-size: ${toRem(13)};
    }
+   & > div:first-child ${Text} {
+      color: ${colors.bueLink} !important;
+      text-decoration: underline;
+   }
    grid-template-columns: 4fr 4fr 2fr 1fr;
    ${Text} {
       text-align: center;
@@ -126,7 +130,7 @@ const SalesCustomer: React.FC<AccountRecieveablesProps> = () => {
                   rowsPerPage={5}
                   rows={item.subTableRows}
                   headings={["ID", "Type", "Title", "Created", "Edited", "Status", "Received Amount", "Total Amount"]}
-                  wrapperStyles={{ minHeight: "20rem" }}
+                  wrapperStyles={{ minHeight: "16rem" }}
                ></PaginationTable>
             </TableRowCollapse>
          ))}
