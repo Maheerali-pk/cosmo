@@ -15,6 +15,12 @@ import Tabs from "../../../../Components/Tabs";
 import { useGlobalContext } from "../../../../Contexts/GlobalContext/GlobalContext";
 import NewInvoiceDialog from "../../../../Dialogs/NewInvoiceDialog";
 import { Stages } from "../../../../Components/Stages";
+import SelectsRow from "./SelectsRow";
+import Content from "./Content";
+import List from "./List";
+import SettingsIcon from "@material-ui/icons/Settings";
+import Footer from "./Footer";
+import StickyFooter from "./StickyFooter";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled.div`
@@ -53,35 +59,41 @@ const tempTableData: TableRowData[] = [
 
 console.log(tempTableData);
 
-const SubHeader: React.FC<AccountRecieveablesProps> = () => {
+const FirstPayment: React.FC<AccountRecieveablesProps> = () => {
+   const [state, dispatch] = useGlobalContext();
    return (
-      <Flexbox pl={32} pr={52} fullWidth justify="space-between">
-         <Flexbox>
-            <Text fontFamily="semibold" mr={12}>
-               3276
-            </Text>
-            <Text fontFamily="semibold">Invoice</Text>
-         </Flexbox>
-         <Flexbox>
-            <Flexbox align="start" mr={32}>
-               <Text size={20} fontFamily="semibold">
-                  1060
+      <Flexbox style={{ position: "relative" }} mt={24} column fullWidth>
+         <Flexbox pl={32} pr={52} fullWidth justify="space-between">
+            <Flexbox>
+               <Text fontFamily="semibold" mr={12}>
+                  125
                </Text>
-               <Text size={13} fontFamily="semibold" ml={12}>
-                  USD
-               </Text>
+               <Text fontFamily="semibold">First Payment</Text>
             </Flexbox>
             <Flexbox align="start">
                <Text size={20} fontFamily="semibold">
-                  164,141
+                  400,000
                </Text>
                <Text size={13} fontFamily="semibold" ml={12}>
                   PKR
                </Text>
             </Flexbox>
          </Flexbox>
+         <SelectsRow></SelectsRow>
+         <Content></Content>
+         <Flexbox column fullWidth>
+            <Flexbox padding="0.25rem 2rem" fullWidth justify="space-between">
+               <Text fontFamily="semibold">List</Text>
+               <IconButton style={{ padding: "0.25rem" }}>
+                  <SettingsIcon fontSize="small"></SettingsIcon>
+               </IconButton>
+            </Flexbox>
+            <List></List>
+         </Flexbox>
+         <Footer></Footer>
+         <StickyFooter></StickyFooter>
       </Flexbox>
    );
 };
 
-export default SubHeader;
+export default FirstPayment;

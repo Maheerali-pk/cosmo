@@ -16,6 +16,7 @@ interface GridProps {
    ml?: number;
    mr?: number;
    minHeight?: boolean;
+   colGap?: string;
 }
 
 export const grid = (p: GridProps) => css`
@@ -36,6 +37,7 @@ export const grid = (p: GridProps) => css`
    ${p.mt && `margin-top: ${toRem(p.mt)}`};
    ${p.ml && `margin-left: ${toRem(p.ml)}`};
    ${p.mr && `margin-right: ${toRem(p.mr)}`};
+   column-gap: ${p.colGap || ""};
 `;
 
 export default styled.div<GridProps>`
