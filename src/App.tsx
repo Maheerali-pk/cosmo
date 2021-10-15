@@ -35,6 +35,8 @@ import JournalEntry from "./Pages/Accounts/JournalEntry/JournalEntry";
 import ChartOfAccounts from "./Pages/Accounts/ChartOfAccounts/ChartOfAccounts";
 import GeneralLedgerExtra from "./Pages/Accounts/GeneralLedgerExtra/GeneralLegerExtra";
 import SalesCenter from "./Pages/Accounts/SalesCenter/SalesCenter";
+import Payment from "./Pages/Accounts/Payment/Payment";
+import Invoice from "./Pages/Accounts/Invoice/Invoice";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -103,6 +105,12 @@ function App() {
 
                <Route exact path="/accounting/sales-center">
                   <SalesCenter></SalesCenter>
+               </Route>
+               <Route exact path="/accounting/payment">
+                  <Payment></Payment>
+               </Route>
+               <Route exact path="/accounting/invoice">
+                  <Invoice></Invoice>
                </Route>
                <Route exact path="/">
                   <Main></Main>

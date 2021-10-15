@@ -5,14 +5,16 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
-import { fonts } from "../Helpers/utils";
+import { fonts, toRem } from "../Helpers/utils";
 import { CSSProperties } from "styled-components";
 interface CustomInputProps {
-   type?: "email" | "password" | "text";
-   staticType?: "text" | "password";
+   type?: "email" | "password" | "text" | "number";
+   staticType?: "text" | "password" | "number";
    placeholder?: string;
    inputStyles?: CSSProperties;
    maxLength?: number;
+   label?: string;
+   inputProps?: any;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({
@@ -21,6 +23,8 @@ const CustomInput: React.FC<CustomInputProps> = ({
    staticType,
    inputStyles,
    maxLength,
+   label,
+   inputProps,
 }) => {
    const [isVisible, setIsVisible] = useState(false);
    const renderStartAdornment = () => {
@@ -55,6 +59,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
    return (
       <TextField
          fullWidth
+         label={label || null}
          InputProps={{
             startAdornment: renderStartAdornment(),
             endAdornment: renderEndAdornment(),
@@ -62,10 +67,12 @@ const CustomInput: React.FC<CustomInputProps> = ({
             style: { fontSize: "1.25rem", ...inputStyles },
             //@ts-ignore
          }}
+         InputLabelProps={{ style: { fontSize: toRem(13) } }}
          //@ts-ignore
          inputProps={{ maxLength: maxLength || "", style: { ...inputStyles } }}
          placeholder={placeholder}
-         type={(isVisible || type !== "password") && staticType !== "password" ? "text" : "password"}
+         type={(isVisible || type !== "password") && staticType !== "password" ? type : "password"}
+         {...inputProps}
       ></TextField>
    );
 };

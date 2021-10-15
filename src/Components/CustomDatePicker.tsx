@@ -8,7 +8,7 @@ export interface CustomDatePickerProps extends Omit<KeyboardDatePickerProps, "on
    value: Date;
 }
 
-const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onChange }) => {
+const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onChange, ...rest }) => {
    const [open, setOpen] = useState(false);
    return (
       <KeyboardDatePicker
@@ -25,6 +25,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onChange }) 
          InputProps={{ disableUnderline: true }}
          keyboardIcon={<ArrowDropDown></ArrowDropDown>}
          className="mui-date-picker"
+         {...rest}
       />
    );
 };

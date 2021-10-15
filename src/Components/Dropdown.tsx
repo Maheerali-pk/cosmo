@@ -1,5 +1,5 @@
 import { Button, Menu, MenuItem } from "@material-ui/core";
-import React from "react";
+import React, { CSSProperties } from "react";
 import Text from "../StyledComponents/Text";
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -13,13 +13,15 @@ interface DropdownProps {
    label: string | JSX.Element;
    items: DropdownItem[];
    showDropdownIcon?: boolean;
+   style?: CSSProperties;
+   labelStyles?: CSSProperties;
 }
 
 const DropdownButton = styled(Button)`
    background-color: transparent !important;
 `;
 
-const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon = true }) => {
+const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon = true, style = {}, labelStyles = {} }) => {
    const [anchorEl, setAnchorEl] = React.useState(null);
 
    const handleClick = (event: any) => {
@@ -36,10 +38,10 @@ const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon = tr
          <DropdownButton
             className="dropdown-btn"
             variant="text"
-            style={{ padding: "0", minWidth: "fit-content" }}
+            style={{ padding: "0", minWidth: "fit-content", ...style }}
             onClick={handleClick}
          >
-            <Text fontFamily="regular" size={16}>
+            <Text fontFamily="regular" size={16} style={{ ...labelStyles }}>
                {label}
             </Text>
             {showDropdownIcon ? <ArrowDropDownIcon></ArrowDropDownIcon> : null}
