@@ -20,6 +20,7 @@ import { Stages } from "../../../Components/Stages";
 import FirstPayment from "./FirstPayment/FirstPayment";
 import Dropdown from "../../../Components/Dropdown";
 import { FireplaceTwoTone } from "@material-ui/icons";
+import DuplicateInvoice from "../../../Dialogs/DuplicateInvoice";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled.div`
@@ -36,6 +37,7 @@ const Payment: React.FC<AccountRecieveablesProps> = () => {
    const [state, dispatch] = useGlobalContext();
    return (
       <Layout navbarItems={["Airmed", "Accounting", "Accounts"]}>
+         {state.dialog === DuplicateInvoice ? <DuplicateInvoice></DuplicateInvoice> : null}
          <PageWrapper>
             <PageContentHeader items={["Accounts", "Sales", "Purchases", "Company", "Reports"]}></PageContentHeader>
             <Grid padding="0.5rem 2rem" columns="4fr 1fr 1fr 1fr 1fr 0.5fr" fullWidth>

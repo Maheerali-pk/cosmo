@@ -1,4 +1,5 @@
 import React from "react";
+import DuplicateInvoice from "../../Dialogs/DuplicateInvoice";
 import NewInvoiceDialog from "../../Dialogs/NewInvoiceDialog";
 import { createCustomContext } from "../../Helpers/CreateCustomContext";
 
@@ -36,6 +37,7 @@ const initialState: IGlobalState = {
    settingsSidebarItems: ["Overview", "Teams", "Permissions", "Approvals", "Notifications", "Directory"],
    selectedSettingsSidebarItem: "Overview",
    selectedItem: "Accounting",
+   dialog: DuplicateInvoice,
 };
 
 function setIsSidebarOpen(state: IGlobalState, value: boolean): IGlobalState {

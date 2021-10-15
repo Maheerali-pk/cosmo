@@ -34,6 +34,9 @@ label + .MuiInput-formControl {
 .bottom-area {
    height: calc(100vh - 3.25rem) !important;
 }
+.radio-group label * {
+   font-size: 0.82rem !important;
+}
 /* .MuiFormControlLabel-label {
    font-size: 1.25rem !important;
    font-family: SegoeUISemibold !important;

@@ -66,6 +66,14 @@ export const commonStyles: ThemeOptions = {
       },
    },
    overrides: {
+      MuiRadio: {
+         root: {
+            "& svg": {
+               height: "0.75rem",
+               width: "0.75rem",
+            },
+         },
+      },
       MuiCheckbox: {
          root: {
             "&:hover": {

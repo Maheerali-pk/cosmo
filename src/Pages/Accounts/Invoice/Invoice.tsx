@@ -19,6 +19,7 @@ import NewInvoiceDialog from "../../../Dialogs/NewInvoiceDialog";
 import { Stages } from "../../../Components/Stages";
 import FirstInvoice from "./FirstInvoice/FirstInvoice";
 import Dropdown from "../../../Components/Dropdown";
+import DuplicateInvoice from "../../../Dialogs/DuplicateInvoice";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled.div`

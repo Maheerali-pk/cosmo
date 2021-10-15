@@ -21,6 +21,7 @@ import List from "./List";
 import SettingsIcon from "@material-ui/icons/Settings";
 import Footer from "./Footer";
 import StickyFooter from "./StickyFooter";
+import DuplicateInvoice from "../../../../Dialogs/DuplicateInvoice";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled.div`
@@ -85,7 +86,10 @@ const FirstPayment: React.FC<AccountRecieveablesProps> = () => {
             <Flexbox padding="0.25rem 2rem" fullWidth justify="space-between">
                <Text fontFamily="semibold">List</Text>
                <IconButton style={{ padding: "0.25rem" }}>
-                  <SettingsIcon fontSize="small"></SettingsIcon>
+                  <SettingsIcon
+                     onClick={() => dispatch({ setDialog: DuplicateInvoice })}
+                     fontSize="small"
+                  ></SettingsIcon>
                </IconButton>
             </Flexbox>
             <List></List>
