@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { toRem } from "../Helpers/utils";
+import { toRem, colors } from "../Helpers/utils";
 import Flexbox from "../StyledComponents/Flexbox";
 import Text from "../StyledComponents/Text";
 import CheckIcon from "@material-ui/icons/Check";
@@ -111,7 +111,16 @@ export const Stages: React.FC<StagesProps> = ({ stages, children, defaultStage =
             {stages.map((stage, i) => (
                <Flexbox align="start" column onClick={() => setStageNo(i)}>
                   {renderIcon(stage)}
-                  <Text mt={8} fontFamily="semibold" style={{ transform: "translateX(-50%)", whiteSpace: "nowrap" }}>
+                  <Text
+                     mt={8}
+                     fontFamily="semibold"
+                     style={{
+                        transform: "translateX(-50%)",
+                        whiteSpace: "nowrap",
+                        borderBottom: stageNo === i ? `${toRem(3)} solid ${colors.grayText}` : "",
+                        paddingBottom: toRem(2),
+                     }}
+                  >
                      {stage.label}
                   </Text>
                </Flexbox>

@@ -15,6 +15,7 @@ interface CustomInputProps {
    maxLength?: number;
    label?: string;
    inputProps?: any;
+   defaultValue?: string;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({
@@ -25,6 +26,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
    maxLength,
    label,
    inputProps,
+   defaultValue,
 }) => {
    const [isVisible, setIsVisible] = useState(false);
    const renderStartAdornment = () => {
@@ -65,9 +67,9 @@ const CustomInput: React.FC<CustomInputProps> = ({
             endAdornment: renderEndAdornment(),
             disableUnderline: true,
             style: { fontSize: "1.25rem", ...inputStyles },
+            defaultValue,
             //@ts-ignore
          }}
-         InputLabelProps={{ style: { fontSize: toRem(13) } }}
          //@ts-ignore
          inputProps={{ maxLength: maxLength || "", style: { ...inputStyles } }}
          placeholder={placeholder}

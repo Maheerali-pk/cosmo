@@ -93,7 +93,9 @@ const FirstInvoice: React.FC<AccountRecieveablesProps> = () => {
          <Content></Content>
          <Flexbox column fullWidth>
             <Flexbox padding="0.25rem 2rem" fullWidth justify="space-between">
-               <Text fontFamily="semibold">List</Text>
+               <Text fontFamily="semibold" size={13}>
+                  List
+               </Text>
                <IconButton style={{ padding: "0.25rem" }}>
                   <SettingsIcon fontSize="small"></SettingsIcon>
                </IconButton>
