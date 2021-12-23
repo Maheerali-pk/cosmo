@@ -29,17 +29,31 @@ const IconWrapper = styled(IconButton)`
    width: ${toRem(24)} !important;
    padding: 0 !important;
 `;
+const UserItemWrapper = styled(Flexbox)`
+   cursor: pointer;
+   .delete-icon {
+      display: none;
+   }
+   &:hover {
+      .delete-icon {
+         display: block;
+      }
+   }
+`;
 
 const UserItem: React.FC<IUserItem> = ({ image, name }) => {
    return (
-      <Flexbox fullWidth justify="space-between">
+      <UserItemWrapper fullWidth justify="space-between">
          <Flexbox gap={12}>
             <RoundImage src={image}></RoundImage>
             <Text>{name}</Text>
          </Flexbox>
 
-         <DeleteIcon style={{ color: colors.sidebarBackground, cursor: "pointer" }}></DeleteIcon>
-      </Flexbox>
+         <DeleteIcon
+            className="delete-icon"
+            style={{ color: colors.sidebarBackground, cursor: "pointer" }}
+         ></DeleteIcon>
+      </UserItemWrapper>
    );
 };
 

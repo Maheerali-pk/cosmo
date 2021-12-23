@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./Fonts.css";
 import Navbar from "./Components/Navbar";
@@ -42,10 +42,22 @@ import Checks from "./Pages/Accounts/Checks/Checks";
 
 const theme = createTheme(commonStyles);
 function App() {
+   const [state, dispatch] = useGlobalContext();
+   const [isDialogShown, setIsDialogShown] = useState(Boolean(document.querySelector(".dialog")));
+   useEffect(() => {
+      if (state.dialog && Boolean(document.querySelector(".dialog"))) {
+         setIsDialogShown(true);
+      } else {
+         setIsDialogShown(false);
+      }
+   }, [state.dialog]);
    return (
       <Router>
          <Switch>
             <MuiThemeProvider theme={theme}>
+               {isDialogShown ? (
+                  <div style={{ height: "100%", width: "100%", position: "absolute", opacity: 0 }}></div>
+               ) : null}
                <Route exact path="/projects">
                   <Layout navbarItems={["Airmed", "Accounting", "Company"]}>
                      <Construction></Construction>

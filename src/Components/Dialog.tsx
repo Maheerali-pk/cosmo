@@ -29,7 +29,7 @@ interface DialogProps {
 const Dialog: React.FC<DialogProps> = ({ title, children, dialogWidth }) => {
    const [_, dispatch] = useGlobalContext();
    return (
-      <DialogWrapper style={{ width: toRem(dialogWidth || 550) }} column>
+      <DialogWrapper className="dialog" style={{ width: toRem(dialogWidth || 550) }} column>
          <HeaderWrapper padding="1.25rem 2rem" fullWidth justify="space-between">
             <Text fontFamily="semibold">{title}</Text>
             <IconButton onClick={() => dispatch({ setDialog: undefined })} style={{ padding: 0 }}>
