@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { toRem } from "../Helpers/utils";
+import { FlexPos } from "./Flexbox";
 
 interface GridProps {
    noOfColumns?: number;
@@ -7,6 +8,7 @@ interface GridProps {
    columns?: string;
    fullWidth?: boolean;
    padding?: string;
+   align?: FlexPos;
    pb?: number;
    pt?: number;
    pl?: number;
@@ -37,6 +39,7 @@ export const grid = (p: GridProps) => css`
    ${p.mt && `margin-top: ${toRem(p.mt)}`};
    ${p.ml && `margin-left: ${toRem(p.ml)}`};
    ${p.mr && `margin-right: ${toRem(p.mr)}`};
+   ${p.align && `align-items: ${p.align}`};
    column-gap: ${p.colGap || ""};
 `;
 

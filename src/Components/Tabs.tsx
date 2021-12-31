@@ -16,6 +16,8 @@ interface TabsProps {
    currentIndex?: number;
    headerStyles?: CSSProperties;
    buttonStyles?: CSSProperties;
+   wrapperStyles?: CSSProperties;
+   tabStyles?: CSSProperties;
    rightSideContent?: JSX.Element;
 }
 
@@ -25,13 +27,15 @@ const Tabs: React.FC<TabsProps> = ({
    children,
    headerStyles,
    buttonStyles = {},
+   wrapperStyles = {},
+   tabStyles = {},
    rightSideContent = null,
 }) => {
    const [tabIndex, setTabIndex] = useState(currentIndex || 0);
    const childrenArr = React.Children.toArray(children);
    return (
       <>
-         <Flexbox justify="space-between" fullWidth>
+         <Flexbox style={wrapperStyles} justify="space-between" fullWidth>
             <Flexbox style={headerStyles ? { ...headerStyles } : {}} gap={32}>
                {titles.map((title, i) => (
                   <ButtonBase
@@ -42,7 +46,7 @@ const Tabs: React.FC<TabsProps> = ({
                      }}
                      onClick={() => setTabIndex(i)}
                   >
-                     <Text style={{}} size={15} fontFamily="semibold">
+                     <Text size={15} style={tabStyles} fontFamily="semibold">
                         {title}
                      </Text>
                   </ButtonBase>

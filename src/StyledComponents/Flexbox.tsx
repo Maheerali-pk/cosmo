@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { colors, toRem } from "../Helpers/utils";
 
-type FlexPos = "center" | "end" | "start" | "around" | "space-between" | "evenly";
+export type FlexPos = "center" | "end" | "start" | "around" | "space-between" | "evenly";
 interface FlexboxProps {
    column?: boolean;
    align?: FlexPos;
