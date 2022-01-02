@@ -125,6 +125,18 @@ export const commonStyles: ThemeOptions = {
       },
    },
 };
+
+export const chunks = (arr: any[], n: number) =>
+   Array(Math.ceil(arr.length / n))
+      .fill(0)
+      .map((x, i) => arr.slice(i * n, (i + 1) * n));
+
+export const compareDates = (d1: Date, d2: Date) => {
+   return d1.getDate() === d2.getDate() && d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear();
+};
+export const isDateInRange = (date: Date, min: Date, max: Date) => {
+   return date.getTime() > min.getTime() && date.getTime() < max.getTime();
+};
 // export function mergeOuterLocalTheme(outerTheme: Theme, localTheme: Theme) {
 //    if (typeof localTheme === "function") {
 //       const mergedTheme = localTheme (outerTheme);

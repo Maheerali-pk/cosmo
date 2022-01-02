@@ -14,6 +14,7 @@ interface TextProps {
    pt?: number;
    pl?: number;
    pr?: number;
+   p?: number;
    underline?: boolean;
    align?: "left" | "center" | "right";
    cursorPointer?: boolean;
@@ -35,6 +36,7 @@ export const text = (p: TextProps) => css`
       color: ${colors.bueLink};
       text-decoration: underline;
    `}
+   ${p.p && `padding: ${toRem(p.p)}`};
    ${p.mb && `margin-bottom: ${toRem(p.mb)}`};
    ${p.mt && `margin-top: ${toRem(p.mt)}`};
    ${p.ml && `margin-left: ${toRem(p.ml)}`};

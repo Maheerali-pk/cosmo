@@ -159,11 +159,6 @@ const PaysTab: React.FC = () => {
          <Tabs titles={["Upcomming", "Past"]}>
             <div></div>
             <Flexbox column fullWidth>
-               {/* <HeaderRowWrapper>
-                  <Text>Month</Text>
-                  <Text>Paid By</Text>
-                  <Text>Date</Text>
-               </HeaderRowWrapper> */}
                <TableRowCollapse
                   rowItems={["Month", "Paid by", "Date"]}
                   showArrow={true}
