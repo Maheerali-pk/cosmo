@@ -22,6 +22,7 @@ interface FlexboxProps {
    ml?: number;
    mr?: number;
    overflowAuto?: boolean;
+   noBorder?: boolean;
 }
 
 const flexPosObject: { [k in FlexPos]: string } = {
@@ -81,4 +82,5 @@ export const flexbox = (p: FlexboxProps) => css`
    ${p.mr && `margin-right: ${toRem(p.mr)}`};
    ${p.overflowAuto && `overflow: auto`};
    ${p.background && `background: ${colors[p.background]}`};
+   ${p.noBorder && `border: none !important`};
 `;

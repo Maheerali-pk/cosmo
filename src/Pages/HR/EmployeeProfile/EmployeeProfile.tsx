@@ -19,6 +19,7 @@ import HistoryIcon from "@material-ui/icons/History";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { IconButton } from "@material-ui/core";
 import OthersTab from "./OthersTab";
+import PaysTab from "./PaysTab";
 // import Table from "./Table";
 export interface AccountRecieveablesProps {}
 const StickyFooterWrapper = styled(Flexbox)`
@@ -86,7 +87,7 @@ const EmployeeProfile: React.FC = () => {
                   <ProfileTab></ProfileTab>
                   <LeavesTab></LeavesTab>
                   <div>performance</div>
-                  <div>Pay</div>
+                  <PaysTab></PaysTab>
                   <OthersTab></OthersTab>
                </Tabs>
             </Flexbox>

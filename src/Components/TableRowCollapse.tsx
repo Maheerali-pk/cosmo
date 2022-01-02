@@ -11,6 +11,7 @@ interface TableRowCollapseProps {
    showArrow?: boolean;
    arrowGap?: number;
    showMenuIcon?: boolean;
+   invisibleArrow?: boolean;
    rowItems: string[];
 }
 
@@ -21,6 +22,7 @@ const TableRowCollapse: React.FC<TableRowCollapseProps> = ({
    arrowGap = 0,
    showMenuIcon,
    rowItems,
+   invisibleArrow,
 }) => {
    const [open, setOpen] = useState(false);
    return (
@@ -29,9 +31,12 @@ const TableRowCollapse: React.FC<TableRowCollapseProps> = ({
             <Flexbox>
                {showArrow &&
                   (open ? (
-                     <ArrowDownIosIcon fontSize="small"></ArrowDownIosIcon>
+                     <ArrowDownIosIcon style={{ opacity: invisibleArrow ? 0 : 1 }} fontSize="small"></ArrowDownIosIcon>
                   ) : (
-                     <ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
+                     <ArrowForwardIosIcon
+                        style={{ opacity: invisibleArrow ? 0 : 1 }}
+                        fontSize="small"
+                     ></ArrowForwardIosIcon>
                   ))}
                {showMenuIcon && (
                   <IconButton style={{ marginLeft: arrowGap / 2, padding: 0 }}>
