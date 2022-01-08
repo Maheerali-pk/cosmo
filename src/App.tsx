@@ -42,6 +42,7 @@ import Checks from "./Pages/Accounts/Checks/Checks";
 import EmployeeProfile from "./Pages/HR/EmployeeProfile/EmployeeProfile";
 import HRCalendar from "./Pages/HR/Calendar/HRCalendar";
 import InventoryItem from "./Pages/SupplyChain/InventoryItem/InventoryItem";
+import NewAdjustments from "./Pages/SupplyChain/NewAdjustment";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -142,8 +143,10 @@ function App() {
                   <HRCalendar />
                </Route>
                <Route exact path="/sc/inventory-item">
-                  <div>Hello</div>
                   <InventoryItem />
+               </Route>
+               <Route exact path="/sc/new-adjustments">
+                  <NewAdjustments />
                </Route>
                <Route exact path="/">
                   <Main></Main>
