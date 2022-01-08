@@ -15,13 +15,22 @@ interface DropdownProps {
    showDropdownIcon?: boolean;
    style?: CSSProperties;
    labelStyles?: CSSProperties;
+   ButtonWrapper?: React.FC;
+   buttonVariant?: "text" | "outlined" | "contained";
 }
 
 const DropdownButton = styled(Button)`
-   background-color: transparent !important;
+   background-color: transparent;
 `;
 
-const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon = true, style = {}, labelStyles = {} }) => {
+const Dropdown: React.FC<DropdownProps> = ({
+   label,
+   buttonVariant,
+   items,
+   showDropdownIcon = true,
+   style = {},
+   labelStyles = {},
+}) => {
    const [anchorEl, setAnchorEl] = React.useState(null);
 
    const handleClick = (event: any) => {
@@ -37,7 +46,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, items, showDropdownIcon = tr
       <>
          <DropdownButton
             className="dropdown-btn"
-            variant="text"
+            variant={buttonVariant || "text"}
             style={{ padding: "0", minWidth: "fit-content", ...style }}
             onClick={handleClick}
          >
