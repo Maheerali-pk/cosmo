@@ -124,7 +124,7 @@ const LeavesTab: React.FC = () => {
    return (
       <>
          {state.dialog === NewLeaveDialog && <NewLeaveDialog></NewLeaveDialog>}
-         <Flexbox style={{ overflowY: "auto", height: "100%" }} column padding="2rem 0rem" fullWidth>
+         <Flexbox overflowAuto column padding="2rem 2rem" fullWidth>
             <Flexbox mb={32} justify="center" fullWidth>
                <Grid gap="2rem" noOfColumns={4}>
                   {dummyLeaveCards.map((x) => (

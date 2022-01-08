@@ -93,7 +93,7 @@ export interface AccountRecieveablesProps {}
 
 const ProfileTab: React.FC = () => {
    return (
-      <Flexbox style={{ overflowY: "auto", height: "100%" }} column padding="2rem 0rem" fullWidth>
+      <Flexbox style={{ overflow: "auto", height: "100%" }} column padding="2rem 2rem" fullWidth>
          <UnderlinedHeading>About</UnderlinedHeading>
          <Grid noOfColumns={3} gap="2rem" fullWidth>
             <Paragraph>

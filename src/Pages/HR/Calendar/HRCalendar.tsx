@@ -89,7 +89,7 @@ const HRCalendar: React.FC<HRCalendarProps> = () => {
                   label="Level"
                ></CustomSelect>
             </Flexbox>
-            <Flexbox mb={40}>
+            <Flexbox align="start" overflowAuto mb={40}>
                <CustomCalendar
                   tags={[{ title: "Huzaifa Aleem (H)", startDate: new Date(`6/10/21`), endDate: new Date(`6/13/21`) }]}
                   year={calendarYear}

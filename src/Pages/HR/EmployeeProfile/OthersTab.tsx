@@ -129,7 +129,7 @@ const tablesData: CustomTableProps[] = [
 const OthersTab: React.FC = () => {
    const [state, dispatch] = useGlobalContext();
    return (
-      <Flexbox column fullWidth pb={100}>
+      <Flexbox column fullWidth overflowAuto pb={100} padding="1rem 2rem">
          {tablesData.map((table) => (
             <CustomTable {...table}></CustomTable>
          ))}

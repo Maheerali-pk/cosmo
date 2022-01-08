@@ -76,6 +76,22 @@ label + .MuiInput-formControl {
       font-size: 50%;
    }
 }
+@media (max-width: 700px) {
+   html {
+      font-size: 40%;
+   }
+}
+
+@media (max-width: 500px) {
+   html {
+      font-size: 30%;
+   }
+}
+@media (max-width: 400px) {
+   html {
+      font-size: 25%;
+   }
+}
 
 ::-webkit-scrollbar {
    width: 0.35rem;

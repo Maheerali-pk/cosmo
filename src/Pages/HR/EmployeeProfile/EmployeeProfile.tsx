@@ -46,7 +46,7 @@ const PageWrapper = styled.div`
    min-width: 100%;
    border-left: 2px solid ${colors.pageOutlineSkyblue};
    overflow: auto;
-   grid-template-rows: min-content min-content min-content auto;
+   grid-template-rows: min-content min-content auto;
 `;
 
 const IconButtonWrapper = styled(IconButton)`
@@ -64,8 +64,9 @@ const EmployeeProfile: React.FC = () => {
                description="CFO"
                image="https://www.visitfashions.com/wp-content/uploads/2020/04/imageedit_16_3949620852.jpg"
             ></UserProfileRow>
-            <Flexbox padding="1rem 2rem" column fullWidth>
+            <Flexbox overflowAuto column fullWidth>
                <Tabs
+                  wrapperStyles={{ padding: "0rem 2rem", borderBottom: `${toRem(2)} solid #E1E1E1` }}
                   rightSideContent={
                      <Flexbox gap={16}>
                         <Flexbox align="start">

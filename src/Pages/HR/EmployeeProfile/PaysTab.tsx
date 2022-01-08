@@ -134,13 +134,13 @@ export interface AccountRecieveablesProps {}
 
 const PaysTab: React.FC = () => {
    return (
-      <Flexbox style={{ overflowY: "auto", height: "100%" }} column padding="2rem 0rem" fullWidth>
+      <Flexbox overflowAuto column padding="2rem 2rem" fullWidth>
          <UnderlinedHeading>
             <Text size={13} fontFamily="semibold">
                Monthly Sturucture
             </Text>
          </UnderlinedHeading>
-         <Grid noOfColumns={3} gap="2rem" fullWidth>
+         <Grid mb={40} noOfColumns={3} gap="2rem" fullWidth>
             <Paragraph>
                <Text>Gross Pay</Text>
                <Text>95,000</Text>
