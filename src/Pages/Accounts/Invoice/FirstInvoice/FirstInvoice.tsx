@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { colors, repeat, stringsToOptions, toRem } from "../../../../Helpers/utils";
 import Flexbox, { flexbox } from "../../../../StyledComponents/Flexbox";
 import Text from "../../../../StyledComponents/Text";
+import Grid from "../../../../StyledComponents/Grid";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 // import Table from "./Table";
 import PageContentHeader from "../../../../Components/PageContentHeader";
@@ -30,7 +31,7 @@ const PageWrapper = styled.div`
    min-width: 100%;
    border-left: 2px solid ${colors.pageOutlineSkyblue};
    overflow: auto;
-   grid-template-rows: min-content min-content min-content auto;
+   grid-template-rows: min-content min-content auto;
 `;
 
 interface TableRowData {
@@ -62,7 +63,7 @@ console.log(tempTableData);
 const FirstInvoice: React.FC<AccountRecieveablesProps> = () => {
    const [state, dispatch] = useGlobalContext();
    return (
-      <Flexbox style={{ position: "relative" }} mt={24} column fullWidth>
+      <>
          <Flexbox pl={32} pr={52} fullWidth justify="space-between">
             <Flexbox>
                <Text fontFamily="semibold" mr={12}>
@@ -90,21 +91,23 @@ const FirstInvoice: React.FC<AccountRecieveablesProps> = () => {
             </Flexbox>
          </Flexbox>
          <SelectsRow></SelectsRow>
-         <Content></Content>
-         <Flexbox column fullWidth>
-            <Flexbox padding="0.25rem 2rem" fullWidth justify="space-between">
-               <Text fontFamily="semibold" size={13}>
-                  List
-               </Text>
-               <IconButton style={{ padding: "0.25rem" }}>
-                  <SettingsIcon fontSize="small"></SettingsIcon>
-               </IconButton>
+         <Grid fullWidth style={{ overflow: "auto" }}>
+            <Content></Content>
+            <Flexbox column fullWidth>
+               <Flexbox padding="0.25rem 2rem" fullWidth justify="space-between">
+                  <Text fontFamily="semibold" size={13}>
+                     List
+                  </Text>
+                  <IconButton style={{ padding: "0.25rem" }}>
+                     <SettingsIcon fontSize="small"></SettingsIcon>
+                  </IconButton>
+               </Flexbox>
+               <List></List>
             </Flexbox>
-            <List></List>
-         </Flexbox>
-         <Footer></Footer>
+            <Footer></Footer>
+         </Grid>
          <StickyFooter></StickyFooter>
-      </Flexbox>
+      </>
    );
 };
 

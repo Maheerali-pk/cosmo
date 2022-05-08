@@ -100,13 +100,7 @@ export const Stages: React.FC<StagesProps> = ({ stages, children, defaultStage =
       return null;
    };
    return (
-      <Flexbox
-         style={{ display: "grid", gridTemplateColumns: "100%", background: "#FCFCFC" }}
-         pt={8}
-         overflowAuto
-         fullWidth
-         column
-      >
+      <>
          <Header justify={stages.length > 4 ? "start" : "center"} overflowAuto fullWidth pr={105 - 48} pl={105}>
             {stages.map((stage, i) => (
                <Flexbox align="start" column onClick={() => setStageNo(i)}>
@@ -126,7 +120,7 @@ export const Stages: React.FC<StagesProps> = ({ stages, children, defaultStage =
                </Flexbox>
             ))}
          </Header>
-         <Flexbox fullWidth>{childArr[stageNo]}</Flexbox>
-      </Flexbox>
+         <>{childArr[stageNo]}</>
+      </>
    );
 };

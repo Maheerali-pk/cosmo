@@ -67,6 +67,9 @@ const HeadingsRowWrapper = styled(RowWrapper)`
       text-align: center !important;
    } */
    overflow-y: scroll;
+   min-height: 2.125rem;
+   padding-top: 0 !important;
+   padding-bottom: 0 !important;
 `;
 
 interface RowProps {

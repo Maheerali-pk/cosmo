@@ -29,7 +29,7 @@ const PageWrapper = styled.div`
    min-width: 100%;
    border-left: 2px solid ${colors.pageOutlineSkyblue};
    overflow: auto;
-   grid-template-rows: min-content min-content min-content auto;
+   grid-template-rows: min-content min-content auto;
 `;
 
 interface TableRowData {
