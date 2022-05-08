@@ -134,7 +134,7 @@ export interface AccountRecieveablesProps {}
 
 const PaysTab: React.FC = () => {
    return (
-      <Flexbox overflowAuto column padding="2rem 2rem" fullWidth>
+      <Flexbox overflowAuto column padding="2rem 2rem" pb={80} fullWidth>
          <UnderlinedHeading>
             <Text size={13} fontFamily="semibold">
                Monthly Sturucture
@@ -156,7 +156,7 @@ const PaysTab: React.FC = () => {
                <Text>Third of each Month</Text>
             </Paragraph>
          </Grid>
-         <Tabs titles={["Upcomming", "Past"]}>
+         <Tabs wrapperStyles={{ marginBottom: "3rem" }} titles={["Upcomming", "Past"]}>
             <div></div>
             <Flexbox column fullWidth>
                <TableRowCollapse
@@ -170,6 +170,7 @@ const PaysTab: React.FC = () => {
                   <PayTable {...table}></PayTable>
                ))}
             </Flexbox>
+            <div style={{ padding: "3rem" }}></div>
          </Tabs>
       </Flexbox>
    );
