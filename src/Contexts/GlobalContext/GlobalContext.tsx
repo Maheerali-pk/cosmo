@@ -12,6 +12,7 @@ interface IGlobalState {
    selectedSettingsSidebarItem: string;
    isSidebarOpen: boolean;
    dialog?: React.FC;
+   isPrinting: boolean;
 }
 
 export interface IUser {
@@ -20,6 +21,7 @@ export interface IUser {
 }
 
 const initialState: IGlobalState = {
+   isPrinting: false,
    user: {
       name: "John",
       image: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -48,6 +50,7 @@ function setIsSidebarOpen(state: IGlobalState, value: boolean): IGlobalState {
 const functions = {
    setIsSidebarOpen,
    setDialog: (state: IGlobalState, dialog: React.FC | undefined): IGlobalState => ({ ...state, dialog }),
+   setState: (state: IGlobalState, props: Partial<IGlobalState>): IGlobalState => ({ ...state, ...props }),
 };
 
 const { Context, Provider, useContextHook } = createCustomContext<IGlobalState, typeof functions>({

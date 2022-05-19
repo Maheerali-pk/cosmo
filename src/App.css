@@ -4,12 +4,14 @@
    margin: 0;
    font-family: "SegoeUI";
 }
+
 body,
 html,
 #root {
    height: 100%;
    width: 100%;
 }
+
 *:not(path) {
    color: #7d7d7d;
 }
@@ -18,64 +20,81 @@ html,
 .MuiSelect-icon {
    top: calc(50% - 0.75rem) !important;
 }
+
 /* .MuiSelect-root {
    width: 16rem !important;
 } */
 
-label + .MuiInput-formControl {
+label+.MuiInput-formControl {
    margin-top: 1rem !important;
 }
+
 .mui-date-picker .MuiIconButton-root {
    padding: 0rem;
 }
+
 .mui-date-picker .MuiInputAdornment-positionEnd {
    margin-left: 0 !important;
 }
+
 .bottom-area {
    height: calc(100vh - 3.25rem) !important;
 }
+
 .radio-group label * {
    font-size: 0.82rem !important;
 }
+
 /* .MuiFormControlLabel-label {
    font-size: 1.25rem !important;
    font-family: SegoeUISemibold !important;
 } */
 @media (max-width: 1900px) {
+
    html,
    body {
       font-size: 100%;
    }
 }
+
 @media (max-width: 1650px) {
+
    html,
    body {
       font-size: 90%;
    }
 }
+
 @media (max-width: 1400px) {
+
    html,
    body {
       font-size: 80%;
    }
 }
+
 @media (max-width: 1150px) {
+
    html,
    body {
       font-size: 70%;
    }
 }
+
 @media (max-width: 1100px) {
+
    html,
    body {
       font-size: 60%;
    }
 }
+
 @media (max-width: 900px) {
    html {
       font-size: 50%;
    }
 }
+
 @media (max-width: 700px) {
    html {
       font-size: 40%;
@@ -87,6 +106,7 @@ label + .MuiInput-formControl {
       font-size: 30%;
    }
 }
+
 @media (max-width: 400px) {
    html {
       font-size: 25%;
@@ -112,4 +132,11 @@ label + .MuiInput-formControl {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
    background: gray;
+}
+
+@media only print {
+   * {
+      -webkit-print-color-adjust: exact !important;
+      color-adjust: exact !important;
+   }
 }

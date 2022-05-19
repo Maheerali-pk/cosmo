@@ -4,6 +4,11 @@
 }
 
 @font-face {
+   font-family: SegoeUIBold;
+   src: local("SegoeUIBold"), url(./Fonts/SegoeUIBold.ttf);
+}
+
+@font-face {
    font-family: myraid-pro;
    src: local("MyriadProSemibold"), url(./Fonts/MyriadProSemibold.ttf) format("truetype");
 }

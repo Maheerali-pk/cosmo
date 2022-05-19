@@ -57,7 +57,14 @@ const Footer: React.FC<AccountRecieveablesProps> = () => {
    const [state, dispatch] = useGlobalContext();
    const [selectValue, setSelectValue] = useState("Option 1");
    return (
-      <Grid columns="2.5fr 1fr" gap="4rem" style={{ alignItems: "start" }} padding="0 2rem" pb={64} fullWidth>
+      <Grid
+         columns="2.5fr 1fr"
+         gap="4rem"
+         style={{ alignItems: "start", flexGrow: 1 }}
+         padding="0 2rem"
+         pb={64}
+         fullWidth
+      >
          <Flexbox gap="4rem" fullWidth align="start">
             <Flexbox column fullWidth>
                <UnderlinedHeading mb={8}>

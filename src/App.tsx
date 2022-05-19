@@ -43,6 +43,7 @@ import EmployeeProfile from "./Pages/HR/EmployeeProfile/EmployeeProfile";
 import HRCalendar from "./Pages/HR/Calendar/HRCalendar";
 import InventoryItem from "./Pages/SupplyChain/InventoryItem/InventoryItem";
 import NewAdjustments from "./Pages/SupplyChain/NewAdjustment";
+import Report1 from "./Pages/Reports/Report1/Report1";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -55,6 +56,13 @@ function App() {
          setIsDialogShown(false);
       }
    }, [state.dialog]);
+   useEffect(() => {
+      if (state.isPrinting) {
+         document.body.classList.add("printing");
+      } else {
+         document.body.classList.remove("printing");
+      }
+   }, [state.isPrinting]);
    return (
       <Router>
          <Switch>
@@ -150,6 +158,72 @@ function App() {
                </Route>
                <Route exact path="/">
                   <Main></Main>
+               </Route>
+               <Route exact path="/report1">
+                  <Report1
+                     PFINo="PFI-18-0373"
+                     invoiceNo="INV-18-0373"
+                     date="Aug 02, 2018"
+                     currency="EUR"
+                     country="USA"
+                     shippingTerms="CFR by SEA"
+                     paymentTerms="Bank Contract"
+                     landingPort="USA"
+                     destinationPort="Karachi"
+                     preparedBy="Fawad Ahmed"
+                     bankDetails={{
+                        accountTitle: "AdChem FZE",
+                        IBAN: "AE140240097521214845701",
+                        address: "Emaar Business Park, Sh.Zayed Road, Dubai, United Arab",
+                        name: "DUBAI ISLAMIC BANK (EURO)",
+                        swiftCode: "DUIBAEAD",
+                        currency: "EUR",
+                     }}
+                     footerRows={[
+                        "23978009 15.03.2018 15.03.2021",
+                        "23978009 15.03.2018 15.03.2021",
+                        "23978009 15.03.2018 15.03.2021",
+                        "23978009 15.03.2018 15.03.2021",
+                     ]}
+                     tableData={{
+                        totalString: "Thirty Two Thousand Nine Hundred Forty only",
+                        currency: "EUR",
+                        total: 32940.0,
+                        rows: [
+                           {
+                              name: "Ferrous Gluconate EP Powder",
+                              description: (
+                                 <>
+                                    In very fine Powder form
+                                    <br />
+                                    HS Code: 2918.16.0000
+                                 </>
+                              ),
+                              qty: 5400,
+                              uom: "KG",
+                              unitPrice: 6.1,
+                              totalAmount: 32940,
+                              sn: 1,
+                           },
+
+                           {
+                              name: "Ferrous Gluconate EP Powder",
+                              description: (
+                                 <>
+                                    In very fine Powder form
+                                    <br />
+                                    HS Code: 2918.16.0000
+                                 </>
+                              ),
+                              qty: 5400,
+                              uom: "KG",
+                              unitPrice: 6.1,
+                              totalAmount: 32940,
+                              sn: 2,
+                           },
+                        ],
+                     }}
+                  ></Report1>
                </Route>
             </MuiThemeProvider>
          </Switch>

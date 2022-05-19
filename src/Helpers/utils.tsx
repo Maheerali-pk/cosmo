@@ -8,6 +8,7 @@ import login from "../Assets/Images/login-image.png";
 import { Theme, ThemeOptions } from "@material-ui/core";
 
 export const toRem = (px: number) => px / 16 + "rem";
+export const toEm = (px: number) => px / 16 + "em";
 export const interpolate = (arr: any[], item: any) => arr.flatMap((x) => [x, item]).slice(0, -1);
 
 export const colors = {
@@ -32,13 +33,15 @@ export const colors = {
    companyCardBackground: "#F5F5F5",
    orangeStar: "#FB9F00",
    inputLightText: "#B2B2B2",
+   black: "black",
 };
-export type FontFamilyKey = "regular" | "semibold" | "myraid-pro";
+export type FontFamilyKey = "regular" | "semibold" | "myraid-pro" | "bold";
 
 export const fonts: { [k in FontFamilyKey]: string } = {
    "myraid-pro": "myraid-pro",
    regular: "SegoeUI",
    semibold: "SegoeUISemibold",
+   bold: "SegoeUIBold",
 };
 export const stringsToOptions = (arr: string[]): SelectOption[] => arr.map((x) => ({ text: x, value: x }));
 
