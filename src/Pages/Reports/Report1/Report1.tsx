@@ -130,9 +130,9 @@ console.log("hi");
 const Report1: React.FC<Report1Props> = (props) => {
    return (
       <ReportViewer
-         pages={[Page1 as React.FC<{ [k in string]: any }>]}
+         pages={[Page1 as React.FC<{ [k in string]: any }>, Page1 as React.FC<{ [k in string]: any }>]}
          reportProps={props}
-         initialZoom={400}
+         initialZoom={405.2287581699346}
       ></ReportViewer>
    );
 };

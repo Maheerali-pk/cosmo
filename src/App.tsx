@@ -45,6 +45,14 @@ import InventoryItem from "./Pages/SupplyChain/InventoryItem/InventoryItem";
 import NewAdjustments from "./Pages/SupplyChain/NewAdjustment";
 import Report1 from "./Pages/Reports/Report1/Report1";
 
+//@ts-ignore
+import * as file1 from "./SegoeUI-normal";
+
+//@ts-ignore
+import * as file2 from "./SegoeUIBold-normal";
+//@ts-ignore
+import * as file3 from "./SegoeUISemibold-normal";
+
 const theme = createTheme(commonStyles);
 function App() {
    const [state, dispatch] = useGlobalContext();
@@ -63,6 +71,14 @@ function App() {
          document.body.classList.remove("printing");
       }
    }, [state.isPrinting]);
+   useEffect(() => {
+      //@ts-ignore
+      window.x = file1;
+      //@ts-ignore
+      window.x = file2;
+      //@ts-ignore
+      window.x = file3;
+   }, []);
    return (
       <Router>
          <Switch>

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import ReportViewer from "../../../Components/ReportViewer";
+import jsPDF from "jspdf";
 import { fonts, toEm, toRem } from "../../../Helpers/utils";
 import Flexbox from "../../../StyledComponents/Flexbox";
 import Grid from "../../../StyledComponents/Grid";
@@ -9,6 +10,7 @@ import Header from "./Header";
 import Table from "./Table";
 import { Report1Props } from "./Report1";
 import { useGlobalContext } from "../../../Contexts/GlobalContext/GlobalContext";
+import React, { useEffect, useRef } from "react";
 
 const StampWrapper = styled(Flexbox)`
    background: #707070;
@@ -16,24 +18,31 @@ const StampWrapper = styled(Flexbox)`
    height: 5em;
    border-radius: 1.125em;
    ${Text} {
-      transform: matrix(0.92, -0.39, 0.39, 0.92, 0, 0);
    }
 `;
 
 const PageWrapper = styled(Grid)<{ printing: boolean }>`
+   position: relative;
    grid-template-rows: min-content min-content auto;
    ${Text} {
       color: black;
       font-family: ${fonts.semibold};
    }
 
-   ${(p) => p.printing && css``};
+   height: 100%;
+   width: 100%;
+   /* ${(p) =>
+      p.printing &&
+      css`
+         font-size: 405.2287581699346%;
+         height: 2480px;
+         width: 3508px;
+      `}; */
    @media only print {
       width: 100%;
       height: 100%;
    }
    background: white;
-   height: 100%;
 `;
 
 interface IField {
@@ -89,8 +98,11 @@ const Grid3Field: React.FC<IField> = ({ label, value }) => {
 
 const Page1: React.FC<Report1Props> = (props) => {
    const [state] = useGlobalContext();
+   const wrapperRef = useRef<HTMLDivElement>(null);
+   useEffect(() => {}, []);
+   const download = () => {};
    return (
-      <PageWrapper printing={state.isPrinting} fullWidth>
+      <PageWrapper onClick={download} ref={wrapperRef} printing={state.isPrinting} fullWidth>
          <Header></Header>
          <Flexbox column px={50} py={32} fullWidth em>
             <Grid noOfColumns={2} fullWidth em mb={14}>

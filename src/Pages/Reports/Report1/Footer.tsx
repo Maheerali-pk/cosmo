@@ -21,7 +21,7 @@ const footerItems: IFooterItem[] = [
 
 const Footer: React.FC<Report1Props> = (props) => {
    return (
-      <Flexbox column fullWidth justify="end" mb={11} em>
+      <Flexbox column fullWidth justify="end" mb={11} em style={{ position: "absolute", bottom: "0px" }}>
          <Flexbox column mt={10} em fullWidth px={50}>
             <Grid columns="1.5fr 1fr" fullWidth mb={9} em>
                <Flexbox column em pl={28} fullWidth>
@@ -55,7 +55,7 @@ const Footer: React.FC<Report1Props> = (props) => {
             <Flexbox em justify="around" fullWidth>
                {footerItems.map((item) => (
                   <Flexbox em gap={8.25}>
-                     <item.icon style={{ color: "black", fontSize: "0.8em" }}></item.icon>
+                     {/* <item.icon style={{ color: "black", fontSize: "0.8em" }}></item.icon> */}
                      <Text em color="black" fontFamily="bold" size={11}>
                         {item.text}
                      </Text>
