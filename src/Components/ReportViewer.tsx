@@ -10,10 +10,10 @@ interface ReportViewerProps {
    pages: React.FC<{ [k in string]: any }>[];
    reportProps: { [k in string]: any };
 }
-const PageWrapper = styled.div<{ height: number }>`
+const PageWrapper = styled.div<{ height: string }>`
    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); */
    width: 100%;
-   height: ${(p) => p.height}px;
+   height: ${(p) => p.height};
    @media only print {
       height: 100vh !important;
       margin-bottom: 0 !important;
@@ -80,10 +80,14 @@ const ReportViewer: React.FC<ReportViewerProps> = ({ initialZoom, pages, reportP
       if (state.isPrinting && toPrintRef.current) {
          const doc = new jsPDF("portrait", "px", [3508, 2480]);
 
+         console.log("Hello");
          doc.html(toPrintRef.current, {
             x: 0,
             y: 0,
+            margin: [700, 0, 700, 0],
             callback: () => {
+               doc.setFontSize(100);
+               doc.text("HEllo world", 0, 1, {});
                doc.save();
                dispatch({ setState: { isPrinting: false } });
             },
@@ -155,7 +159,7 @@ const ReportViewer: React.FC<ReportViewerProps> = ({ initialZoom, pages, reportP
             ref={toPrintRef}
          >
             {pages.map((Page) => (
-               <PageWrapper height={state.isPrinting ? 3508 : (zoom / initialZoom) * 3508}>
+               <PageWrapper height={state.isPrinting ? "100%" : (zoom / initialZoom) * 3508 + ""}>
                   <Page {...reportProps} customRef={toPrintRef}></Page>
                </PageWrapper>
             ))}

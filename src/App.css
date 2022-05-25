@@ -140,3 +140,8 @@ label+.MuiInput-formControl {
       color-adjust: exact !important;
    }
 }
+
+@page {
+   size: A4;
+   margin: 11mm 17mm 17mm 17mm;
+}

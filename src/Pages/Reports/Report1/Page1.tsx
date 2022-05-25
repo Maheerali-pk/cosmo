@@ -103,7 +103,7 @@ const Page1: React.FC<Report1Props> = (props) => {
    const download = () => {};
    return (
       <PageWrapper onClick={download} ref={wrapperRef} printing={state.isPrinting} fullWidth>
-         <Header></Header>
+         {/* <Header></Header> */}
          <Flexbox column px={50} py={32} fullWidth em>
             <Grid noOfColumns={2} fullWidth em mb={14}>
                <Text size={12} em>
@@ -188,7 +188,7 @@ const Page1: React.FC<Report1Props> = (props) => {
             </Grid>
          </Flexbox>
 
-         <Footer {...props}></Footer>
+         {/* <Footer {...props}></Footer> */}
       </PageWrapper>
    );
 };
