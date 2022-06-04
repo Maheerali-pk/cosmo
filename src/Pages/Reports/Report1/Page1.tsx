@@ -102,7 +102,7 @@ const Page1: React.FC<Report1Props> = (props) => {
    useEffect(() => {}, []);
    const download = () => {};
    return (
-      <PageWrapper onClick={download} ref={wrapperRef} printing={state.isPrinting} fullWidth>
+      <PageWrapper id="page1" onClick={download} ref={wrapperRef} printing={state.isPrinting} fullWidth>
          {/* <Header></Header> */}
          <Flexbox column px={50} py={32} fullWidth em>
             <Grid noOfColumns={2} fullWidth em mb={14}>

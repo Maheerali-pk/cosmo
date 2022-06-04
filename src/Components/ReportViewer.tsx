@@ -5,6 +5,19 @@ import ButtonPrimary from "../StyledComponents/ButtonPrimary";
 import Flexbox, { FlexboxProps } from "../StyledComponents/Flexbox";
 import html2canvas from "html2canvas";
 import { useGlobalContext } from "../Contexts/GlobalContext/GlobalContext";
+import Header from "../Pages/Reports/Report1/Header";
+import Footer from "../Pages/Reports/Report1/Footer";
+import ReactDOMServer from "react-dom/server";
+import { Report1Props } from "../Pages/Reports/Report1/Report1";
+
+const HEIGHT_RATO = 4.429292929292929;
+
+const getAllElements = (elm: Element): Element[] => {
+   if (elm.children.length) {
+      return Array.from(elm.children).flatMap((x) => getAllElements(x));
+   } else return [elm];
+};
+
 interface ReportViewerProps {
    initialZoom: number;
    pages: React.FC<{ [k in string]: any }>[];
@@ -76,22 +89,55 @@ const ReportViewer: React.FC<ReportViewerProps> = ({ initialZoom, pages, reportP
    const exportAsPDF = () => {
       dispatch({ setState: { isPrinting: true } });
    };
+   const printAsPdf = async () => {
+      if (!toPrintRef.current) return;
+      const doc = new jsPDF("portrait", "px", [3508, 2480]);
+      const page1 = document.querySelector("#page1") as HTMLElement;
+
+      doc.html(toPrintRef.current, {
+         autoPaging: "text",
+         margin: [121 * HEIGHT_RATO, 0, 135 * HEIGHT_RATO, 0],
+         filename: "res",
+         callback: async () => {
+            const headerString = ReactDOMServer.renderToString(<Header></Header>);
+            const header = document.createElement("div");
+            header.style.width = "2480px";
+            header.style.fontSize = "400%";
+            header.innerHTML = headerString;
+
+            const footerString = ReactDOMServer.renderToString(<Footer {...(reportProps as Report1Props)}></Footer>);
+            const footer = document.createElement("div");
+            footer.style.width = "2480px";
+            footer.style.fontSize = "400%";
+            footer.innerHTML = footerString;
+            var pageCount = doc.getNumberOfPages();
+            let headerFooterCount = 0;
+            for (let i = 0; i < pageCount; i++) {
+               // doc.setPage(i);
+               await new Promise((res, rej) =>
+                  doc.html(header, {
+                     x: 0,
+                     y: 3508 * i,
+                     callback: res,
+                  })
+               );
+               await new Promise((res, rej) =>
+                  doc.html(footer, {
+                     x: 0,
+                     y: 3508 * (i + 1),
+                     callback: res,
+                  })
+               );
+            }
+            doc.save();
+
+            doc.save();
+         },
+      });
+   };
    useEffect(() => {
       if (state.isPrinting && toPrintRef.current) {
-         const doc = new jsPDF("portrait", "px", [3508, 2480]);
-
-         console.log("Hello");
-         doc.html(toPrintRef.current, {
-            x: 0,
-            y: 0,
-            margin: [700, 0, 700, 0],
-            callback: () => {
-               doc.setFontSize(100);
-               doc.text("HEllo world", 0, 1, {});
-               doc.save();
-               dispatch({ setState: { isPrinting: false } });
-            },
-         });
+         printAsPdf();
       }
    });
    // useEffect(() => {

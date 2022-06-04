@@ -388,6 +388,21 @@ function App() {
                               totalAmount: 32940,
                               sn: 2,
                            },
+                           {
+                              name: "Ferrous Gluconate EP Powder",
+                              description: (
+                                 <>
+                                    In very fine Powder form
+                                    <br />
+                                    HS Code: 2918.16.0000
+                                 </>
+                              ),
+                              qty: 5400,
+                              uom: "KG",
+                              unitPrice: 6.1,
+                              totalAmount: 32940,
+                              sn: 2,
+                           },
                         ],
                      }}
                   ></Report1>
