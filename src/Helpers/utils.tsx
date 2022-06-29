@@ -140,6 +140,13 @@ export const compareDates = (d1: Date, d2: Date) => {
 export const isDateInRange = (date: Date, min: Date, max: Date) => {
    return date.getTime() > min.getTime() && date.getTime() < max.getTime();
 };
+
+export const getDateString = (d: Date) => {
+   d = new Date(d);
+   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+   return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+};
+
 // export function mergeOuterLocalTheme(outerTheme: Theme, localTheme: Theme) {
 //    if (typeof localTheme === "function") {
 //       const mergedTheme = localTheme (outerTheme);

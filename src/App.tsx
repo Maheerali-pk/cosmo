@@ -53,6 +53,7 @@ import * as file2 from "./SegoeUIBold-normal";
 import * as file3 from "./SegoeUISemibold-normal";
 import { Report3 } from "./Pages/Reports/Report1/Report1";
 import report1Data from "./Pages/Reports/Report1/data";
+import BalanceSheet from "./Pages/Accounts/BalanceSheet/BalanceSheet";
 
 const theme = createTheme(commonStyles);
 function App() {
@@ -160,6 +161,9 @@ function App() {
                </Route>
                <Route exact path="/accounting/checks">
                   <Checks></Checks>
+               </Route>
+               <Route exact path="/accounting/balance-sheet">
+                  <BalanceSheet></BalanceSheet>
                </Route>
                <Route exact path="/hr/employee-profile">
                   <EmployeeProfile></EmployeeProfile>
