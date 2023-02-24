@@ -9,12 +9,13 @@ import { Theme, ThemeOptions } from "@material-ui/core";
 
 export const toRem = (px: number) => px / 16 + "rem";
 export const toEm = (px: number) => px / 16 + "em";
-export const interpolate = (arr: any[], item: any) => arr.flatMap((x) => [x, item]).slice(0, -1);
+export const interpolate = (arr: any[], item: any) =>
+   arr.flatMap((x) => [x, item]).slice(0, -1);
 
 export const colors = {
    grayHeading: "#4B4B4B",
    grayLine: "#707070",
-   grayText: "#7D7D7D",
+   grayText: "#1D252C",
    graySubHeading: "#B1B1B1",
    grayShapes: "#C5C5C5",
    graySelection: "#DCDCDC",
@@ -34,21 +35,38 @@ export const colors = {
    orangeStar: "#FB9F00",
    inputLightText: "#B2B2B2",
    black: "black",
+   footerFigureText: "#1D252C",
+
+   drawerBackground: "#e5e8ee",
+   bluePrimary: "#1071e3",
+   bodyBackground: "#eceff3",
+   // color: "white !important",
+   // transition: "background-color .1s ease",
+   // "&:hover": {
+   //    backgroundColor: "#093f7f",
+   // },
 };
 export type FontFamilyKey = "regular" | "semibold" | "myraid-pro" | "bold";
 
 export const fonts: { [k in FontFamilyKey]: string } = {
    "myraid-pro": "myraid-pro",
-   regular: "SegoeUI",
+   regular: "'Montserrat', sans-serif",
    semibold: "SegoeUISemibold",
    bold: "SegoeUIBold",
 };
-export const stringsToOptions = (arr: string[]): SelectOption[] => arr.map((x) => ({ text: x, value: x }));
+export const stringsToOptions = (arr: string[]): SelectOption[] =>
+   arr.map((x) => ({ text: x, value: x }));
 
 export const repeat = (item: any, times: number): any[] =>
    Array(times)
       .fill(0)
-      .map((x) => (typeof item === "object" ? (Array.isArray(item) ? [...item] : { ...item }) : item));
+      .map((x) =>
+         typeof item === "object"
+            ? Array.isArray(item)
+               ? [...item]
+               : { ...item }
+            : item
+      );
 
 export const allIcons = {
    starPurple,
@@ -69,6 +87,34 @@ export const commonStyles: ThemeOptions = {
       },
    },
    overrides: {
+      MuiMenuItem: {
+         root: {
+            fontSize: "12px",
+            transition: "background-color .1s ease",
+            "&.menu-item-primary": {
+               background: colors.bluePrimary,
+            },
+            "&.menu-item-primary:hover": {
+               backgroundColor: "#093f7f",
+            },
+         },
+      },
+      MuiMenu: {
+         list: {
+            padding: 0,
+            "&.menu-list-primary": {
+               background: colors.bluePrimary,
+               color: "white",
+            },
+
+            fontSize: "12px",
+         },
+         // paper: {
+         //    "$.menu-primary-paper": {
+         //       backgroundColor: colors.bluePrimary,
+         //    },
+         // },
+      },
       MuiRadio: {
          root: {
             "& svg": {
@@ -98,32 +144,72 @@ export const commonStyles: ThemeOptions = {
       },
       MuiSelect: {
          root: {
-            fontFamily: fonts.semibold,
             color: colors.grayText,
          },
          select: {
-            paddingRight: 0,
             width: "16rem",
+            backgroundColor: "white",
+            fontSize: "12px",
+            borderRadius: "3px",
+            color: "#1D252C",
+            border: "1px solid #C4D0DA",
+            padding: "5px",
          },
       },
       MuiInputBase: {
          root: {
-            fontFamily: fonts.semibold,
             color: colors.grayText,
+            fontSize: "12px",
+            padding: "none !important",
+            fontFamily: fonts.regular,
          },
+         input: {
+            borderRadius: "3px",
+            height: "unset !important",
+            paddingLeft: toRem(9.23),
+            paddingRight: toRem(9.23),
+            paddingTop: toRem(4.5),
+            paddingBottom: toRem(4.5),
+         },
+         formControl: {
+            padding: "none !important",
+         },
+      },
+      MuiButtonGroup: {
+         root: { boxShadow: "none" },
+         contained: { boxShadow: "none" },
       },
       MuiButton: {
          root: {
-            borderRadius: "2px",
+            borderRadius: "3px",
             color: colors.grayText,
+            fontSize: "12px",
+            fontWeight: 400,
             padding: `${toRem(4)} ${toRem(16)}`,
             textTransform: "initial",
+            boxShadow: "none",
+         },
+
+         containedPrimary: {
+            color: "white !important",
+            backgroundColor: "#1071e3",
+            transition: "background-color .1s ease",
+            "&:hover": {
+               backgroundColor: "#093f7f",
+               boxShadow: "none",
+            },
          },
          containedSecondary: {
-            color: "white",
-            "& > *": {
-               color: "white",
+            color: "#1D252C !important",
+            backgroundColor: "white",
+            transition: "background-color .1s ease",
+            "&:hover": {
+               backgroundColor: "#f7f9fa",
+               boxShadow: "none",
             },
+            boxShadow: "none",
+            borderColor: "#ced5db !important",
+            border: "1px solid #ced5db",
          },
       },
    },
@@ -135,11 +221,35 @@ export const chunks = (arr: any[], n: number) =>
       .map((x, i) => arr.slice(i * n, (i + 1) * n));
 
 export const compareDates = (d1: Date, d2: Date) => {
-   return d1.getDate() === d2.getDate() && d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear();
+   return (
+      d1.getDate() === d2.getDate() &&
+      d1.getMonth() === d2.getMonth() &&
+      d1.getFullYear() === d2.getFullYear()
+   );
 };
 export const isDateInRange = (date: Date, min: Date, max: Date) => {
    return date.getTime() > min.getTime() && date.getTime() < max.getTime();
 };
+
+export const getDateString = (d: Date) => {
+   d = new Date(d);
+   const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "July",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+   ];
+   return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+};
+
 // export function mergeOuterLocalTheme(outerTheme: Theme, localTheme: Theme) {
 //    if (typeof localTheme === "function") {
 //       const mergedTheme = localTheme (outerTheme);

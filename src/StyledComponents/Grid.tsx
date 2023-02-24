@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { toEm, toRem } from "../Helpers/utils";
 import { FlexPos } from "./Flexbox";
 
-interface GridProps {
+export interface GridProps {
    noOfColumns?: number;
    gap?: string;
    columns?: string;
@@ -27,7 +27,8 @@ export const grid = (p: GridProps) => {
    return css`
       display: grid;
       gap: ${p.gap || ""};
-      grid-template-columns: ${p.noOfColumns && `repeat(${p.noOfColumns}, 1fr)`};
+      grid-template-columns: ${p.noOfColumns &&
+      `repeat(${p.noOfColumns}, 1fr)`};
       ${p.columns && `grid-template-columns: ${p.columns}`};
       ${!p.minHeight && `height: 100%`};
       ${p.fullWidth && `width: 100%`};

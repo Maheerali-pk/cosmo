@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { colors, repeat, stringsToOptions, toRem } from "../../../Helpers/utils";
+import {
+   colors,
+   repeat,
+   stringsToOptions,
+   toRem,
+} from "../../../Helpers/utils";
 import Flexbox, { flexbox } from "../../../StyledComponents/Flexbox";
 import Text from "../../../StyledComponents/Text";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
@@ -19,6 +24,8 @@ import Details from "./Details";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import HistoryIcon from "@material-ui/icons/History";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import GoodReceivedNote from "../../../Drawers/GoodReceievedNote";
+import CustomDrawer from "../../../Components/CustomDrawer";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled.div`
@@ -26,7 +33,6 @@ const PageWrapper = styled.div`
    height: 93.5vh;
    width: 100%;
    min-width: 100%;
-   border-left: 2px solid ${colors.pageOutlineSkyblue};
    overflow: auto;
    grid-template-rows: min-content min-content min-content auto;
 `;
@@ -46,7 +52,10 @@ const tempTableData: TableRowData[] = [
             {
                balance: "100,000",
                label: "Sub Item 1",
-               childRows: repeat({ balance: "5000", label: "Sub Sub Item 1" }, 5),
+               childRows: repeat(
+                  { balance: "5000", label: "Sub Sub Item 1" },
+                  5
+               ),
             },
             5
          ),
@@ -62,8 +71,14 @@ const Bank: React.FC<AccountRecieveablesProps> = () => {
    return (
       <Layout navbarItems={["Airmed", "Accounting", "Accounts"]}>
          <PageWrapper>
-            <PageContentHeader items={["Accounts", "Sales", "Purchases", "Company", "Reports"]}></PageContentHeader>
-            <PageSubHeaderWrapper>
+            <CustomDrawer
+               Component={GoodReceivedNote}
+               width="50%"
+            ></CustomDrawer>
+            {/* <PageContentHeader
+               items={["Accounts", "Sales", "Purchases", "Company", "Reports"]}
+            ></PageContentHeader> */}
+            {/* <PageSubHeaderWrapper>
                <Flexbox>
                   <Text fontFamily="semibold" mr={12}>
                      2
@@ -92,9 +107,12 @@ const Bank: React.FC<AccountRecieveablesProps> = () => {
                      </Flexbox>
                   </Flexbox>
                </Flexbox>
-            </PageSubHeaderWrapper>
-            <Tabs
-               buttonStyles={{ paddingBottom: "0.75rem", marginBottom: "0.2rem" }}
+            </PageSubHeaderWrapper> */}
+            {/* <Tabs
+               buttonStyles={{
+                  paddingBottom: "0.75rem",
+                  marginBottom: "0.2rem",
+               }}
                headerStyles={{ paddingLeft: "2rem" }}
                titles={["Details", "Transactions", "Reconcilation"]}
                rightSideContent={
@@ -110,9 +128,9 @@ const Bank: React.FC<AccountRecieveablesProps> = () => {
                      </IconButton>
                   </Flexbox>
                }
-            >
-               <Details></Details>
-            </Tabs>
+            > */}
+            <Details></Details>
+            {/* </Tabs> */}
          </PageWrapper>
       </Layout>
    );

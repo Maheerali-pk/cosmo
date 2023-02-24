@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { colors, repeat, stringsToOptions, toRem } from "../../../Helpers/utils";
+import {
+   colors,
+   repeat,
+   stringsToOptions,
+   toRem,
+} from "../../../Helpers/utils";
 import Flexbox, { flexbox } from "../../../StyledComponents/Flexbox";
 import UnderlinedHeading from "../../../StyledComponents/UnderlinedHeading";
 import Text from "../../../StyledComponents/Text";
@@ -8,7 +13,7 @@ import FileCopyIcon from "@material-ui/icons/FileCopy";
 import PageContentHeader from "../../../Components/PageContentHeader";
 import Layout from "../../../Components/Layout";
 import TableRowCollapse from "../../../Components/TableRowCollapse";
-import { Button, Icon, IconButton } from "@material-ui/core";
+import { Button, ButtonGroup, Icon, IconButton } from "@material-ui/core";
 import ArrowForwardIosIcon from "@material-ui/icons/KeyboardArrowRight";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import PageSubHeaderWrapper from "../../../StyledComponents/PageSubHeaderWrapper";
@@ -19,6 +24,18 @@ import CloseIcon from "@material-ui/icons/Close";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Grid from "../../../StyledComponents/Grid";
 import Paragraph from "../../../StyledComponents/Paragraph";
+import {
+   AttachFile,
+   ChatBubbleOutline,
+   CloudUploadOutlined,
+   LinkOutlined,
+   NoteOutlined,
+} from "@material-ui/icons";
+import FooterFigure from "../../../Components/FooterFigure";
+import FooterButton from "../../../Components/FooterButton";
+import GoodReceivedNote from "../../../Drawers/GoodReceievedNote";
+import Input from "@material-ui/core/Input";
+import EditableCell from "../../../Components/EditableCell";
 export interface AccountRecieveablesProps {}
 
 const PageWrapper = styled.div`
@@ -33,34 +50,44 @@ const PageWrapper = styled.div`
 const RowWrapper = styled.div`
    display: grid;
    width: 100%;
-   grid-template-columns: 0.5fr 1fr 1fr 1.5fr 1.5fr 1.5fr 1fr 0.25fr;
-   padding: ${toRem(10)} 2rem;
+   grid-template-columns: 0.25fr 1fr 1fr 1.5fr 1.5fr 1.5fr 1fr 0.25fr;
    border-bottom: 1px solid ${colors.skyBlueLines};
-   ${Text} {
-      text-align: center;
-      font-size: ${toRem(13)};
-   }
-
-   & > ${Text}:nth-child(1) {
-      text-align: left;
-   }
-   /* & > ${Text}:nth-child(7),
-   & > ${Text}:nth-child(8) {
-      text-align: right !important;
-   } */
-   sup {
-      font-size: 0.55rem;
+   background-color: #f6f7f9;
+   margin-bottom: 4.8px;
+   align-items: center;
+   & > *:first-child {
+      padding-left: 19px !important;
    }
 `;
-const StickyFooterWrapper = styled(Flexbox)`
+const StickyFooterWrapper = styled(Flexbox)<{ isSidebarOpen?: boolean }>`
    position: fixed;
    bottom: 0;
    right: 0;
-   width: calc(100% - 15rem);
-   background: ${colors.headingBackground};
+   width: ${(p) =>
+      p.isSidebarOpen ? "calc(100% - 217px - 85px)" : "calc(100% - 85px)"};
+   background: #eceff3;
 `;
 const TableHeaderWrapper = styled(RowWrapper)`
-   background: #fcfcfc;
+   background: #ffffff;
+   margin-bottom: 5px;
+
+   ${Text} {
+      justify-content: start;
+      font-size: ${toRem(8)};
+
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 12px;
+   }
+
+   border: none;
+   ${Text} {
+      border-right: none;
+      text-transform: uppercase;
+   }
+   & > *:first-child {
+      padding-left: 19px !important;
+   }
 `;
 const Footer = styled(Flexbox)`
    background: #fcfcfc;
@@ -71,18 +98,28 @@ const TableRow: React.FC<{ items: string[] }> = ({ items }) => {
    return (
       <RowWrapper>
          {items.map((x) => (
-            <Text>{x}</Text>
+            <EditableCell text={x}></EditableCell>
+            // <Text>{x}</Text>
          ))}
-         <IconButton style={{ padding: "0" }}>
+         {/* <IconButton style={{ padding: "0" }}>
             <MoreHorizIcon></MoreHorizIcon>
-         </IconButton>
+         </IconButton> */}
       </RowWrapper>
    );
 };
 const tableData: string[][] = repeat(
-   ["1", "Bank Transfer", "Debit Card", "VISA", "**********4821", "12/24", "3,500.00"],
+   [
+      "1",
+      "Bank Transfer",
+      "Debit Card",
+      "VISA",
+      "**********4821",
+      "12/24",
+      "3,500.00",
+   ],
    3
 );
+
 const Table = () => {
    return (
       <Flexbox fullWidth column overflowAuto>
@@ -114,45 +151,58 @@ interface TableRowData {
 const Details: React.FC<AccountRecieveablesProps> = () => {
    const [state, dispatch] = useGlobalContext();
    return (
-      <Flexbox padding="2rem" column fullWidth>
-         <UnderlinedHeading>
+      <Flexbox column fullWidth>
+         {/* <UnderlinedHeading>
             <Text fontFamily="semibold" size={13}>
                About
             </Text>
-         </UnderlinedHeading>
-         <Grid mb={40} fullWidth style={{ height: "fit-content" }} gap="2rem" noOfColumns={3}>
+         </UnderlinedHeading> */}
+         <Grid
+            mb={80}
+            fullWidth
+            style={{ height: "fit-content" }}
+            gap="2rem"
+            noOfColumns={3}
+            padding="1.25rem 1.25rem 0 1.25rem"
+         >
             <Paragraph>
-               <Text>Title</Text>
-               <Text>Airmed SCBL</Text>
+               <Text>Customer</Text>
+               <Input disableUnderline></Input>
             </Paragraph>
             <Paragraph>
-               <Text>Account Type</Text>
-               <Text>Bank</Text>
+               <Text>Customer</Text>
+               <Input disableUnderline></Input>
             </Paragraph>
             <Paragraph>
-               <Text>Details</Text>
-               <Text>Checking - Foreign Currency</Text>
+               <Text>Customer</Text>
+               <Input disableUnderline></Input>
             </Paragraph>
             <Paragraph>
-               <Text>Account No.</Text>
-               <Text>1005486260035</Text>
+               <Text>Customer</Text>
+               <Input disableUnderline></Input>
             </Paragraph>
             <Paragraph>
-               <Text>Currency</Text>
-               <Text>United States Dollars - USD</Text>
+               <Text>Customer</Text>
+               <Input disableUnderline></Input>
             </Paragraph>
             <Paragraph>
-               <Text>Balance - USD</Text>
-               <Text>42,000</Text>
+               <Text>Customer</Text>
+               <Input disableUnderline></Input>
             </Paragraph>
          </Grid>
 
-         <UnderlinedHeading>
+         {/* <UnderlinedHeading>
             <Text fontFamily="semibold" size={13}>
                Usage
             </Text>
          </UnderlinedHeading>
-         <Grid mb={40} fullWidth style={{ height: "fit-content" }} gap="2rem" noOfColumns={3}>
+         <Grid
+            mb={40}
+            fullWidth
+            style={{ height: "fit-content" }}
+            gap="2rem"
+            noOfColumns={3}
+         >
             <Paragraph>
                <Text>Company</Text>
                <Text>All Expenses</Text>
@@ -165,20 +215,71 @@ const Details: React.FC<AccountRecieveablesProps> = () => {
                <Text>Suppliers</Text>
                <Text>International Suppliers Only</Text>
             </Paragraph>
-         </Grid>
-         <UnderlinedHeading>
+         </Grid> */}
+         {/* <UnderlinedHeading>
             <Text fontFamily="semibold" size={13}>
                Payment Mode
             </Text>
-         </UnderlinedHeading>
+         </UnderlinedHeading> */}
          <Table></Table>
-         <Text mb={50} size={13} mt={20} underline>
+         {/* <Text mb={50} size={13} mt={20} underline>
             Add Item
-         </Text>
-         <StickyFooterWrapper justify="end" padding="0.75rem 1rem">
-            <Button variant="contained">
-               <Text fontFamily="semibold"></Text> Save
-            </Button>
+         </Text> */}
+         <StickyFooterWrapper
+            isSidebarOpen={state.isSmallSidebarOpen}
+            justify="space-between"
+            padding="0.75rem 1rem"
+         >
+            <Flexbox gap={32}>
+               <FooterFigure
+                  text="History & Notes"
+                  onClick={() => {}}
+                  icon={
+                     <ChatBubbleOutline fontSize="small"></ChatBubbleOutline>
+                  }
+               ></FooterFigure>
+               <FooterFigure
+                  text="Introduction"
+                  onClick={() => {}}
+                  icon={<NoteOutlined fontSize="small"></NoteOutlined>}
+               ></FooterFigure>
+               <FooterFigure
+                  text="Attachments"
+                  onClick={() => {}}
+                  icon={
+                     <CloudUploadOutlined fontSize="small"></CloudUploadOutlined>
+                  }
+               ></FooterFigure>
+               <FooterFigure
+                  text="Links"
+                  onClick={() => {
+                     dispatch({ setState: { drawer: GoodReceivedNote } });
+                  }}
+                  icon={<LinkOutlined fontSize="small"></LinkOutlined>}
+               ></FooterFigure>
+            </Flexbox>
+            <Flexbox gap={16}>
+               <FooterButton
+                  onClick={() => {}}
+                  text="Draft"
+                  color="secondary"
+               ></FooterButton>
+               <FooterButton
+                  onClick={() => {}}
+                  text="Print PDF"
+                  color="secondary"
+                  hasMenu={true}
+                  menuItems={[{ text: "Customize", onClick: () => {} }]}
+               ></FooterButton>
+               <FooterButton
+                  onClick={() => {}}
+                  text="Save and Approve"
+                  hasMenu={true}
+                  menuItems={[{ text: "Approve & Email", onClick: () => {} }]}
+               ></FooterButton>
+
+               <ButtonGroup></ButtonGroup>
+            </Flexbox>
          </StickyFooterWrapper>
       </Flexbox>
    );

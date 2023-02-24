@@ -17,7 +17,14 @@ export interface SelectProps extends MUISelectProps {
    wrapperWidth?: string;
 }
 
-const CustomSelect: React.FC<SelectProps> = ({ onValueChange, label, options, value, wrapperWidth, ...rest }) => {
+const CustomSelect: React.FC<SelectProps> = ({
+   onValueChange,
+   label,
+   options,
+   value,
+   wrapperWidth,
+   ...rest
+}) => {
    return (
       <FormControl style={{ width: wrapperWidth || "" }}>
          {label && <InputLabel>{label}</InputLabel>}
@@ -28,6 +35,10 @@ const CustomSelect: React.FC<SelectProps> = ({ onValueChange, label, options, va
                onValueChange(e.target.value as string);
             }}
             value={value}
+            MenuProps={{
+               anchorOrigin: { horizontal: "left", vertical: "bottom" },
+               transformOrigin: { horizontal: "left", vertical: "bottom" },
+            }}
          >
             {options.map((option) => (
                <MenuItem value={option.value}>{option.text}</MenuItem>

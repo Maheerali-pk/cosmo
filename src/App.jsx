@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./Fonts.css";
 import Navbar from "./Components/Navbar";
-import { GlobalContextProvider, useGlobalContext } from "./Contexts/GlobalContext/GlobalContext";
+import {
+   GlobalContextProvider,
+   useGlobalContext,
+} from "./Contexts/GlobalContext/GlobalContext";
 import Sidebar from "./Components/Sidebar";
 import styled from "styled-components";
 import { flexbox } from "./StyledComponents/Flexbox";
@@ -10,7 +13,13 @@ import AccountRecieveables from "./Pages/AccountRecieveables/AccountRecieveables
 import { createTheme, MuiThemeProvider, ThemeOptions } from "@material-ui/core";
 import { colors, commonStyles, fonts, toRem } from "./Helpers/utils";
 import Construction from "./Pages/Construction/Construction";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+   BrowserRouter,
+   BrowserRouter as Router,
+   HashRouter,
+   Route,
+   Switch,
+} from "react-router-dom";
 import Layout from "./Components/Layout";
 import Register from "./Pages/Register/Register";
 import Register2 from "./Pages/Register2/Register2";
@@ -53,11 +62,14 @@ import * as file2 from "./SegoeUIBold-normal";
 import * as file3 from "./SegoeUISemibold-normal";
 import { Report3 } from "./Pages/Reports/Report1/Report1";
 import report1Data from "./Pages/Reports/Report1/data";
+import BalanceSheet from "./Pages/Accounts/BalanceSheet/BalanceSheet";
 
 const theme = createTheme(commonStyles);
 function App() {
    const [state, dispatch] = useGlobalContext();
-   const [isDialogShown, setIsDialogShown] = useState(Boolean(document.querySelector(".dialog")));
+   const [isDialogShown, setIsDialogShown] = useState(
+      Boolean(document.querySelector(".dialog"))
+   );
    useEffect(() => {
       if (state.dialog && Boolean(document.querySelector(".dialog"))) {
          setIsDialogShown(true);
@@ -81,11 +93,18 @@ function App() {
       window.x = file3;
    }, []);
    return (
-      <Router>
+      <BrowserRouter>
          <Switch>
             <MuiThemeProvider theme={theme}>
                {isDialogShown ? (
-                  <div style={{ height: "100%", width: "100%", position: "absolute", opacity: 0 }}></div>
+                  <div
+                     style={{
+                        height: "100%",
+                        width: "100%",
+                        position: "absolute",
+                        opacity: 0,
+                     }}
+                  ></div>
                ) : null}
                <Route exact path="/projects">
                   <Layout navbarItems={["Airmed", "Accounting", "Company"]}>
@@ -161,6 +180,9 @@ function App() {
                <Route exact path="/accounting/checks">
                   <Checks></Checks>
                </Route>
+               <Route exact path="/accounting/balance-sheet">
+                  <BalanceSheet></BalanceSheet>
+               </Route>
                <Route exact path="/hr/employee-profile">
                   <EmployeeProfile></EmployeeProfile>
                </Route>
@@ -181,7 +203,7 @@ function App() {
                </Route>
             </MuiThemeProvider>
          </Switch>
-      </Router>
+      </BrowserRouter>
    );
 }
 

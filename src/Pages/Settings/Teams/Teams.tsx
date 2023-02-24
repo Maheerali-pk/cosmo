@@ -1,6 +1,11 @@
 import { Button, IconButton, Icon } from "@material-ui/core";
 import styled from "styled-components";
-import { colors, repeat, stringsToOptions, toRem } from "../../../Helpers/utils";
+import {
+   colors,
+   repeat,
+   stringsToOptions,
+   toRem,
+} from "../../../Helpers/utils";
 import Flexbox from "../../../StyledComponents/Flexbox";
 import Grid from "../../../StyledComponents/Grid";
 import Paragraph from "../../../StyledComponents/Paragraph";
@@ -42,7 +47,9 @@ const HeadingsRowWrapper = styled(RowWrapper)`
    ${Text} {
       font-size: ${toRem(12)};
    }
-   background: ${colors.headingBackground};
+   background: #f5f7f9;
+       color: #1D252C;
+    box-shadow: 0 1px 2px 0 #dbe3ea
    border: none;
 `;
 
@@ -67,13 +74,18 @@ interface RowProps {
 const rows: RowProps[] = [
    { showIcon: true, name: "Super Admin", members: "1", status: "Active" },
    { showIcon: true, name: "Admin", members: "2", status: "Active" },
-   ...repeat({ showIcon: false, name: "Team Name", members: "2", status: "Active" }, 6),
+   ...repeat(
+      { showIcon: false, name: "Team Name", members: "2", status: "Active" },
+      6
+   ),
 ];
 
 const Row: React.FC<RowProps> = ({ members, name, showIcon, status }) => {
    return (
       <RowWrapper fullWidth>
-         <div style={{ textAlign: "center" }}>{showIcon && <LockOutlinedIcon fontSize="small"></LockOutlinedIcon>}</div>
+         <div style={{ textAlign: "center" }}>
+            {showIcon && <LockOutlinedIcon fontSize="small"></LockOutlinedIcon>}
+         </div>
          <Text>{name}</Text>
          <Text>{members}</Text>
          <Text>{status}</Text>
@@ -97,15 +109,20 @@ const Teams: React.FC = () => {
    const [{ dialog: CurrentDialog }, dispatch] = useGlobalContext();
    return (
       <SettingsPageLayout navbarItems={["Settings", "Teams"]}>
-         {CurrentDialog === InviteAMemberDialog ? <CurrentDialog></CurrentDialog> : null}
+         {CurrentDialog === InviteAMemberDialog ? (
+            <CurrentDialog></CurrentDialog>
+         ) : null}
          <Flexbox column fullWidth>
-            <Flexbox fullWidth justify="space-between" padding="0 2rem 1.25rem 2rem">
-               <Text size={20} fontFamily="semibold">
-                  Teams
-               </Text>
+            <Flexbox
+               fullWidth
+               justify="space-between"
+               padding="0 2rem 1.25rem 2rem"
+            >
                <Flexbox gap={32}>
                   <Button
-                     onClick={() => dispatch({ setDialog: InviteAMemberDialog })}
+                     onClick={() =>
+                        dispatch({ setDialog: InviteAMemberDialog })
+                     }
                      variant="contained"
                      color="secondary"
                   >

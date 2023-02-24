@@ -2,7 +2,7 @@
    box-sizing: border-box;
    padding: 0;
    margin: 0;
-   font-family: "SegoeUI";
+   font-family: "Montserrat", sans-serif;
 }
 
 body,
@@ -12,9 +12,12 @@ html,
    width: 100%;
 }
 
-*:not(path) {
-   color: #7d7d7d;
+body {
+   background-color: #eceff3;
 }
+/* *:not(path) {
+   color: #7d7d7d;
+} */
 
 /* Overriding */
 .MuiSelect-icon {
@@ -25,7 +28,7 @@ html,
    width: 16rem !important;
 } */
 
-label+.MuiInput-formControl {
+label + .MuiInput-formControl {
    margin-top: 1rem !important;
 }
 
@@ -50,7 +53,6 @@ label+.MuiInput-formControl {
    font-family: SegoeUISemibold !important;
 } */
 @media (max-width: 1900px) {
-
    html,
    body {
       font-size: 100%;
@@ -58,7 +60,6 @@ label+.MuiInput-formControl {
 }
 
 @media (max-width: 1650px) {
-
    html,
    body {
       font-size: 90%;
@@ -66,7 +67,6 @@ label+.MuiInput-formControl {
 }
 
 @media (max-width: 1400px) {
-
    html,
    body {
       font-size: 80%;
@@ -74,7 +74,6 @@ label+.MuiInput-formControl {
 }
 
 @media (max-width: 1150px) {
-
    html,
    body {
       font-size: 70%;
@@ -82,7 +81,6 @@ label+.MuiInput-formControl {
 }
 
 @media (max-width: 1100px) {
-
    html,
    body {
       font-size: 60%;

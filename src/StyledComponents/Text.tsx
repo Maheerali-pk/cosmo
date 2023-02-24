@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { colors, FontFamilyKey, fonts, toEm, toRem } from "../Helpers/utils";
 
 interface TextProps {
-   size?: number;
+   size?: number | string;
    fontFamily?: FontFamilyKey;
    color?: keyof typeof colors | "inherit";
    isLink?: boolean;
@@ -31,9 +31,12 @@ export default styled.div<TextProps>`
 export const text = (p: TextProps) => {
    const func = p.em ? toEm : toRem;
    return css`
-      font-size: ${toEm(p.size || 16)};
-      font-family: ${fonts[p.fontFamily || "regular"]} ${p.fontFamily ? " !important" : ""};
-      color: ${p.color === "inherit" ? "inherit" : colors[p.color || "grayText"]};
+      font-size: ${typeof p.size === "number" ? toEm(p.size || 16) : p.size};
+      font-family: ${fonts[p.fontFamily || "regular"]}
+         ${p.fontFamily ? " !important" : ""};
+      color: ${p.color === "inherit"
+         ? "inherit"
+         : colors[p.color || "grayText"]};
       ${p.isLink &&
       css`
          cursor: pointer;
