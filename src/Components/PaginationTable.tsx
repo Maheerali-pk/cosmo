@@ -16,6 +16,7 @@ import {
    DeleteOutline,
    FilterOutlined,
    KeyboardArrowLeft,
+   PictureAsPdf,
    PlusOneOutlined,
    PrintOutlined,
    RestoreOutlined,
@@ -36,6 +37,7 @@ import Grid, { GridProps } from "../StyledComponents/Grid";
 import Text from "../StyledComponents/Text";
 import CustomDrawer from "./CustomDrawer";
 import CustomSelect from "./CustomSelect";
+import Dropdown from "./Dropdown";
 
 interface PaginationTableProps {
    rows?: string[][];
@@ -295,9 +297,31 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
                   <IconButtonWrapper style={{ padding: "0.3rem" }}>
                      <SettingsBackupRestoreOutlined></SettingsBackupRestoreOutlined>
                   </IconButtonWrapper>
-                  <IconButtonWrapper style={{ padding: "0.3rem" }}>
-                     <CloudDownloadOutlined></CloudDownloadOutlined>
-                  </IconButtonWrapper>
+                  <Dropdown
+                     menuWidth={"auto"}
+                     ButtonJSX={
+                        <IconButtonWrapper style={{ padding: "0.3rem" }}>
+                           <CloudDownloadOutlined></CloudDownloadOutlined>
+                        </IconButtonWrapper>
+                     }
+                     items={[
+                        {
+                           text: "PDF",
+                           icon: <PictureAsPdf fontSize="small"></PictureAsPdf>,
+                           onClick: () => {},
+                           subItems: [
+                              { text: "Landscape", onClick: () => {} },
+                              { text: "Portait", onClick: () => {} },
+                           ],
+                        },
+                        {
+                           text: "EXCEL",
+                           icon: <PictureAsPdf fontSize="small"></PictureAsPdf>,
+                           onClick: () => {},
+                        },
+                     ]}
+                     label={""}
+                  ></Dropdown>
                </Flexbox>
             </Flexbox>
 

@@ -54,7 +54,7 @@ const Wrapper = styled(Flexbox)`
 `;
 
 const Heading = styled(Flexbox)`
-   padding: 25px 25px 25px;
+   padding: 1.5rem 1.5rem 1.5rem;
    padding-bottom: 0;
    font-size: 10px;
    color: #1d252c;
@@ -102,22 +102,19 @@ const WrapperWrapper = styled(Flexbox)`
    width: 100%;
    background: transparent;
 `;
-const SelectsRowWrapper = styled(Grid)`
-   grid-template-columns: ;
-`;
 
 const OrderButton = styled(Button)`
    padding: 0 !important;
    min-width: ${toRem(30)};
-   height:  ${toRem(30)};
-   display:flex;
-   align-items:center;
-   justify-content-center;
-   border:none !important;
-   svg{
+   height: ${toRem(30)};
+   display: flex;
+   align-items: center;
+   /* justify-content-center; */
+   border: none !important;
+   svg {
       font-size: 15px;
    }
-       background-color: #f7f9fa;
+   background-color: #f7f9fa;
 `;
 
 const FilterItemWrapper = styled(Flexbox)`
@@ -157,6 +154,17 @@ const initialFilterItems: IFilterItem[] = [
    { title: "Action", checked: false, id: "3" },
    { title: "Action", checked: false, id: "4" },
    { title: "Action", checked: false, id: "5" },
+   { title: "Action", checked: false, id: "6" },
+   { title: "Action", checked: false, id: "7" },
+   { title: "Action", checked: false, id: "8" },
+   { title: "Action", checked: false, id: "9" },
+   { title: "Action", checked: false, id: "10" },
+   { title: "Action", checked: false, id: "11" },
+   { title: "Action", checked: false, id: "12" },
+   { title: "Action", checked: false, id: "13" },
+   { title: "Action", checked: false, id: "14" },
+   { title: "Action", checked: false, id: "15" },
+   { title: "Action", checked: false, id: "16" },
 ];
 
 const CustomizeList: React.FC<GoodReceivedNoteProps> = () => {
@@ -172,8 +180,14 @@ const CustomizeList: React.FC<GoodReceivedNoteProps> = () => {
       <Wrapper column fullHeight fullWidth>
          <Heading>Customize Lisnt</Heading>
 
-         <Body fullWidth column>
-            <Grid columns="1fr 2fr 1fr" align="end" gap="0.55rem" fullWidth>
+         <Body fullWidth style={{ overflowY: "auto" }} column>
+            <Grid
+               style={{ height: "auto" }}
+               columns="1fr 2fr 1fr"
+               align="end"
+               gap="0.55rem"
+               fullWidth
+            >
                <CustomSelect
                   label="PAGE SIZE"
                   options={[
@@ -209,69 +223,61 @@ const CustomizeList: React.FC<GoodReceivedNoteProps> = () => {
                   </OrderButton>
                </ButtonGroup>
             </Grid>
-            <Flexbox column fullWidth mt={22} mb={22}>
-               {filterItems.map((x) => (
-                  <FilterItemWrapper
-                     fullWidth
-                     style={{
-                        background: x.checked
-                           ? "white"
-                           : "rgba(255,255,255, 0.6)",
-                     }}
-                  >
-                     <Flexbox gap={15}>
-                        <Flexbox width={34} justify="center">
-                           <DragIndicator></DragIndicator>
+            <Flexbox
+               style={{ overflowY: "auto", overflowX: "hidden" }}
+               column
+               fullWidth
+               overflowAuto
+            >
+               <Flexbox column fullWidth mt={22} mb={22}>
+                  {filterItems.map((x) => (
+                     <FilterItemWrapper
+                        fullWidth
+                        style={{
+                           background: x.checked
+                              ? "white"
+                              : "rgba(255,255,255, 0.6)",
+                        }}
+                     >
+                        <Flexbox gap={15}>
+                           <Flexbox width={34} justify="center">
+                              <DragIndicator></DragIndicator>
+                           </Flexbox>
+                           <Text size={12}>{x.title}</Text>
                         </Flexbox>
-                        <Text size={12}>{x.title}</Text>
-                     </Flexbox>
-                     <Flexbox gap={16} mr={8}>
-                        <ColorIconWrapper>
-                           <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIxNXB4IiBoZWlnaHQ9IjE1cHgiIHZpZXdCb3g9IjAgMCAxNSAxNSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5Hcm91cCA2OTwvdGl0bGU+ICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPiAgICA8ZGVmcz48L2RlZnM+ICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgaWQ9IkN1c3RvbWl6ZS1FWGxpc3QtTkVXLUNvcHktNyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0MDguMDAwMDAwLCAtNDU1LjAwMDAwMCkiIGZpbGwtcnVsZT0ibm9uemVybyI+ICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTY5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNDA4LjAwMDAwMCwgNDU1LjAwMDAwMCkiPiAgICAgICAgICAgICAgICA8Y2lyY2xlIGlkPSJPdmFsLTEzIiBmaWxsPSIjMkU4OEYyIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG11bHRpcGx5OyIgY3g9IjQuODg2MzYzNjQiIGN5PSI0Ljg4NjM2MzY0IiByPSI0Ljg4NjM2MzY0Ij48L2NpcmNsZT4gICAgICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbC0xMy1Db3B5IiBmaWxsPSIjRkYyMjNEIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG11bHRpcGx5OyIgY3g9IjEwLjExMzYzNjQiIGN5PSI0Ljg4NjM2MzY0IiByPSI0Ljg4NjM2MzY0Ij48L2NpcmNsZT4gICAgICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbC0xMy1Db3B5LTIiIGZpbGw9IiM2NEMwMDciIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbXVsdGlwbHk7IiBjeD0iNy4xNTkwOTA5MSIgY3k9IjkuMjA0NTQ1NDUiIHI9IjQuODg2MzYzNjQiPjwvY2lyY2xlPiAgICAgICAgICAgIDwvZz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg=="></img>
-                        </ColorIconWrapper>
-                        <Switch
-                           onChange={(e) =>
-                              onFilterItemChange(e.target.checked, x.id)
-                           }
-                           checked={x.checked}
-                        ></Switch>
-                     </Flexbox>
-                  </FilterItemWrapper>
-               ))}
+                        <Flexbox gap={16} mr={8}>
+                           <ColorIconWrapper>
+                              <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIxNXB4IiBoZWlnaHQ9IjE1cHgiIHZpZXdCb3g9IjAgMCAxNSAxNSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5Hcm91cCA2OTwvdGl0bGU+ICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPiAgICA8ZGVmcz48L2RlZnM+ICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgaWQ9IkN1c3RvbWl6ZS1FWGxpc3QtTkVXLUNvcHktNyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0MDguMDAwMDAwLCAtNDU1LjAwMDAwMCkiIGZpbGwtcnVsZT0ibm9uemVybyI+ICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTY5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNDA4LjAwMDAwMCwgNDU1LjAwMDAwMCkiPiAgICAgICAgICAgICAgICA8Y2lyY2xlIGlkPSJPdmFsLTEzIiBmaWxsPSIjMkU4OEYyIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG11bHRpcGx5OyIgY3g9IjQuODg2MzYzNjQiIGN5PSI0Ljg4NjM2MzY0IiByPSI0Ljg4NjM2MzY0Ij48L2NpcmNsZT4gICAgICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbC0xMy1Db3B5IiBmaWxsPSIjRkYyMjNEIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG11bHRpcGx5OyIgY3g9IjEwLjExMzYzNjQiIGN5PSI0Ljg4NjM2MzY0IiByPSI0Ljg4NjM2MzY0Ij48L2NpcmNsZT4gICAgICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbC0xMy1Db3B5LTIiIGZpbGw9IiM2NEMwMDciIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbXVsdGlwbHk7IiBjeD0iNy4xNTkwOTA5MSIgY3k9IjkuMjA0NTQ1NDUiIHI9IjQuODg2MzYzNjQiPjwvY2lyY2xlPiAgICAgICAgICAgIDwvZz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg=="></img>
+                           </ColorIconWrapper>
+                           <Switch
+                              onChange={(e) =>
+                                 onFilterItemChange(e.target.checked, x.id)
+                              }
+                              checked={x.checked}
+                           ></Switch>
+                        </Flexbox>
+                     </FilterItemWrapper>
+                  ))}
+               </Flexbox>
+               <Flexbox ml={12} mb={20}>
+                  <FormGroup>
+                     <FormControlLabel
+                        control={<Checkbox />}
+                        label={
+                           <Text ml={8} size={12} color={"grayHeading"}>
+                              Apply these settings for all users
+                           </Text>
+                        }
+                     />
+                  </FormGroup>
+               </Flexbox>
             </Flexbox>
-            <Flexbox ml={12} mb={20}>
-               <FormGroup>
-                  <FormControlLabel
-                     control={<Checkbox />}
-                     label={
-                        <Text ml={8} size={12} color={"grayHeading"}>
-                           Apply these settings for all users
-                        </Text>
-                     }
-                  />
-               </FormGroup>
-            </Flexbox>
+         </Body>
+         <Flexbox px={24} pb={30} gap={16}>
             <Button color="primary" variant="contained">
                Save
             </Button>
-            {/* <TableWrapper fullWidth column>
-               <HeaderRowWrapper fullWidth>
-                  <div>Number</div>
-                  <div>Number</div>
-                  <div>Number</div>
-                  <div>Number</div>
-                  <div>Number</div>
-                  <div>Number</div>
-               </HeaderRowWrapper>
-               {data.rows.map((row) => (
-                  <RowWrapper fullWidth>
-                     {row.cells.map((cell) => (
-                        <div onClick={cell.onClick}>{cell.text}</div>
-                     ))}
-                  </RowWrapper>
-               ))}
-            </TableWrapper> */}
-         </Body>
+         </Flexbox>
       </Wrapper>
    );
 };

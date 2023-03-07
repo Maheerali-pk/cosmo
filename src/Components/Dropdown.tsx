@@ -1,74 +1,4 @@
-// import { Button, Menu, MenuItem } from "@material-ui/core";
-// import React, { CSSProperties } from "react";
-// import Text from "../StyledComponents/Text";
-
-// import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-// import styled from "styled-components";
-// interface DropdownItem {
-//    text: string;
-//    onClick: () => void;
-// }
-
-// interface DropdownProps {
-//    label: string | JSX.Element;
-//    items: DropdownItem[];
-//    showDropdownIcon?: boolean;
-//    style?: CSSProperties;
-//    labelStyles?: CSSProperties;
-//    ButtonWrapper?: React.FC;
-//    buttonVariant?: "text" | "outlined" | "contained";
-// }
-
-// const DropdownButton = styled(Button)`
-//    background-color: transparent;
-// `;
-
-// const Dropdown: React.FC<DropdownProps> = ({
-//    label,
-//    buttonVariant,
-//    items,
-//    showDropdownIcon = true,
-//    style = {},
-//    labelStyles = {},
-// }) => {
-//    const [anchorEl, setAnchorEl] = React.useState(null);
-
-//    const handleClick = (event: any) => {
-//       setAnchorEl(event.currentTarget);
-//    };
-
-//    const handleClose = (item: DropdownItem) => {
-//       setAnchorEl(null);
-//       // item.onClick();
-//    };
-
-//    return (
-//       <>
-//          <DropdownButton
-//             className="dropdown-btn"
-//             variant={buttonVariant || "text"}
-//             style={{ padding: "0", minWidth: "fit-content", ...style }}
-//             onClick={handleClick}
-//          >
-//             <Text fontFamily="regular" size={16} style={{ ...labelStyles }}>
-//                {label}
-//             </Text>
-//             {showDropdownIcon ? <ArrowDropDownIcon></ArrowDropDownIcon> : null}
-//          </DropdownButton>
-//          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} keepMounted onClose={handleClose}>
-//             {items.map((item) => (
-//                <MenuItem onClick={() => handleClose(item)}>{item.text}</MenuItem>
-//             ))}
-//          </Menu>
-//       </>
-//    );
-// };
-
-// export default Dropdown;
-
 import {
-   FormControl,
-   InputLabel,
    MenuItem,
    Select as MUISelect,
    SelectProps as MUISelectProps,
@@ -76,15 +6,22 @@ import {
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import Menu from "@material-ui/core/Menu";
-import { KeyboardArrowDown } from "@material-ui/icons";
+import {
+   ChevronRight,
+   KeyboardArrowDown,
+   KeyboardArrowRight,
+} from "@material-ui/icons";
 import { useState } from "react";
 import styled, { CSSProperties, StyledComponent } from "styled-components";
 import { fonts, toRem } from "../Helpers/utils";
 import Flexbox from "../StyledComponents/Flexbox";
 import Text from "../StyledComponents/Text";
+import NestedMenuItem from "./NestedMenuItem";
 export interface SelectOption {
    text: string;
+   icon?: JSX.Element;
    onClick: () => void;
+   subItems?: SelectOption[];
 }
 export interface SelectProps extends MUISelectProps {
    items: SelectOption[];
@@ -123,6 +60,7 @@ const MenuItemWrapper = styled(MenuItem)`
    min-height: ${toRem(30)} !important;
    padding: 0.5rem ${toRem(14)} !important;
    color: #8d9ba8 !important;
+   position: relative;
    &:after {
       display: block;
       content: "";
@@ -145,7 +83,6 @@ const MenuWrapper = styled(Menu)`
    // border: 1px solid #d6dde5;
    // border-radius: 5px;
 `;
-const SelectInput = styled(Input)``;
 
 const Dropdown: React.FC<SelectProps> = ({
    label,
@@ -154,9 +91,11 @@ const Dropdown: React.FC<SelectProps> = ({
    menuWidth = 200,
    ButtonWrapper,
    ButtonJSX,
+   MenuProps,
    ...rest
 }) => {
    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+   const [anchorEl2, setAnchorEl2] = useState<HTMLElement | null>(null);
    const [open, setOpen] = useState(false);
 
    return (
@@ -170,7 +109,6 @@ const Dropdown: React.FC<SelectProps> = ({
          ) : (
             <SelectButton>
                <Text>{label}</Text>
-               {/* <KeyboardArrowDown></KeyboardArrowDown> */}
             </SelectButton>
          )}
          <MenuWrapper
@@ -186,54 +124,78 @@ const Dropdown: React.FC<SelectProps> = ({
             style={{ width: menuWidth }}
             open={Boolean(anchorEl)}
             anchorOrigin={{
-               vertical: "bottom",
+               vertical: "top",
                horizontal: "left",
             }}
             transformOrigin={{
-               vertical: "top",
+               vertical: (anchorEl?.getBoundingClientRect().top || 0) - 80,
                horizontal: "left",
             }}
             anchorEl={anchorEl}
             onClose={() => setAnchorEl(null)}
+            {...MenuProps}
          >
-            {items.map((x) => (
-               <MenuItemWrapper
-                  onClick={(e) => {
-                     setOpen(false);
-                     setAnchorEl(null);
-                  }}
-               >
-                  {x.text}
-               </MenuItemWrapper>
-            ))}
+            {items.map((x) =>
+               !x.subItems ? (
+                  <MenuItemWrapper
+                     onClick={(e) => {
+                        setOpen(false);
+                        setAnchorEl(null);
+                     }}
+                  >
+                     <Flexbox mr={10}>{x.icon}</Flexbox> {x.text}{" "}
+                     {x.subItems && (
+                        <ChevronRight
+                           style={{ fontSize: "10px" }}
+                        ></ChevronRight>
+                     )}
+                  </MenuItemWrapper>
+               ) : (
+                  <NestedMenuItem
+                     parentMenuOpen={Boolean(anchorEl)}
+                     onClick={(e) => {
+                        setOpen(false);
+                        setAnchorEl(null);
+                     }}
+                     //@ts-ignore
+                     MenuProps={{
+                        style: { boxShadow: "none" },
+                        transformOrigin: {
+                           horizontal: "left",
+                           vertical: "top",
+                        },
+                        anchorOrigin: {
+                           horizontal: "right",
+                           vertical: "top",
+                        },
+                        PaperProps: {
+                           style: {
+                              boxShadow: "none",
+                              border: "1px solid #c4d0da",
+                              marginLeft: "-5px",
+                           },
+                        },
+                     }}
+                     rightIcon={<></>}
+                     style={{ padding: "0" }}
+                     label={
+                        <MenuItemWrapper>
+                           <Flexbox mr={10}>{x.icon}</Flexbox> {x.text}{" "}
+                           {x.subItems && (
+                              <ChevronRight
+                                 style={{ fontSize: "10px" }}
+                              ></ChevronRight>
+                           )}
+                        </MenuItemWrapper>
+                     }
+                  >
+                     {x.subItems.map((a) => (
+                        <MenuItemWrapper>{a.text}</MenuItemWrapper>
+                     ))}
+                  </NestedMenuItem>
+               )
+            )}
          </MenuWrapper>
-         {/* <SelectInput  disableUnderline value={value}></SelectInput> */}
-         {/* <MUISelect
-            {...rest}
-            disableUnderline
-            onChange={(e) => {
-               onValueChange(e.target.value as string);
-            }}
-            // onFocus={(e) => {
-            //    setAnchorEl(e.target as HTMLInputElement);
-            // }}
-            onOpen={(e) => {
-               setAnchorEl(e.target as HTMLInputElement);
-            }}
-            onClose={(e) => {
-               setAnchorEl(undefined);
-            }}
-            value={value}
-            MenuProps={{
-               anchorOrigin: { horizontal: "left", vertical: "top" },
-               transformOrigin: { horizontal: "left", vertical: "bottom" },
-               anchorEl: anchorEl,
-            }}
-         >
-            {options.map((option) => (
-               <MenuItem value={option.value}>{option.text}</MenuItem>
-            ))}
-         </MUISelect> */}
       </>
    );
 };

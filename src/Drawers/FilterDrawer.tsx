@@ -15,6 +15,7 @@ import {
 import { useGlobalContext } from "../Contexts/GlobalContext/GlobalContext";
 import {
    Close,
+   DeleteOutline,
    DragIndicator,
    KeyboardArrowDown,
    SignalCellular0Bar,
@@ -62,7 +63,7 @@ const Wrapper = styled(Flexbox)`
 `;
 
 const Heading = styled(Flexbox)`
-   padding: 25px 25px 25px;
+   padding: 1.5rem 1.5rem 1.5rem;
    padding-bottom: 0;
    font-size: 12px;
    color: #1d252c;
@@ -111,22 +112,19 @@ const WrapperWrapper = styled(Flexbox)`
    width: 100%;
    background: transparent;
 `;
-const SelectsRowWrapper = styled(Grid)`
-   grid-template-columns: ;
-`;
 
 const OrderButton = styled(Button)`
    padding: 0 !important;
    min-width: ${toRem(30)};
-   height:  ${toRem(30)};
-   display:flex;
-   align-items:center;
-   justify-content-center;
-   border:none !important;
-   svg{
+   height: ${toRem(30)};
+   display: flex;
+   align-items: center;
+   /* justify-content-center; */
+   border: none !important;
+   svg {
       font-size: 15px;
    }
-       background-color: #f7f9fa;
+   background-color: #f7f9fa;
 `;
 
 const FilterItemWrapper = styled(Flexbox)`
@@ -188,13 +186,17 @@ const FilterDrawer: React.FC<GoodReceivedNoteProps> = () => {
       <Wrapper column fullHeight fullWidth>
          <Heading>Filter</Heading>
 
-         <Body fullWidth column>
+         <Body mb={70} fullWidth column overflowAuto>
             <Grid mb={10} noOfColumns={2} fullWidth>
                <CustomSelect
                   label="VIEW SAVED FILTERS"
                   options={[
                      { text: "10", value: "10" },
-                     { text: "20", value: "20" },
+                     {
+                        text: "20",
+                        value: "20",
+                        leftIcon: <DeleteOutline></DeleteOutline>,
+                     },
                      { text: "30", value: "30" },
                      { text: "40", value: "40" },
                      { text: "50", value: "50" },
@@ -275,6 +277,7 @@ const FilterDrawer: React.FC<GoodReceivedNoteProps> = () => {
                      { text: "Item 1", label: "1" },
                      { text: "Item 1", label: "1" },
                      { text: "Item 1", label: "1" },
+                     { text: "Item 1", label: "1" },
                   ]}
                ></FilterCard>
                <FilterCard
@@ -291,6 +294,25 @@ const FilterDrawer: React.FC<GoodReceivedNoteProps> = () => {
                <FilterCardMain></FilterCardMain>
             </Grid>
          </Body>
+         <Flexbox px={24} pb={30} gap={16}>
+            <Button
+               style={{ backgroundColor: colors.green }}
+               color="primary"
+               variant="contained"
+            >
+               Apply Filter
+            </Button>
+            <Button color="primary" variant="contained">
+               Save
+            </Button>
+            <Button
+               style={{ backgroundColor: "#8d9ba8" }}
+               color="primary"
+               variant="contained"
+            >
+               Reset
+            </Button>
+         </Flexbox>
       </Wrapper>
    );
 };

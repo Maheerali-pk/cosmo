@@ -17,6 +17,7 @@ import Text from "../StyledComponents/Text";
 export interface SelectOption {
    text: string;
    value: string;
+   leftIcon?: JSX.Element;
 }
 export interface SelectProps extends MUISelectProps {
    options: SelectOption[];
@@ -28,7 +29,7 @@ export interface SelectProps extends MUISelectProps {
 }
 const SelectButton = styled(Flexbox)`
    text-align: left;
-   justify-content: space-between;
+   justify-content: stretch;
    border-radius: 3px !important;
    background-color: white !important;
    cursor: pointer;
@@ -39,11 +40,13 @@ const SelectButton = styled(Flexbox)`
    ${Text} {
       color: #8d9ba8;
       font-size: ${toRem(12)};
+      flex-grow: 1;
    }
    svg {
       color: #8d9ba8;
    }
    width: 100%;
+   position: relative;
 `;
 const MenuItemWrapper = styled(MenuItem)`
    font-size: ${toRem(12)} !important;
@@ -72,7 +75,23 @@ const MenuWrapper = styled(Menu)`
    // border: 1px solid #d6dde5;
    // border-radius: 5px;
 `;
-const SelectInput = styled(Input)``;
+const LeftIconWrapper = styled(Flexbox)`
+   cursor: pointer;
+   border-right: 1px solid #c4d0da;
+   aspect-ratio: 1/1;
+   justify-content: center;
+
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: auto;
+
+   width: fit-content;
+   svg {
+      font-size: 1rem;
+   }
+`;
 
 const CustomSelect: React.FC<SelectProps> = ({
    onValueChange,
@@ -86,13 +105,18 @@ const CustomSelect: React.FC<SelectProps> = ({
    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
    const [open, setOpen] = useState(false);
 
+   const selectedItem = options.find((x) => x.value === value);
    return (
       <Flexbox column gap={5} fullWidth>
          <Text size={9}>{label}</Text>
          <SelectButton
+            style={{ paddingLeft: selectedItem?.leftIcon ? "0" : "" }}
             onClick={(e) => setAnchorEl(e.currentTarget as HTMLElement)}
          >
-            <Text>{value}</Text>
+            {selectedItem?.leftIcon && (
+               <LeftIconWrapper>{selectedItem?.leftIcon}</LeftIconWrapper>
+            )}
+            <Text ml={selectedItem?.leftIcon ? 9.23 + 40 : 0}>{value}</Text>
             <KeyboardArrowDown></KeyboardArrowDown>
          </SelectButton>
          <MenuWrapper
