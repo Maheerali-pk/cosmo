@@ -19,9 +19,28 @@ const Main: React.FC = () => {
       <Flexbox column fullWidth>
          <Navbar headingItems={[]} />{" "}
          <Flexbox padding="1rem 2rem" fullWidth column>
-            <Tabs titles={["Dashboard", "Companies"]}>
-               <Flexbox padding={`${toRem(24)} ${toRem(10)}`}>Dashbaord</Flexbox>
-               <CompanyCardsWrapper padding={`${toRem(24)} ${toRem(10)}`} fullWidth noOfColumns={5}>
+            <Tabs
+               titles={[
+                  "Dashboard",
+                  "Companies",
+                  "Third",
+                  "Fouth",
+                  "Fifth",
+                  "Sixth",
+                  "Seventh",
+                  "Eighth",
+                  "Ninth",
+               ]}
+               labels={["", "", "2", "", "3", "", "3", "3", "2"]}
+            >
+               <Flexbox padding={`${toRem(24)} ${toRem(10)}`}>
+                  Dashbaord
+               </Flexbox>
+               <CompanyCardsWrapper
+                  padding={`${toRem(24)} ${toRem(10)}`}
+                  fullWidth
+                  noOfColumns={5}
+               >
                   <CompanyCard
                      description="Some Text"
                      dots={1}

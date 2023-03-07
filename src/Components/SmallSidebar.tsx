@@ -47,18 +47,32 @@ const HeadingWrapper = styled(Flexbox)<{ selected?: boolean }>`
       color: ${(p) => (p.selected ? "#5003b0" : "#1D252C")};
    }
 
-   padding: 0
    cursor: pointer;
 `;
-const Wrapper = styled(Flexbox)<{ open?: boolean }>`
+const Wrapper = styled(Flexbox)<{ open?: boolean; openWithHover?: boolean }>`
    border-right: 1px solid rgb(236, 239, 243);
    width: 217px;
+   // transform: translateX(0%);
+   z-index: -1;
+
    ${(p) =>
       !p.open &&
       `
-      z-index: -1;
+      // left: -100%;
       transform: translateX(-100%);
-   `} // transition: transform 0.15s ease-in-out;
+   `}
+   ${(p) =>
+      p.openWithHover &&
+      `
+      transform: translateX(0%);
+      left: 85px;
+      background:white;
+      height: 100vh;
+      position: fixed;
+      box-shadow: 5px 0 10px 0 rgb(141 155 168 / 6%);
+   `}
+   
+   transition: transform 0.15s ease-in-out;
    background: white;
 `;
 const SubMenuItemWrapper = styled(Flexbox)<{ selected?: boolean }>`
@@ -92,7 +106,13 @@ const SmallSidebar: React.FC<SmallSidebarProps> = ({
    const [panel, setPanel] = useState(0);
    const [state, dispatch] = useGlobalContext();
    return (
-      <Wrapper gap={16} column fullWidth open={state.isSmallSidebarOpen}>
+      <Wrapper
+         gap={16}
+         column
+         fullWidth
+         openWithHover={state.sidebarOpenedWithHover}
+         open={state.isSmallSidebarOpen}
+      >
          <Flexbox
             margin="15px 0 10px"
             px={24}

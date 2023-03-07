@@ -13,6 +13,7 @@ import SidebarItem, { SidebarRectangle } from "./SidebarItem";
 import SmallSidebar from "./SmallSidebar";
 import RoundImage from "../StyledComponents/RoundImage";
 import { ChevronLeft, ChevronRight, Home } from "@material-ui/icons";
+import { isMainThread } from "worker_threads";
 
 export interface SidebarProps {}
 
@@ -111,6 +112,15 @@ const Sidebar: React.FC<SidebarProps> = () => {
       { sidebarItems, selectedItem, isSidebarOpen, isSmallSidebarOpen },
       dispatch,
    ] = useGlobalContext();
+   const onMouseEnterOnItem = (e: React.MouseEvent) => {
+      if (!isSmallSidebarOpen) {
+         dispatch({ setState: { sidebarOpenedWithHover: true } });
+      }
+   };
+   const onMouseLeaveSidebar = () => {
+      console.log("Mouse left the sidebar");
+      dispatch({ setState: { sidebarOpenedWithHover: false } });
+   };
    const renderSidebarItems = () => {
       return sidebarItems.map((item) => (
          <SidebarItem
@@ -157,7 +167,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
    // } else {
    //    return (
    return (
-      <MainWrapper>
+      <MainWrapper style={{ zIndex: 2 }} onMouseLeave={onMouseLeaveSidebar}>
          <SidebarWrapper
             style={{
                width: "100%",
@@ -182,31 +192,31 @@ const Sidebar: React.FC<SidebarProps> = () => {
                <MainButtonWrapper>
                   <Home fontSize="large" />
                </MainButtonWrapper>
-               <MainButtonWrapper selected>
+               <MainButtonWrapper selected onMouseEnter={onMouseEnterOnItem}>
                   <SettingsOutlinedIcon fontSize="large" />
                   <div>Accounts</div>
                </MainButtonWrapper>
-               <MainButtonWrapper>
+               <MainButtonWrapper onMouseEnter={onMouseEnterOnItem}>
                   <SettingsOutlinedIcon fontSize="large" />
                   <div>Accounts</div>
                </MainButtonWrapper>
-               <MainButtonWrapper>
+               <MainButtonWrapper onMouseEnter={onMouseEnterOnItem}>
                   <SettingsOutlinedIcon fontSize="large" />
                   <div>Accounts</div>
                </MainButtonWrapper>
-               <MainButtonWrapper>
+               <MainButtonWrapper onMouseEnter={onMouseEnterOnItem}>
                   <SettingsOutlinedIcon fontSize="large" />
                   <div>Accounts</div>
                </MainButtonWrapper>
-               <MainButtonWrapper>
+               <MainButtonWrapper onMouseEnter={onMouseEnterOnItem}>
                   <SettingsOutlinedIcon fontSize="large" />
                   <div>Accounts</div>
                </MainButtonWrapper>
-               <MainButtonWrapper>
+               <MainButtonWrapper onMouseEnter={onMouseEnterOnItem}>
                   <SettingsOutlinedIcon fontSize="large" />
                   <div>Accounts</div>
                </MainButtonWrapper>
-               <MainButtonWrapper>
+               <MainButtonWrapper onMouseEnter={onMouseEnterOnItem}>
                   <SettingsOutlinedIcon fontSize="large" />
                   <div>Accounts</div>
                </MainButtonWrapper>

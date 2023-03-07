@@ -9,11 +9,13 @@ import {
    AddOutlined,
    ChevronLeft,
    ChevronRight,
+   Close,
    CloudDownload,
    CloudDownloadOutlined,
    Delete,
    DeleteOutline,
    FilterOutlined,
+   KeyboardArrowLeft,
    PlusOneOutlined,
    PrintOutlined,
    RestoreOutlined,
@@ -27,11 +29,13 @@ import React, { useState } from "react";
 import styled, { CSSProperties, StyledComponent } from "styled-components";
 import { useGlobalContext } from "../Contexts/GlobalContext/GlobalContext";
 import CustomizeList from "../Drawers/CustomizeList";
+import FilterDrawer from "../Drawers/FilterDrawer";
 import { colors, toRem } from "../Helpers/utils";
 import Flexbox from "../StyledComponents/Flexbox";
 import Grid, { GridProps } from "../StyledComponents/Grid";
 import Text from "../StyledComponents/Text";
 import CustomDrawer from "./CustomDrawer";
+import CustomSelect from "./CustomSelect";
 
 interface PaginationTableProps {
    rows?: string[][];
@@ -96,19 +100,43 @@ const IconButtonWrapper = styled(IconButton)`
    }
 `;
 
+const SearchInputWrapper = styled(Flexbox)<{ open?: boolean }>`
+   gap: 0.25rem;
+   svg {
+      display: ${(p) => (p.open ? "block" : "none")};
+      cursor: pointer;
+      color: #1d252c;
+      opacity: 0.7;
+   }
+   input {
+      border: none;
+      outline: none;
+
+      max-width: ${(p) => (p.open ? "170px" : "0px")};
+      padding-right: ${(p) => (p.open ? toRem(9.2) : "0px")};
+      padding-left: ${(p) => (p.open ? toRem(9.2) : "0px")};
+      font-size: ${toRem(12)};
+      color: #1d252c;
+      transition: max-width 0.3s ease, padding-left 0.3s ease,
+         padding-right 0.3s ease;
+   }
+`;
 const PaginationTable: React.FC<PaginationTableProps> = ({
    headings,
    rows,
    HeadingsRowWrapper,
    RowWrapper,
-   rowsPerPage = 20,
+   rowsPerPage = 40,
    wrapperStyles,
    children,
 }) => {
    const [page, setPage] = useState(0);
+   const [selectValue, setSelectValue] = useState("Item 1");
+   const [searchValue, setSearchValue] = useState("");
    let noOfPages = Math.ceil(
       (rows || React.Children.toArray(children)).length / rowsPerPage
    );
+   const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
    let noOfItems = (rows || React.Children.toArray(children)).length;
    const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set());
    const [selectAllChecked, setSelectAllChecked] = useState(false);
@@ -137,11 +165,6 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
                >
                   <Text>
                      <Checkbox
-                        style={{
-                           color: selectedRows.has(startIndex + i)
-                              ? "#deb316"
-                              : "",
-                        }}
                         checked={selectedRows.has(startIndex + i)}
                         onChange={(e) => toggleCheckbox(i + startIndex, e)}
                      ></Checkbox>
@@ -194,6 +217,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
          overflowAuto
          style={{ height: "100%", ...(wrapperStyles || {}) }}
       >
+         <CustomDrawer Component={FilterDrawer} width="40%"></CustomDrawer>
          <TableHeader fullWidth justify="space-between" px={20} py={15}>
             <Flexbox gap={50}>
                <Flexbox gap={16}>
@@ -222,14 +246,49 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
                         </IconButtonWrapper>
                      </>
                   ) : null}
-                  <IconButtonWrapper style={{ padding: "0.3rem" }}>
+                  <IconButtonWrapper
+                     onClick={() => setIsSearchBoxOpen(true)}
+                     style={{ padding: "0.3rem" }}
+                  >
                      <SearchOutlined></SearchOutlined>
                   </IconButtonWrapper>
+                  <SearchInputWrapper open={isSearchBoxOpen}>
+                     <input
+                        placeholder="Search"
+                        value={searchValue || undefined}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                     ></input>
+                     <Close
+                        style={{ fontSize: "14px" }}
+                        onClick={() => setSearchValue("")}
+                     ></Close>
+                     <ChevronLeft
+                        onClick={() => setIsSearchBoxOpen(false)}
+                        style={{ fontSize: "30px" }}
+                     ></ChevronLeft>
+                  </SearchInputWrapper>
                </Flexbox>
-               <Flexbox gap={16}>
-                  <IconButtonWrapper style={{ padding: "0.3rem" }}>
+               <Flexbox
+                  style={{ display: isSearchBoxOpen ? "none" : "flex" }}
+                  gap={16}
+               >
+                  <IconButtonWrapper
+                     onClick={() =>
+                        dispatch({ setState: { drawer: FilterDrawer } })
+                     }
+                     style={{ padding: "0.3rem" }}
+                  >
                      <i className="fas fa-filter fa-xs"></i>
                   </IconButtonWrapper>
+                  <CustomSelect
+                     options={[
+                        { text: "Item 1", value: "Item 1" },
+                        { text: "Item 2", value: "Item 2" },
+                        { text: "Item 3", value: "Item 3" },
+                     ]}
+                     value={selectValue}
+                     onValueChange={setSelectValue}
+                  ></CustomSelect>
                   <IconButtonWrapper style={{ padding: "0.3rem" }}>
                      <RestoreOutlined></RestoreOutlined>
                   </IconButtonWrapper>
@@ -295,7 +354,16 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
                </Flexbox>
             </Flexbox>
          </TableHeader>
-         <Flexbox column fullWidth overflowAuto>
+         <Flexbox
+            column
+            fullWidth
+            overflowAuto
+            style={{
+               gridTemplateRows: "min-content 80vh",
+               gridTemplateColumns: "100%",
+               display: "grid",
+            }}
+         >
             <HeadingsRowWrapper>
                <Text>
                   <Checkbox
@@ -309,7 +377,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
                   <Text>{x}</Text>
                ))}
             </HeadingsRowWrapper>
-            <Flexbox column fullWidth overflowAuto>
+            <Flexbox fullHeight column fullWidth overflowAuto>
                {renderRows()}
             </Flexbox>
          </Flexbox>

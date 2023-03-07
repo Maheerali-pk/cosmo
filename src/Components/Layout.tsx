@@ -11,6 +11,7 @@ const AppWrapper = styled.div`
    width: 100%;
    overflow: hidden;
    background: white;
+   z-index: 1;
 `;
 
 const BottomArea = styled.div<{ isSidebarOpen?: boolean }>`
@@ -18,6 +19,7 @@ const BottomArea = styled.div<{ isSidebarOpen?: boolean }>`
    grid-template-columns: ${(p) =>
       `${p.isSidebarOpen ? 85 + 217 + "px" : "85px"} auto`};
    width: 100%;
+   transition: all 0.15s ease-in-out;
 `;
 
 const PageWrapper = styled.div`

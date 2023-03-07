@@ -32,7 +32,10 @@ const WrapperWrapper = styled(Flexbox)`
    width: 100%;
    background: transparent;
 `;
-const CustomDrawer: React.FC<CustomDrawerProps> = ({ width, Component }) => {
+const CustomDrawer: React.FC<CustomDrawerProps> = ({
+   width = "50%",
+   Component,
+}) => {
    const [state, dispatch] = useGlobalContext();
    return (
       <Drawer
@@ -41,7 +44,7 @@ const CustomDrawer: React.FC<CustomDrawerProps> = ({ width, Component }) => {
          style={{ width }}
          PaperProps={{
             style: {
-               width: "50%",
+               width: width,
                boxShadow: "none",
                background: "transparent",
             },

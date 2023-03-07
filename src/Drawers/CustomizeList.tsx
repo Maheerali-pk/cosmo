@@ -1,11 +1,19 @@
 import styled from "styled-components";
-import { colors } from "../Helpers/utils";
+import { colors, toRem } from "../Helpers/utils";
 import Table from "../Pages/AccountRecieveables/Table";
 import Flexbox from "../StyledComponents/Flexbox";
 import Grid from "../StyledComponents/Grid";
-import { Drawer } from "@material-ui/core";
+import {
+   Button,
+   ButtonGroup,
+   Checkbox,
+   Drawer,
+   FormControlLabel,
+   FormGroup,
+   Switch,
+} from "@material-ui/core";
 import { useGlobalContext } from "../Contexts/GlobalContext/GlobalContext";
-import { Close } from "@material-ui/icons";
+import { Close, DragIndicator, SignalCellular0Bar } from "@material-ui/icons";
 import CustomDrawer from "../Components/CustomDrawer";
 import Text from "../StyledComponents/Text";
 import CustomSelect from "../Components/CustomSelect";
@@ -47,6 +55,7 @@ const Wrapper = styled(Flexbox)`
 
 const Heading = styled(Flexbox)`
    padding: 25px 25px 25px;
+   padding-bottom: 0;
    font-size: 10px;
    color: #1d252c;
 `;
@@ -97,30 +106,155 @@ const SelectsRowWrapper = styled(Grid)`
    grid-template-columns: ;
 `;
 
+const OrderButton = styled(Button)`
+   padding: 0 !important;
+   min-width: ${toRem(30)};
+   height:  ${toRem(30)};
+   display:flex;
+   align-items:center;
+   justify-content-center;
+   border:none !important;
+   svg{
+      font-size: 15px;
+   }
+       background-color: #f7f9fa;
+`;
+
+const FilterItemWrapper = styled(Flexbox)`
+   background: white;
+   border: 1px solid #c4d0da;
+   border-radius: 5px;
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   min-height: ${toRem(34)};
+   border-radius: 5px;
+   margin: 4px 2px;
+   & ${Text} {
+      color: #536677;
+   }
+`;
+const ColorIconWrapper = styled(Flexbox)`
+   opacity: 0.7;
+   min-width: ${toRem(30)};
+   align-items: center;
+   justify-content: center;
+   &:hover {
+      opacity: 1;
+   }
+   transition: opacity 0.3s;
+`;
+interface IFilterItem {
+   checked: boolean;
+   title: string;
+   id: string;
+}
+const initialFilterItems: IFilterItem[] = [
+   { title: "Action", checked: false, id: "0" },
+   { title: "Action", checked: false, id: "1" },
+   { title: "Action", checked: false, id: "2" },
+   { title: "Action", checked: false, id: "3" },
+   { title: "Action", checked: false, id: "4" },
+   { title: "Action", checked: false, id: "5" },
+];
+
 const CustomizeList: React.FC<GoodReceivedNoteProps> = () => {
    const [state, dispatch] = useGlobalContext();
    const [pageSize, setPageSize] = useState("10");
+   const [filterItems, setFilterItems] = useState(initialFilterItems);
+   const onFilterItemChange = (value: boolean, id: string) => {
+      setFilterItems((x) =>
+         filterItems.map((x) => (x.id === id ? { ...x, checked: value } : x))
+      );
+   };
    return (
       <Wrapper column fullHeight fullWidth>
-         <Heading>Good Delivered Note</Heading>
-         <Body fullWidth>
-            <Grid columns="1fr 2fr 1fr" gap="0.55rem">
-               <Flexbox column gap={5}>
-                  <Text size={9}>PAGE SIZE</Text>
-                  <CustomSelect
-                     options={[
-                        { text: "10", value: "10" },
-                        { text: "10", value: "10" },
-                        { text: "10", value: "10" },
-                        { text: "10", value: "10" },
-                        { text: "10", value: "10" },
-                     ]}
-                     value={pageSize}
-                     onValueChange={(val) => setPageSize(val)}
-                  ></CustomSelect>
-               </Flexbox>
+         <Heading>Customize Lisnt</Heading>
+
+         <Body fullWidth column>
+            <Grid columns="1fr 2fr 1fr" align="end" gap="0.55rem" fullWidth>
+               <CustomSelect
+                  label="PAGE SIZE"
+                  options={[
+                     { text: "10", value: "10" },
+                     { text: "20", value: "20" },
+                     { text: "30", value: "30" },
+                     { text: "40", value: "40" },
+                     { text: "50", value: "50" },
+                  ]}
+                  fullWidth
+                  value={pageSize}
+                  onValueChange={(val) => setPageSize(val)}
+               ></CustomSelect>
+               <CustomSelect
+                  label="SORT BY:"
+                  options={[
+                     { text: "10", value: "10" },
+                     { text: "20", value: "20" },
+                     { text: "30", value: "30" },
+                     { text: "40", value: "40" },
+                     { text: "50", value: "50" },
+                  ]}
+                  fullWidth
+                  value={pageSize}
+                  onValueChange={(val) => setPageSize(val)}
+               ></CustomSelect>
+               <ButtonGroup size="small" variant="contained" color="secondary">
+                  <OrderButton>
+                     <SignalCellular0Bar></SignalCellular0Bar>
+                  </OrderButton>
+                  <OrderButton style={{ borderRight: "none" }}>
+                     <SignalCellular0Bar></SignalCellular0Bar>
+                  </OrderButton>
+               </ButtonGroup>
             </Grid>
-            <TableWrapper fullWidth column>
+            <Flexbox column fullWidth mt={22} mb={22}>
+               {filterItems.map((x) => (
+                  <FilterItemWrapper
+                     fullWidth
+                     style={{
+                        background: x.checked
+                           ? "white"
+                           : "rgba(255,255,255, 0.6)",
+                     }}
+                  >
+                     <Flexbox gap={15}>
+                        <Flexbox width={34} justify="center">
+                           <DragIndicator></DragIndicator>
+                        </Flexbox>
+                        <Text size={12}>{x.title}</Text>
+                     </Flexbox>
+                     <Flexbox gap={16} mr={8}>
+                        <ColorIconWrapper>
+                           <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIxNXB4IiBoZWlnaHQ9IjE1cHgiIHZpZXdCb3g9IjAgMCAxNSAxNSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5Hcm91cCA2OTwvdGl0bGU+ICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPiAgICA8ZGVmcz48L2RlZnM+ICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgaWQ9IkN1c3RvbWl6ZS1FWGxpc3QtTkVXLUNvcHktNyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0MDguMDAwMDAwLCAtNDU1LjAwMDAwMCkiIGZpbGwtcnVsZT0ibm9uemVybyI+ICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTY5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNDA4LjAwMDAwMCwgNDU1LjAwMDAwMCkiPiAgICAgICAgICAgICAgICA8Y2lyY2xlIGlkPSJPdmFsLTEzIiBmaWxsPSIjMkU4OEYyIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG11bHRpcGx5OyIgY3g9IjQuODg2MzYzNjQiIGN5PSI0Ljg4NjM2MzY0IiByPSI0Ljg4NjM2MzY0Ij48L2NpcmNsZT4gICAgICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbC0xMy1Db3B5IiBmaWxsPSIjRkYyMjNEIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG11bHRpcGx5OyIgY3g9IjEwLjExMzYzNjQiIGN5PSI0Ljg4NjM2MzY0IiByPSI0Ljg4NjM2MzY0Ij48L2NpcmNsZT4gICAgICAgICAgICAgICAgPGNpcmNsZSBpZD0iT3ZhbC0xMy1Db3B5LTIiIGZpbGw9IiM2NEMwMDciIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbXVsdGlwbHk7IiBjeD0iNy4xNTkwOTA5MSIgY3k9IjkuMjA0NTQ1NDUiIHI9IjQuODg2MzYzNjQiPjwvY2lyY2xlPiAgICAgICAgICAgIDwvZz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg=="></img>
+                        </ColorIconWrapper>
+                        <Switch
+                           onChange={(e) =>
+                              onFilterItemChange(e.target.checked, x.id)
+                           }
+                           checked={x.checked}
+                        ></Switch>
+                     </Flexbox>
+                  </FilterItemWrapper>
+               ))}
+            </Flexbox>
+            <Flexbox ml={12} mb={20}>
+               <FormGroup>
+                  <FormControlLabel
+                     control={<Checkbox />}
+                     label={
+                        <Text ml={8} size={12} color={"grayHeading"}>
+                           Apply these settings for all users
+                        </Text>
+                     }
+                  />
+               </FormGroup>
+            </Flexbox>
+            <Button color="primary" variant="contained">
+               Save
+            </Button>
+            {/* <TableWrapper fullWidth column>
                <HeaderRowWrapper fullWidth>
                   <div>Number</div>
                   <div>Number</div>
@@ -136,7 +270,7 @@ const CustomizeList: React.FC<GoodReceivedNoteProps> = () => {
                      ))}
                   </RowWrapper>
                ))}
-            </TableWrapper>
+            </TableWrapper> */}
          </Body>
       </Wrapper>
    );

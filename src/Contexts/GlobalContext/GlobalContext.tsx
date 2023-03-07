@@ -15,6 +15,7 @@ interface IGlobalState {
    isPrinting: boolean;
    isSmallSidebarOpen?: boolean;
    drawer?: React.FC;
+   sidebarOpenedWithHover: boolean;
 }
 
 export interface IUser {
@@ -24,7 +25,8 @@ export interface IUser {
 
 const initialState: IGlobalState = {
    isPrinting: false,
-   isSmallSidebarOpen: true,
+   isSmallSidebarOpen: false,
+   sidebarOpenedWithHover: false,
    user: {
       name: "John",
       image: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",

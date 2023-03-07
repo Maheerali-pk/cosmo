@@ -109,8 +109,8 @@ const SalesList: React.FC<AccountRecieveablesProps> = () => {
       <PaginationTable
          HeadingsRowWrapper={HeadingsRowWrapper}
          RowWrapper={TableRowWrapper}
-         rowsPerPage={20}
-         rows={tempTableData.slice(0, 10)}
+         rowsPerPage={40}
+         rows={tempTableData}
          headings={[
             "ID",
             "Type",

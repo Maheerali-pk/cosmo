@@ -40,6 +40,7 @@ export const colors = {
    drawerBackground: "#e5e8ee",
    bluePrimary: "#1071e3",
    bodyBackground: "#eceff3",
+   green: "#2bbf57",
    // color: "white !important",
    // transition: "background-color .1s ease",
    // "&:hover": {
@@ -79,6 +80,56 @@ export const images = {
    register2,
    login,
 };
+// const IOSSwitch = styled((props: SwitchProps) => (
+//   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+// ))(({ theme }) => ({
+//   width: 42,
+//   height: 26,
+//   padding: 0,
+//   '& .MuiSwitch-switchBase': {
+//     padding: 0,
+//     margin: 2,
+//     transitionDuration: '300ms',
+//     '&.Mui-checked': {
+//       transform: 'translateX(16px)',
+//       color: '#fff',
+//       '& + .MuiSwitch-track': {
+//         backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#65C466',
+//         opacity: 1,
+//         border: 0,
+//       },
+//       '&.Mui-disabled + .MuiSwitch-track': {
+//         opacity: 0.5,
+//       },
+//     },
+//     '&.Mui-focusVisible .MuiSwitch-thumb': {
+//       color: '#33cf4d',
+//       border: '6px solid #fff',
+//     },
+//     '&.Mui-disabled .MuiSwitch-thumb': {
+//       color:
+//         theme.palette.mode === 'light'
+//           ? theme.palette.grey[100]
+//           : theme.palette.grey[600],
+//     },
+//     '&.Mui-disabled + .MuiSwitch-track': {
+//       opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
+//     },
+//   },
+//   '& .MuiSwitch-thumb': {
+//     boxSizing: 'border-box',
+//     width: 22,
+//     height: 22,
+//   },
+//   '& .MuiSwitch-track': {
+//     borderRadius: 26 / 2,
+//     backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+//     opacity: 1,
+//     transition: theme.transitions.create(['background-color'], {
+//       duration: 500,
+//     }),
+//   },
+// }));
 
 export const commonStyles: ThemeOptions = {
    palette: {
@@ -87,6 +138,53 @@ export const commonStyles: ThemeOptions = {
       },
    },
    overrides: {
+      MuiSwitch: {
+         root: {
+            height: 20,
+            width: 45,
+            padding: 0,
+            margin: 0,
+         },
+
+         switchBase: {
+            padding: 3,
+            "&$checked": {
+               // This is the part that animates the thumb when the switch is toggled (to the right)
+               transform: "translateX(25px)",
+               // This is the thumb color
+               color: "white",
+               "& + $track": {
+                  // This is the track's background color (in this example, the iOS green)
+                  backgroundColor: colors.green,
+                  opacity: 1,
+                  border: "none",
+               },
+            },
+         },
+         thumb: {
+            backgroundColor: "white",
+            height: 14,
+            width: 14,
+            boxShadow: "none",
+         },
+         track: {
+            borderRadius: 19,
+            height: 20,
+            backgroundColor: "#ced5db",
+            opacity: 1,
+            "$checked$checked + &": {
+               // Controls checked color for the track
+               opacity: 1,
+               backgroundColor: colors.green,
+            },
+         },
+         checked: {
+            "& .MuiSwtich-track": {
+               backgroundColor: "green",
+            },
+            backgroundColor: "green",
+         },
+      },
       MuiMenuItem: {
          root: {
             fontSize: "12px",
@@ -125,16 +223,34 @@ export const commonStyles: ThemeOptions = {
       },
       MuiCheckbox: {
          root: {
-            "&:hover": {
-               backgroundColor: "transparent !important",
-            },
             "& .MuiSvgIcon-root": {
                height: "1rem !important",
                width: "1rem",
             },
+            "& .MuiIconButton-label": {
+               position: "relative",
+               zIndex: 0,
+            },
+            "&$checked": {
+               color: "#deb316 !important",
+            },
 
+            "&:not($checked) .MuiIconButton-label:after": {
+               content: '""',
+               left: 3,
+               top: 3,
+               height: 9,
+               width: 9,
+               position: "absolute",
+               backgroundColor: "white",
+               zIndex: -1,
+            },
             padding: 0,
             width: "fit-content",
+         },
+         input: {
+            color: "white",
+            backgroundColor: "white",
          },
       },
       MuiInputLabel: {
@@ -194,6 +310,7 @@ export const commonStyles: ThemeOptions = {
             color: "white !important",
             backgroundColor: "#1071e3",
             transition: "background-color .1s ease",
+            boxShadow: "none !important",
             "&:hover": {
                backgroundColor: "#093f7f",
                boxShadow: "none",
